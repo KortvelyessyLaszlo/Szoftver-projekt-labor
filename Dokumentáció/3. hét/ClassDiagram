@@ -2633,6 +2633,7 @@ existing classes or even new classes with specific responsibilities.</val>
 <ref refid="f0465a16-d803-11ee-ba78-4cedfb6828c4"/>
 <ref refid="22cef510-d805-11ee-bb56-4cedfb6828c4"/>
 <ref refid="485fd9ea-d805-11ee-832b-4cedfb6828c4"/>
+<ref refid="194a6e4c-d828-11ee-81f8-4cedfb6828c4"/>
 </reflist>
 </ownedAttribute>
 <ownedOperation>
@@ -2693,6 +2694,11 @@ existing classes or even new classes with specific responsibilities.</val>
 <ref refid="5e9ddbee-d804-11ee-993b-4cedfb6828c4"/>
 </reflist>
 </ownedAttribute>
+<ownedOperation>
+<reflist>
+<ref refid="d413a4f9-d827-11ee-aceb-4cedfb6828c4"/>
+</reflist>
+</ownedOperation>
 <package>
 <ref refid="f3a82730-71b1-11ec-a409-f47b099bf663"/>
 </package>
@@ -2834,7 +2840,7 @@ existing classes or even new classes with specific responsibilities.</val>
 </Class>
 <ClassItem id="9fd534d7-d7c6-11ee-80cb-4cedfb6828c4">
 <matrix>
-<val>(1.0, 0.0, 0.0, 1.0, -717.8739531514505, 564.6026803867197)</val>
+<val>(1.0, 0.0, 0.0, 1.0, -717.8739531514503, 564.6026803867195)</val>
 </matrix>
 <top-left>
 <val>(-33.0, 0.0)</val>
@@ -2993,7 +2999,7 @@ existing classes or even new classes with specific responsibilities.</val>
 <val>(1.0, 0.0, 0.0, 1.0, -132.2986807268423, 581.811964892827)</val>
 </matrix>
 <points>
-<val>[(-552.0752724246081, -17.209284506107224), (-363.77282563319653, -231.77146183518533)]</val>
+<val>[(-552.0752724246081, -17.209284506107224), (-377.9349227754639, -254.18980237052529)]</val>
 </points>
 <head-connection>
 <ref refid="9fd534d7-d7c6-11ee-80cb-4cedfb6828c4"/>
@@ -3051,7 +3057,7 @@ existing classes or even new classes with specific responsibilities.</val>
 <val>(1.0, 0.0, 0.0, 1.0, -174.2986807268423, 650.8119648928266)</val>
 </matrix>
 <points>
-<val>[(-314.8814351301508, -90.70928450610711), (-239.5889298125462, -300.771461835185)]</val>
+<val>[(-314.8814351301508, -90.70928450610711), (-253.7510269548136, -323.18980237052494)]</val>
 </points>
 <head-connection>
 <ref refid="9e101621-d7c6-11ee-b4bb-4cedfb6828c4"/>
@@ -3077,7 +3083,7 @@ existing classes or even new classes with specific responsibilities.</val>
 <val>(1.0, 0.0, 0.0, 1.0, -60.29868072684224, 650.8119648928275)</val>
 </matrix>
 <points>
-<val>[(-258.7305181636782, -86.20928450610768), (-268.70848989946137, -300.7714618351859)]</val>
+<val>[(-258.7305181636782, -86.20928450610768), (-282.87058704172875, -323.18980237052585)]</val>
 </points>
 <head-connection>
 <ref refid="ef6c6fe0-d7c6-11ee-983c-4cedfb6828c4"/>
@@ -4093,7 +4099,7 @@ existing classes or even new classes with specific responsibilities.</val>
 </Property>
 <Property id="8ae53640-d7e4-11ee-8e6f-4cedfb6828c4">
 <aggregation>
-<val>composite</val>
+<val>shared</val>
 </aggregation>
 <association>
 <ref refid="8ae4d125-d7e4-11ee-a83c-4cedfb6828c4"/>
@@ -4502,7 +4508,7 @@ existing classes or even new classes with specific responsibilities.</val>
 </Class>
 <ClassItem id="e19ffcf2-d7f5-11ee-aeb9-4cedfb6828c4">
 <matrix>
-<val>(1.0, 0.0, 0.0, 1.0, -630.0569142965252, 117.98132564517955)</val>
+<val>(1.0, 0.0, 0.0, 1.0, -644.2190114387926, 95.56298510983937)</val>
 </matrix>
 <top-left>
 <val>(53.310892108268376, 75.26243591755542)</val>
@@ -4576,7 +4582,7 @@ existing classes or even new classes with specific responsibilities.</val>
 <val>(1.0, 0.0, 0.0, 1.0, -93.04716896855473, 429.5907936681267)</val>
 </matrix>
 <points>
-<val>[(-157.9820299219657, -157.9486613579383), (-46.14136208034461, -180.36700189327843)]</val>
+<val>[(-172.1441270642331, -180.3670018932786), (-46.14136208034461, -180.36700189327843)]</val>
 </points>
 <head-connection>
 <ref refid="e19ffcf2-d7f5-11ee-aeb9-4cedfb6828c4"/>
@@ -5089,6 +5095,28 @@ existing classes or even new classes with specific responsibilities.</val>
 </name>
 <typeValue>
 <val>bool</val>
+</typeValue>
+<visibility>
+<val>private</val>
+</visibility>
+</Property>
+<Operation id="d413a4f9-d827-11ee-aceb-4cedfb6828c4">
+<class_>
+<ref refid="9d21f9c1-d7c6-11ee-9f4e-4cedfb6828c4"/>
+</class_>
+<name>
+<val>reduceCharges</val>
+</name>
+</Operation>
+<Property id="194a6e4c-d828-11ee-81f8-4cedfb6828c4">
+<class_>
+<ref refid="2af43643-d7c2-11ee-b2a2-4cedfb6828c4"/>
+</class_>
+<name>
+<val>itemOwner</val>
+</name>
+<typeValue>
+<val>ItemManager</val>
 </typeValue>
 <visibility>
 <val>private</val>
