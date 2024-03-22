@@ -14,7 +14,21 @@ public class Teacher extends Person{
         this.isStunned = isStunned;
     }
 
-    public void meet(Student student){}
 
-    public void eliminate(Student student){}
+    public void meet(Student student){
+        if(student.checkForStunItems()){
+            isStunned = true;
+            return;
+        }
+        if(student.checkForDefensiveItems()){
+            return;
+        }
+        eliminate(student);
+        return;
+    }
+
+    public void eliminate(Student student){
+        student.dropItems();
+        student.getCurrentRoom().removePerson(student);
+    }
 }
