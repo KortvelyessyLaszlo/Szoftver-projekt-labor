@@ -139,12 +139,13 @@ public class Room {
 
         this.itemInventory.addAll(neighbour.itemInventory);
 
-        this.neighbours.addAll(neighbour.neighbours);
         for(Room room : neighbour.neighbours){
-            room.neighbours.remove(neighbour);
-            room.neighbours.add(this);
+            if(room != this) {
+                room.addNeighbour(this);
+                this.neighbours.add(room);
+            }
+            room.removeNeighbour(neighbour);
         }
-        this.neighbours.remove(this);
 
         Skeleton.log("return " + neighbour, false);
         return neighbour;
