@@ -3,15 +3,15 @@ import java.util.List;
 import java.util.Random;
 
 public class Room {
-    protected boolean isGassed;
+    private boolean isGassed;
 
-    protected int capacity;
+    private int capacity;
 
-    protected List<Person> peopleInRoom = new ArrayList<Person>();
+    private List<Person> peopleInRoom = new ArrayList<Person>();
 
-    protected List<Item> itemInventory = new ArrayList<Item>();
+    private List<Item> itemInventory = new ArrayList<Item>();
 
-    protected List<Room> neighbours = new ArrayList<Room>();
+    private List<Room> neighbours = new ArrayList<Room>();
 
 
     public Room(int capacity) {

@@ -61,7 +61,23 @@ public abstract class Person {
         currentRoom.removePerson(this);
         currentRoom = room;
 
+        if(currentRoom.isGassed() && !checkForMask()) {
+            setPoisoned(true);
+            return;
+        }
 
+        for(Person person : currentRoom.getPeopleInRoom()){
+            person.meet(this);
+        }
+    }
+
+    public boolean checkForMask(){
+        for(Item item : getItemInventory()){
+            if(item.defendAgainstGas()){
+                return true;
+            }
+        }
+        return false;
     }
 
     public void pickUp(Item item){
@@ -70,8 +86,6 @@ public abstract class Person {
 
         currentRoom.removeItem(item);
         itemInventory.add(item);
-
-        item.pickUp(this);
     }
 
     public void dropItems(){

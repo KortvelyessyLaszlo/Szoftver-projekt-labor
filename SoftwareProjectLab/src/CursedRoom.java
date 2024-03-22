@@ -30,14 +30,14 @@ public class CursedRoom extends Room{
     }
 
     public void updateCursedDoors() {
-        neighbours.addAll(invisibleRooms);
+        getNeighbours().addAll(invisibleRooms);
         invisibleRooms.clear();
 
         Random random = new Random();
-        Iterator<Room> iterator = neighbours.iterator();
+        Iterator<Room> iterator = getNeighbours().iterator();
         while (iterator.hasNext()) {
             Room neighbour = iterator.next();
-            if(random.nextBoolean() && neighbours.size() > 1){
+            if(random.nextBoolean() && getNeighbours().size() > 1){
                 invisibleRooms.add(neighbour);
                 iterator.remove();
             }
@@ -46,14 +46,14 @@ public class CursedRoom extends Room{
 
     @Override
     public Room splitRoom() {
-        neighbours.addAll(invisibleRooms);
+        getNeighbours().addAll(invisibleRooms);
         invisibleRooms.clear();
         return super.splitRoom();
     }
 
     @Override
     public Room combineRooms() {
-        neighbours.addAll(invisibleRooms);
+        getNeighbours().addAll(invisibleRooms);
         invisibleRooms.clear();
         return super.combineRooms();
     }
