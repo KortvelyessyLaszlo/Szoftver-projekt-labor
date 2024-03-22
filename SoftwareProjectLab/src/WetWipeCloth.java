@@ -21,7 +21,8 @@ public class WetWipeCloth extends TimedItem{
         @Override
         public boolean stun() {
             Skeleton.log("WetWipeCloth.stun()", true);
-            Skeleton.log("return " + (isActive() && !isDestroyed()), false);
-            return isActive() && !isDestroyed();
+            boolean result = (isActive() && !isDestroyed());
+            Skeleton.log("return " + result, false);
+            return result;
         }
 }

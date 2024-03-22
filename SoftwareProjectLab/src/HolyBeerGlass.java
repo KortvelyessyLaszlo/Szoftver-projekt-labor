@@ -21,7 +21,8 @@ public class HolyBeerGlass extends TimedItem{
     @Override
     public boolean defend() {
         Skeleton.log("HolyBeerGlass.defend()", true);
-        Skeleton.log("return " + (isActive() && !isDestroyed()), false);
-        return isActive() && !isDestroyed();
+        boolean result = (isActive() && !isDestroyed());
+        Skeleton.log("return " + result, false);
+        return result;
     }
 }

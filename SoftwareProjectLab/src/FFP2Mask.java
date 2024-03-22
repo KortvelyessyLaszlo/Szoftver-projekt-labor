@@ -21,7 +21,8 @@ public class FFP2Mask extends TimedItem{
     @Override
     public boolean defendAgainstGas() {
         Skeleton.log("FFP2Mask.defendAgainstGas()", true);
-        Skeleton.log("return " + (isActive() && !isDestroyed()), false);
-        return !isDestroyed() && isActive();
+        boolean result = (isActive() && !isDestroyed());
+        Skeleton.log("return " + result, false);
+        return result;
     }
 }
