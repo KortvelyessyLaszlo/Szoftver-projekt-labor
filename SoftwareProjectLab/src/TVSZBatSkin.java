@@ -7,7 +7,6 @@ public class TVSZBatSkin extends Item{
 
         @Override
         public void activate(Person person) {
-            // Activate the TVSZ Bat Skin
                 setActive(true);
         }
 

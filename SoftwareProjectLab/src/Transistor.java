@@ -2,7 +2,7 @@ public class Transistor extends Item{
 
     private Room placedTransistorRoom;
 
-    private Transistor pair;
+    private Transistor pair = null;
 
     public Transistor(int id) {
         super(id);
@@ -27,11 +27,22 @@ public class Transistor extends Item{
 
     @Override
     public void activate(Person person) {
-        // Activate the transistor
+        if(pair.isActive()){
+            person.enter(pair.getPlacedTransistorRoom());
+        }else{
+            setActive(true);
+            person.getCurrentRoom().addItem(this);
+            person.removeItem(this);
+        }
     }
 
     public void pair(Transistor transistor){
-        this.pair = transistor;
-        transistor.pair = this;
+        if(this.pair != null)
+            return;
+
+        if(transistor.pair == null){
+            this.pair = transistor;
+            transistor.pair(this);
+        }
     }
 }

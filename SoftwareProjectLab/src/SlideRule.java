@@ -6,15 +6,15 @@ public class SlideRule extends Item{
 
     @Override
     public void activate(Person person) {
-        // Activate the slide rule
+        victory(person);
     }
 
     @Override
     public void pickUp(Person person) {
-        // Pick up the slide rule
+        activate(person);
     }
 
     public void victory(Person person) {
-        // Victory with the slide rule
+        System.out.println(person + " has won the game!");
     }
 }

@@ -6,16 +6,16 @@ public class WetWipeCloth extends TimedItem{
 
         @Override
         public void activate(Person person) {
-            // Activate the Wet Wipe Cloth
+            setActive(true);
         }
 
         @Override
         public void pickUp(Person person) {
-            // Pick up the Wet Wipe Cloth
+            activate(person);
         }
 
         @Override
         public boolean stun() {
-            return true;
+            return isActive() && !isDestroyed();
         }
 }

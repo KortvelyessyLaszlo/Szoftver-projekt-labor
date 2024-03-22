@@ -10,8 +10,8 @@ public class Student extends Person{
 
     public void dropItem(Item item){
         item.setActive(false);
-        getCurrentRoom().getItemInventory().add(item);
-        this.getItemInventory().remove(item);
+        getCurrentRoom().addItem(item);
+        this.removeItem(item);
     }
 
     public void meet(Teacher teacher){

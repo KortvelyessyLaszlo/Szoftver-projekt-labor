@@ -1,4 +1,4 @@
-public class TimedItem extends Item{
+public abstract class TimedItem extends Item{
     private int remainingTime;
 
     public TimedItem(int id) {

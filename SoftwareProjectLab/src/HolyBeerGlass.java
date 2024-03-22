@@ -6,17 +6,16 @@ public class HolyBeerGlass extends TimedItem{
 
     @Override
     public void activate(Person person) {
-        // Activate the Holy Beer Glass
+        setActive(true);
     }
 
     @Override
     public void pickUp(Person person) {
-        // Pick up the Holy Beer Glass
+        activate(person);
     }
 
     @Override
     public boolean defend() {
-        // Defend against gas
-        return true;
+        return isActive() && !isDestroyed();
     }
 }

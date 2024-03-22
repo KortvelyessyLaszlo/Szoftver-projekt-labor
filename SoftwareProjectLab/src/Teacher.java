@@ -16,6 +16,9 @@ public class Teacher extends Person{
 
 
     public void meet(Student student){
+        if(isPoisoned() || isStunned())
+            return;
+
         if(student.checkForStunItems()){
             isStunned = true;
             return;
@@ -24,7 +27,6 @@ public class Teacher extends Person{
             return;
         }
         eliminate(student);
-        return;
     }
 
     public void eliminate(Student student){
