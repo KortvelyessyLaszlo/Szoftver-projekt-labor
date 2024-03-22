@@ -281,7 +281,7 @@ public class Skeleton {
 
     public void test17(){
         Maze M = new Maze(0);
-        Room R = new Room(0);
+        Room R = new Room(2);
         R.setGassed(true);
         M.addRoom(R);
 

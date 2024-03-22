@@ -180,10 +180,10 @@ public class Room {
                 room.neighbours.remove(this);
                 room.neighbours.add(newRoom);
             }
-
-            this.neighbours.add(newRoom);
-            newRoom.neighbours.add(this);
         }
+
+        this.neighbours.add(newRoom);
+        newRoom.neighbours.add(this);
 
         Skeleton.log("return " + newRoom, false);
         return newRoom;
