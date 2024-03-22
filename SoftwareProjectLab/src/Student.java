@@ -17,7 +17,7 @@ public class Student extends Person{
         this.removeItem(item);
         Skeleton.log("return", false);
     }
-
+@Override
     public void meet(Teacher teacher){
         Skeleton.log("Student.meet()", true);
         if(teacher.isPoisoned() || teacher.isStunned()){
@@ -80,5 +80,12 @@ public class Student extends Person{
         }
         Skeleton.log("return false", false);
         return false;
+    }
+    @Override
+    public void meeting(Person p){
+
+        Skeleton.log("Student.meeting()", true);
+        p.meet(this);
+        Skeleton.log("return", false);
     }
 }
