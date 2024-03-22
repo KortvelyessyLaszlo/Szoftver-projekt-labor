@@ -1,5 +1,7 @@
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Random;
 
 public class CursedRoom extends Room{
     private List<Room> invisibleRooms = new ArrayList<Room>();
@@ -28,16 +30,31 @@ public class CursedRoom extends Room{
     }
 
     public void updateCursedDoors() {
-        // Update cursed doors
+        neighbours.addAll(invisibleRooms);
+        invisibleRooms.clear();
+
+        Random random = new Random();
+        Iterator<Room> iterator = neighbours.iterator();
+        while (iterator.hasNext()) {
+            Room neighbour = iterator.next();
+            if(random.nextBoolean() && neighbours.size() > 1){
+                invisibleRooms.add(neighbour);
+                iterator.remove();
+            }
+        }
     }
 
     @Override
     public Room splitRoom() {
-        return this;
+        neighbours.addAll(invisibleRooms);
+        invisibleRooms.clear();
+        return super.splitRoom();
     }
 
     @Override
     public Room combineRooms() {
-        return this;
+        neighbours.addAll(invisibleRooms);
+        invisibleRooms.clear();
+        return super.combineRooms();
     }
 }

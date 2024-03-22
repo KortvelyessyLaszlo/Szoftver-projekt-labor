@@ -3,11 +3,16 @@ import java.util.List;
 import java.util.Random;
 
 public class Room {
-    private boolean isGassed;
-    private int capacity;
-    private List<Person> peopleInRoom = new ArrayList<Person>();
-    private List<Item> itemInventory = new ArrayList<Item>();
-    private List<Room> neighbours = new ArrayList<Room>();
+    protected boolean isGassed;
+
+    protected int capacity;
+
+    protected List<Person> peopleInRoom = new ArrayList<Person>();
+
+    protected List<Item> itemInventory = new ArrayList<Item>();
+
+    protected List<Room> neighbours = new ArrayList<Room>();
+
 
     public Room(int capacity) {
         this.capacity = capacity;
@@ -131,7 +136,7 @@ public class Room {
             newRoom.neighbours.addAll(this.neighbours.subList(splitIndex, this.neighbours.size()));
             this.neighbours = this.neighbours.subList(0, splitIndex);
 
-            for(Room room : newRoom.neighbours){
+            for (Room room : newRoom.neighbours) {
                 room.neighbours.remove(this);
                 room.neighbours.add(newRoom);
             }

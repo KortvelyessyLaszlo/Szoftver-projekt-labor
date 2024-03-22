@@ -54,11 +54,33 @@ public abstract class Person {
         itemInventory.remove(item);
     }
 
-    public void enter(Room room){}
+    public void enter(Room room){
+        if(!room.acceptNewPerson(this))
+            return;
 
-    public void pickUp(Item item){}
+        currentRoom.removePerson(this);
+        currentRoom = room;
 
-    public void dropItems(){}
+
+    }
+
+    public void pickUp(Item item){
+        if(itemInventory.size() >= 5)
+            return;
+
+        currentRoom.removeItem(item);
+        itemInventory.add(item);
+
+        item.pickUp(this);
+    }
+
+    public void dropItems(){
+        for(Item item : itemInventory){
+            item.setActive(false);
+            currentRoom.addItem(item);
+        }
+        itemInventory.clear();
+    }
 
     public void meet(Person person){}
 }
