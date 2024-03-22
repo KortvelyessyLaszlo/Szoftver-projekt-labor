@@ -42,13 +42,84 @@ public class Skeleton {
 
     public void test12(){}
 
-    public void test13(){}
+    public void test13(){
+        Person T = new Teacher("Teacher");
+        Person S = new Student("Student");
+        Room R1 = new Room(2);
+        Room R2 = new Room(2);
 
-    public void test14(){}
+        T.setCurrentRoom(R1);
+        S.setCurrentRoom(R2);
 
-    public void test15(){}
+        R1.addNeighbour(R2);
+        R2.addNeighbour(R1);
 
-    public void test16(){}
+        R1.addPerson(T);
+        R2.addPerson(S);
 
-    public void test17(){}
+        S.enter(R1);
+    }
+
+    public void test14(){
+        Room R = new Room(1);
+        Person S = new Student("Student");
+        Item SR = new SlideRule(0);
+
+        R.addItem(SR);
+        R.addPerson(S);
+        S.setCurrentRoom(R);
+
+        S.pickUp(SR);
+    }
+
+    public void test15(){
+        Room R1 = new Room(3);
+        Room R2 = new Room(3);
+
+        Person T = new Teacher("Teacher");
+        Person S1 = new Student("Student1");
+        Person S2 = new Student("Student2");
+
+        Item WWC = new WetWipeCloth(0);
+
+        R1.addNeighbour(R2);
+        R2.addNeighbour(R1);
+
+        R1.addPerson(T);
+        T.setCurrentRoom(R1);
+
+        R2.addPerson(S1);
+        R2.addPerson(S2);
+        S1.setCurrentRoom(R2);
+        S2.setCurrentRoom(R2);
+
+        WWC.setActive(true);
+        S1.addItem(WWC);
+
+        S1.enter(R1);
+        S2.enter(R1);
+    }
+
+    public void test16(){
+        Room R1 = new Room(1);
+        Room R2 = new Room(2);
+        Room R3 = new Room(0);
+
+        R1.addNeighbour(R2);
+        R2.addNeighbour(R1);
+        R2.addNeighbour(R3);
+        R2.setGassed(true);
+        R3.addNeighbour(R2);
+
+        R1.combineRooms();
+    }
+
+    public void test17(){
+        Maze M = new Maze(0);
+        Room R = new Room(0);
+        R.setGassed(true);
+        M.addRoom(R);
+
+        M.startSplitRooms();
+    }
 }
