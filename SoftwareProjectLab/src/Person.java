@@ -91,7 +91,8 @@ public abstract class Person {
         }
 
         for(Person person : currentRoom.getPeopleInRoom()){
-            person.meet(this);
+            if(person != this)
+                person.meet(this);
         }
         Skeleton.log("return", false);
     }
