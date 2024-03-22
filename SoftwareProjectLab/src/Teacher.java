@@ -46,8 +46,8 @@ public class Teacher extends Person{
     }
 
     @Override
-    public void meeting(Person p){
-        Skeleton.log("Teacher.meeting()", true);
+    public void meet(Person p){
+        Skeleton.log("Teacher.meet()", true);
         p.meet(this);
 
         Skeleton.log("return", false);

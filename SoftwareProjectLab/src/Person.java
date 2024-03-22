@@ -91,7 +91,7 @@ public abstract class Person {
         }
 
         for(Person person : currentRoom.getPeopleInRoom()){
-            if(person != this)person.meeting(this);
+            if(person != this)person.meet(this);
         }
         Skeleton.log("return", false);
     }
@@ -139,9 +139,9 @@ public abstract class Person {
         Skeleton.log("return", false);
     }
 
-    public void meeting(Person p){
+    public void meet(Person p){
 
-        Skeleton.log("Person.meeting()", true);
+        Skeleton.log("Person.meet()", true);
         Skeleton.log("return", false);
     }
 
