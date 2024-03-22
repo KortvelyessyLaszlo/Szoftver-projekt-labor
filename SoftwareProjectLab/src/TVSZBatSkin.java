@@ -13,7 +13,6 @@ public class TVSZBatSkin extends Item{
 
         @Override
         public void pickUp(Person person) {
-            // Pick up the TVSZ Bat Skin
                 activate(person);
         }
 
