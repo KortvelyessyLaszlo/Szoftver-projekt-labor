@@ -1,3 +1,5 @@
+import java.util.List;
+
 public class Student extends Person{
 
     public Student(String name) {
@@ -44,7 +46,8 @@ public class Student extends Person{
     public void pickUp(Item item){
         Skeleton.log("Student.pickUp()", true);
         super.pickUp(item);
-        item.pickUp(this);
+        if(getItemInventory().size() < 5)
+            item.pickUp(this);
         Skeleton.log("return", false);
     }
 
@@ -62,9 +65,10 @@ public class Student extends Person{
 
     public void pairItems(){
         Skeleton.log("Student.pairItems()", true);
-        for(Item item : getItemInventory()){
-            for(Item item2 : getItemInventory()){
-                item.pair(item2);
+        List<Item> inventory = getItemInventory();
+        for(int i = 0; i < inventory.size(); i++){
+            for(int j = i + 1; j < inventory.size(); j++){
+                inventory.get(i).pair(inventory.get(j));
             }
         }
         Skeleton.log("return", false);

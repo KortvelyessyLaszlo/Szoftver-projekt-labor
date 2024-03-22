@@ -86,6 +86,7 @@ public abstract class Person {
 
         if(currentRoom.isGassed() && !checkForMask()) {
             setPoisoned(true);
+            dropItems();
             Skeleton.log("return", false);
             return;
         }

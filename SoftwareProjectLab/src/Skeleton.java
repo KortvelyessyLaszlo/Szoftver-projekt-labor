@@ -4,13 +4,17 @@ public class Skeleton {
 
     private static final String INDENTATION = "\t";
 
+    private static boolean logEnabled;
+
     public static void log(String methodName, boolean call) {
-        if (call) {
-            System.out.println(getIndentation() + "-> " + methodName); // Indentation for method call
-            indentationLevel++;
-        } else {
-            indentationLevel--;
-            System.out.println(getIndentation() + "<- " + methodName); // Indentation for method return
+        if(logEnabled) {
+            if (call) {
+                System.out.println(getIndentation() + "-> " + methodName); // Indentation for method call
+                indentationLevel++;
+            } else {
+                indentationLevel--;
+                System.out.println(getIndentation() + "<- " + methodName); // Indentation for method return
+            }
         }
     }
 
@@ -19,6 +23,7 @@ public class Skeleton {
     }
 
     public void test1(){
+        logEnabled = false;
         Room R1 = new Room(2);
         Room R2 = new Room(2);
         Teacher T = new Teacher("T");
@@ -34,10 +39,12 @@ public class Skeleton {
         S.addItem(TVSZ);
         TVSZ.activate(S);
 
+        logEnabled = true;
         S.enter(R1);
     }
 
     public void test2(){
+        logEnabled = false;
         Room R = new Room(1);
         Student S = new Student("S");
         CannedCamembert CC = new CannedCamembert(0);
@@ -46,10 +53,12 @@ public class Skeleton {
         S.setCurrentRoom(R);
         S.addItem(CC);
 
+        logEnabled = true;
         S.useItem(CC);
     }
 
     public void test3(){
+        logEnabled = false;
         Room R1 = new Room(2);
         Room R2 = new Room(2);
         Student S = new Student("S");
@@ -63,10 +72,12 @@ public class Skeleton {
         S.addItem(M);
         M.activate(S);
 
+        logEnabled = true;
         S.enter(R1);
     }
 
     public void test4(){
+        logEnabled = false;
         Room R = new Room(1);
         Student S = new Student("S");
         HolyBeerGlass HBG = new HolyBeerGlass(0);
@@ -75,10 +86,12 @@ public class Skeleton {
         S.setCurrentRoom(R);
         R.addItem(HBG);
 
+        logEnabled = true;
         S.pickUp(HBG);
     }
 
     public void test5(){
+        logEnabled = false;
         Room R1 = new Room(2);
         Room R2 = new Room(2);
         Teacher T = new Teacher("T");
@@ -94,10 +107,12 @@ public class Skeleton {
         S.addItem(WWC);
         WWC.activate(S);
 
+        logEnabled = true;
         S.enter(R1);
     }
 
     public void test6(){
+        logEnabled = false;
         Student S = new Student("S");
         Transistor T1 = new Transistor(0);
         Transistor T2 = new Transistor(1);
@@ -105,10 +120,12 @@ public class Skeleton {
         S.addItem(T1);
         S.addItem(T2);
 
+        logEnabled = true;
         S.pairItems();
     }
 
     public void test7(){
+        logEnabled = false;
         Room R = new Room(1);
         Student S = new Student("S");
         Transistor T1 = new Transistor(0);
@@ -121,10 +138,12 @@ public class Skeleton {
         T1.pair(T2);
         T2.pair(T1);
 
+        logEnabled = true;
         S.useItem(T1);
     }
 
     public void test8(){
+        logEnabled = false;
         Room R1 = new Room(2);
         Room R2 = new Room(2);
         Student S = new Student("S");
@@ -140,10 +159,12 @@ public class Skeleton {
         T1.setPlacedTransistorRoom(R2);
         T2.pair(T1);
 
+        logEnabled = true;
         S.useItem(T2);
     }
 
     public void test9(){
+        logEnabled = false;
         Room R1 = new Room(1);
         Room R2 = new Room(0);
         Student S = new Student("S");
@@ -153,26 +174,30 @@ public class Skeleton {
         R2.addNeighbour(R1);
         S.setCurrentRoom(R1);
 
+        logEnabled = true;
         S.enter(R2);
     }
 
     public void test10(){
+        logEnabled = false;
         Room R1 = new Room(1);
         Room R2 = new Room(1);
         Student S = new Student("S");
         TVSZBatSkin TVSZ = new TVSZBatSkin(0);
 
         R1.addNeighbour(R2);
-        R1.setGassed(true);
+        R2.setGassed(true);
         R2.addNeighbour(R1);
-        R2.addPerson(S);
+        R1.addPerson(S);
         S.setCurrentRoom(R1);
         S.addItem(TVSZ);
 
+        logEnabled = true;
         S.enter(R2);
     }
 
     public void test11(){
+        logEnabled = false;
         Room R = new Room(1);
         Student S = new Student("S");
         HolyBeerGlass HBG = new HolyBeerGlass(0);
@@ -191,10 +216,12 @@ public class Skeleton {
         S.addItem(T4);
         S.addItem(T5);
 
+        logEnabled = true;
         S.pickUp(HBG);
     }
 
     public void test12(){
+        logEnabled = false;
         Room R = new Room(1);
         Student S = new Student("S");
         TVSZBatSkin TVSZ = new TVSZBatSkin(0);
@@ -204,10 +231,12 @@ public class Skeleton {
         S.addItem(TVSZ);
         TVSZ.setActive(true);
 
+        logEnabled = true;
         S.dropItem(TVSZ);
     }
 
     public void test13(){
+        logEnabled = false;
         Person T = new Teacher("Teacher");
         Person S = new Student("Student");
         Room R1 = new Room(2);
@@ -222,10 +251,12 @@ public class Skeleton {
         R1.addPerson(T);
         R2.addPerson(S);
 
+        logEnabled = true;
         S.enter(R1);
     }
 
     public void test14(){
+        logEnabled = false;
         Room R = new Room(1);
         Person S = new Student("Student");
         Item SR = new SlideRule(0);
@@ -234,10 +265,12 @@ public class Skeleton {
         R.addPerson(S);
         S.setCurrentRoom(R);
 
+        logEnabled = true;
         S.pickUp(SR);
     }
 
     public void test15(){
+        logEnabled = false;
         Room R1 = new Room(3);
         Room R2 = new Room(3);
 
@@ -261,11 +294,13 @@ public class Skeleton {
         WWC.setActive(true);
         S1.addItem(WWC);
 
+        logEnabled = true;
         S1.enter(R1);
         S2.enter(R1);
     }
 
     public void test16(){
+        logEnabled = false;
         Room R1 = new Room(1);
         Room R2 = new Room(2);
         Room R3 = new Room(0);
@@ -276,15 +311,18 @@ public class Skeleton {
         R2.setGassed(true);
         R3.addNeighbour(R2);
 
+        logEnabled = true;
         R1.combineRooms();
     }
 
     public void test17(){
+        logEnabled = false;
         Maze M = new Maze(0);
         Room R = new Room(2);
         R.setGassed(true);
         M.addRoom(R);
 
+        logEnabled = true;
         M.startSplitRooms();
     }
 }

@@ -46,9 +46,17 @@ public class Transistor extends Item{
         Skeleton.log("return", false);
     }
 
+    @Override
+    public void pair(Item item){
+        Skeleton.log("Transistor.pair()", true);
+        item.pair(this);
+        Skeleton.log("return", false);
+    }
+
+    @Override
     public void pair(Transistor transistor){
         Skeleton.log("Transistor.pair()", true);
-        if(transistor.pair == null && this.pair == null){
+        if(transistor.pair == null && this.pair == null && this != transistor){
             this.pair = transistor;
             transistor.pair = this;
         }

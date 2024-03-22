@@ -84,11 +84,7 @@ public class Main {
                 default:
                     run = false;
                     break;
-
             }
-
         }
-
-
     }
 }

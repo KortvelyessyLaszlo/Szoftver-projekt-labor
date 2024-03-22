@@ -66,6 +66,11 @@ public abstract class Item {
         Skeleton.log("return", false);
     }
 
+    public void pair(Transistor transistor){
+        Skeleton.log("Item.pair()", true);
+        Skeleton.log("return", false);
+    }
+
     public boolean defendAgainstGas(){
         Skeleton.log("Item.defendAgainstGas()", true);
         Skeleton.log("return false", false);
