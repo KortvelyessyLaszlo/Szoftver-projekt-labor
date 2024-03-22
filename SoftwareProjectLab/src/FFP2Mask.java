@@ -6,16 +6,22 @@ public class FFP2Mask extends TimedItem{
 
     @Override
     public void activate(Person person) {
+        Skeleton.log("FFP2Mask.activate()", true);
         setActive(true);
+        Skeleton.log("return", false);
     }
 
     @Override
     public void pickUp(Person person) {
+        Skeleton.log("FFP2Mask.pickUp()", true);
         activate(person);
+        Skeleton.log("return", false);
     }
 
     @Override
     public boolean defendAgainstGas() {
-        return !isDestroyed() && isActive() && getRemainingTime()>0;
+        Skeleton.log("FFP2Mask.defendAgainstGas()", true);
+        Skeleton.log("return " + (isActive() && !isDestroyed()), false);
+        return !isDestroyed() && isActive();
     }
 }

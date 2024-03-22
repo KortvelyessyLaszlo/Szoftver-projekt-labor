@@ -10,39 +10,48 @@ public class Transistor extends Item{
 
     // Getters and setters
     public Room getPlacedTransistorRoom() {
+        Skeleton.log("Transistor.getPlacedTransistorRoom()", true);
+        Skeleton.log("return", false);
         return placedTransistorRoom;
     }
 
     public void setPlacedTransistorRoom(Room placedTransistorRoom) {
+        Skeleton.log("Transistor.setPlacedTransistorRoom()", true);
         this.placedTransistorRoom = placedTransistorRoom;
+        Skeleton.log("return", false);
     }
 
     public Transistor getPair() {
+        Skeleton.log("Transistor.getPair()", true);
+        Skeleton.log("return", false);
         return pair;
     }
 
     public void setPair(Transistor pair) {
+        Skeleton.log("Transistor.setPair()", true);
         this.pair = pair;
+        Skeleton.log("return", false);
     }
 
     @Override
     public void activate(Person person) {
+        Skeleton.log("Transistor.activate()", true);
         if(pair.isActive()){
-            person.enter(pair.getPlacedTransistorRoom());
+            person.enter(pair.placedTransistorRoom);
         }else{
             setActive(true);
             person.getCurrentRoom().addItem(this);
             person.removeItem(this);
         }
+        Skeleton.log("return", false);
     }
 
     public void pair(Transistor transistor){
-        if(this.pair != null)
-            return;
-
-        if(transistor.pair == null){
+        Skeleton.log("Transistor.pair()", true);
+        if(transistor.pair == null && this.pair == null){
             this.pair = transistor;
-            transistor.pair(this);
+            transistor.pair = this;
         }
+        Skeleton.log("return", false);
     }
 }

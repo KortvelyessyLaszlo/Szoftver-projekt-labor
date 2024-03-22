@@ -7,21 +7,28 @@ public class TVSZBatSkin extends Item{
 
         @Override
         public void activate(Person person) {
+                Skeleton.log("TVSZBatSkin.activate()", true);
                 setActive(true);
+                Skeleton.log("return", false);
         }
 
         @Override
         public void pickUp(Person person) {
+                Skeleton.log("TVSZBatSkin.pickUp()", true);
                 activate(person);
+                Skeleton.log("return", false);
         }
 
         @Override
         public boolean defend() {
+                Skeleton.log("TVSZBatSkin.defend()", true);
             if(this.isActive() && !this.isDestroyed()){
                     charge--;
                     if(charge == 0) setDestroyed(true);
+                    Skeleton.log("return true", false);
                     return true;
             }
+            Skeleton.log("return false", false);
             return false;
         }
 }

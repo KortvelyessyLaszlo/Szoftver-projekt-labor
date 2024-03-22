@@ -4,9 +4,10 @@ public class CannedCamembert extends Item {
     }
     @Override
     public void activate(Person person) {
-        // Activate the CannedCamembert
+        Skeleton.log("CannedCamembert.activate()", true);
         person.getCurrentRoom().setGassed(true);
         this.setDestroyed(true);
         person.removeItem(this);
+        Skeleton.log("return", false);
     }
 }

@@ -30,6 +30,7 @@ public class CursedRoom extends Room{
     }
 
     public void updateCursedDoors() {
+        Skeleton.log("CursedRoom.updateCursedDoors()", true);
         getNeighbours().addAll(invisibleRooms);
         invisibleRooms.clear();
 
@@ -42,19 +43,26 @@ public class CursedRoom extends Room{
                 iterator.remove();
             }
         }
+        Skeleton.log("return", false);
     }
 
     @Override
     public Room splitRoom() {
+        Skeleton.log("CursedRoom.splitRoom()", true);
         getNeighbours().addAll(invisibleRooms);
         invisibleRooms.clear();
-        return super.splitRoom();
+        Room newRoom = super.splitRoom();
+        Skeleton.log("return" + newRoom, false);
+        return newRoom;
     }
 
     @Override
     public Room combineRooms() {
+        Skeleton.log("CursedRoom.combineRooms()", true);
         getNeighbours().addAll(invisibleRooms);
         invisibleRooms.clear();
-        return super.combineRooms();
+        Room neighbour = super.combineRooms();
+        Skeleton.log("return " + neighbour, false);
+        return neighbour;
     }
 }

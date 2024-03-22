@@ -6,16 +6,22 @@ public class WetWipeCloth extends TimedItem{
 
         @Override
         public void activate(Person person) {
+            Skeleton.log("WetWipeCloth.activate()", true);
             setActive(true);
+            Skeleton.log("return", false);
         }
 
         @Override
         public void pickUp(Person person) {
+            Skeleton.log("WetWipeCloth.pickUp()", true);
             activate(person);
+            Skeleton.log("return", false);
         }
 
         @Override
         public boolean stun() {
+            Skeleton.log("WetWipeCloth.stun()", true);
+            Skeleton.log("return " + (isActive() && !isDestroyed()), false);
             return isActive() && !isDestroyed();
         }
 }

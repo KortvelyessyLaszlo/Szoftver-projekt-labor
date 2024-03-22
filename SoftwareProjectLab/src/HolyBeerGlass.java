@@ -6,7 +6,9 @@ public class HolyBeerGlass extends TimedItem{
 
     @Override
     public void activate(Person person) {
+        Skeleton.log("HolyBeerGlass.activate()", true);
         setActive(true);
+        Skeleton.log("return", false);
     }
 
     @Override
