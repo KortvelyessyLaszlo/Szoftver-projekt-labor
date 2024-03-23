@@ -75,6 +75,6 @@ public abstract class Item {
     }
     @Override
     public String toString(){
-        return this.getClass() + ", id: " + id + ", isActive: " + isActive + ", isDestroyed: " + isDestroyed;
+        return this.getClass() + ", id=" + id + ", isActive=" + isActive + ", isDestroyed=" + isDestroyed;
     }
 }

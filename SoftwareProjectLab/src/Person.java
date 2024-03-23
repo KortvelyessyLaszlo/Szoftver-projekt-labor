@@ -137,6 +137,6 @@ public abstract class Person {
             itemInventoryString.append(item.getId()).append(",");
         }
 
-        return "Type: " + this.getClass() + ", Name: " + name  + ", Poisoned: " + isPoisoned + ", Item Inventory: [" + itemInventoryString + "]";
+        return this.getClass() + ", Name=" + name  + ", isPoisoned=" + isPoisoned + ", itemInventory=[" + itemInventoryString + "]";
     }
 }

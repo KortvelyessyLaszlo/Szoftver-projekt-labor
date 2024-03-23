@@ -5,7 +5,7 @@ import java.util.Random;
 
 public class Room {
 
-    private int id;
+    private final int id;
 
     private boolean isGassed;
 
@@ -201,7 +201,6 @@ public class Room {
 
     @Override
     public String toString() {
-
         StringBuilder peopleInRoomString = new StringBuilder();
         for(Person person : peopleInRoom){
             peopleInRoomString.append(person.getName()).append(",");
@@ -212,7 +211,7 @@ public class Room {
             itemInventoryString.append(item.getId()).append(",");
         }
 
-        return "Type: " + this.getClass() + ", capacity=" + capacity + ", isGassed=" + isGassed + ", peopleInRoom= [" + peopleInRoomString
-                + "], itemInventory= [" + itemInventoryString + "], neighbours=" + neighbours.size();
+        return this.getClass() + ", id=" + this.getId() + ", capacity=" + capacity + ", isGassed=" + isGassed + ", peopleInRoom=[" + peopleInRoomString
+                + "], itemInventory=[" + itemInventoryString + "], neighbours=" + neighbours.size();
     }
 }

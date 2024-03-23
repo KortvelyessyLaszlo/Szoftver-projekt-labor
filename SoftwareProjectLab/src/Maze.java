@@ -4,6 +4,8 @@ import java.util.Random;
 
 public class Maze {
     private int playerCount;
+
+    private int nextRoomId = 0;
     private List<Room> rooms = new ArrayList<Room>();
 
     public Maze(int playerCount) {
@@ -35,6 +37,7 @@ public class Maze {
     public void addRoom(Room room) {
         Skeleton.log("Maze.addRoom()", true);
         rooms.add(room);
+        nextRoomId++;
         Skeleton.log("return", false);
     }
 
@@ -61,13 +64,15 @@ public class Maze {
         Random random = new Random();
         Room pickedRoom = rooms.get(random.nextInt(rooms.size()));
 
-        Room newRoom = pickedRoom.splitRoom(rooms.size());
-        if(newRoom != null)
+        Room newRoom = pickedRoom.splitRoom(nextRoomId);
+        if(newRoom != null) {
             rooms.add(newRoom);
+            nextRoomId++;
+        }
         Skeleton.log("return", false);
     }
     @Override
     public String toString(){
-        return "Type: " + this.getClass() + ", playerCount: " + playerCount + ", roomCount: " + rooms.size();
+        return this.getClass() + ", playerCount=" + playerCount + ", roomCount=" + rooms.size();
     }
 }
