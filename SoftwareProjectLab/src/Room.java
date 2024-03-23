@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -198,5 +199,11 @@ public class Room {
         peopleInRoom.add(person);
         Skeleton.log("return true", false);
         return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Room: capacity=" + capacity + ", isGassed=" + isGassed + ", peopleInRoom=" + Arrays.toString(peopleInRoom.toArray())
+                + ", itemInventory=" + Arrays.toString(itemInventory.toArray()) + ", neighbours=" + Arrays.toString(neighbours.toArray());
     }
 }

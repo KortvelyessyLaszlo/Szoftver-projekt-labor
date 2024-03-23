@@ -66,7 +66,7 @@ public class Student extends Person{
     public void pairItems(){
         Skeleton.log("Student.pairItems()", true);
         List<Item> inventory = getItemInventory();
-        for(int i = 0; i < inventory.size(); i++){
+        for(int i = 0; i < inventory.size() - 1; i++){
             for(int j = i + 1; j < inventory.size(); j++){
                 inventory.get(i).pair(inventory.get(j));
             }
@@ -87,7 +87,6 @@ public class Student extends Person{
     }
     @Override
     public void meet(Person p){
-
         Skeleton.log("Student.meet()", true);
         p.meet(this);
         Skeleton.log("return", false);
