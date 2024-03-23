@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public abstract class Person {
@@ -85,21 +86,22 @@ public abstract class Person {
         currentRoom = room;
 
         if(currentRoom.isGassed() && !checkForMask()) {
-            setPoisoned(true);
+            isPoisoned = true;
             dropItems();
             Skeleton.log("return", false);
             return;
         }
 
         for(Person person : currentRoom.getPeopleInRoom()){
-            if(person != this)person.meet(this);
+            if(person != this)
+                person.meet(this);
         }
         Skeleton.log("return", false);
     }
 
     public boolean checkForMask(){
         Skeleton.log("Person.checkForMask()", true);
-        for(Item item : getItemInventory()){
+        for(Item item : itemInventory){
             if(item.defendAgainstGas()){
                 Skeleton.log("return true", false);
                 return true;
@@ -130,20 +132,14 @@ public abstract class Person {
         Skeleton.log("return", false);
     }
 
-    public void meet(Student person){
-        Skeleton.log("Person.meet()", true);
-        Skeleton.log("return", false);
+    public void meet(Student student){}
+
+    public void meet(Teacher teacher){}
+
+    public void meet(Person person){}
+
+    @Override
+    public String toString() {
+        return "Type: " + this.getClass() + ", Name: " + name  + ", Poisoned: " + isPoisoned + ", Item Inventory: " + Arrays.toString(itemInventory.toArray());
     }
-
-    public void meet(Teacher person){
-        Skeleton.log("Person.meet()", true);
-        Skeleton.log("return", false);
-    }
-
-    public void meet(Person p){
-
-        Skeleton.log("Person.meet()", true);
-        Skeleton.log("return", false);
-    }
-
 }
