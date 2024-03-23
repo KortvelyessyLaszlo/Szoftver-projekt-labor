@@ -70,4 +70,8 @@ public class Maze {
             rooms.add(newRoom);
         Skeleton.log("return", false);
     }
+    @Override
+    public String toString(){
+        return this.getClass()+"\nplayerCount: "+playerCount+"\nroomCount: "+rooms.size();
+    }
 }

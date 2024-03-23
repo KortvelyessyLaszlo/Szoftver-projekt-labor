@@ -52,4 +52,8 @@ public class Teacher extends Person{
 
         Skeleton.log("return", false);
     }
+    @Override
+    public String toString(){
+        return super.toString()+"\nisStunned: "+isStunned;
+    }
 }

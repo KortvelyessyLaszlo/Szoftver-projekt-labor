@@ -31,4 +31,8 @@ public class TVSZBatSkin extends Item{
             Skeleton.log("return false", false);
             return false;
         }
+        @Override
+        public String toString(){
+            return super.toString()+"\ncharge: "+charge;
+        }
 }

@@ -82,4 +82,8 @@ public abstract class Item {
         Skeleton.log("return false", false);
         return false;
     }
+    @Override
+    public String toString(){
+        return this.getClass()+"\nid: "+id+"\nisActice: "+isActive+"\nisDestroyed: "+isDestroyed;
+    }
 }

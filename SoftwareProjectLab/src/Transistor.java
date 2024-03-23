@@ -62,4 +62,9 @@ public class Transistor extends Item{
         }
         Skeleton.log("return", false);
     }
+    @Override
+    public String toString(){
+        if(pair == null)return super.toString()+"\nRoom: "+placedTransistorRoom;
+        return super.toString()+"\nRoom: "+placedTransistorRoom+"\npairId: "+pair.getId();
+    }
 }
