@@ -4,6 +4,9 @@ import java.util.List;
 import java.util.Random;
 
 public class Room {
+
+    private int id;
+
     private boolean isGassed;
 
     private int capacity;

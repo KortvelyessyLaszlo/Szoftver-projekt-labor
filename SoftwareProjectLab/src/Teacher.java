@@ -7,8 +7,6 @@ public class Teacher extends Person{
 
     // Getters and setters
     public boolean isStunned() {
-        Skeleton.log("Teacher.isStunned()", true);
-        Skeleton.log("return " + isStunned, false);
         return isStunned;
     }
 
