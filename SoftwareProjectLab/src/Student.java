@@ -7,13 +7,13 @@ public class Student extends Person{
     }
 
     public void useItem(Item item){
-        Skeleton.log("Student.useItem()", true);
+        Skeleton.log(this.getName() + ".useItem()", true);
         item.activate(this);
         Skeleton.log("return", false);
     }
 
     public void dropItem(Item item){
-        Skeleton.log("Student.dropItem()", true);
+        Skeleton.log(this.getName() + ".dropItem()", true);
         item.setActive(false);
         getCurrentRoom().addItem(item);
         this.removeItem(item);
@@ -21,7 +21,7 @@ public class Student extends Person{
     }
 @Override
     public void meet(Teacher teacher){
-        Skeleton.log("Student.meet()", true);
+        Skeleton.log(this.getName() + ".meet()", true);
         if(teacher.isPoisoned() || teacher.isStunned()){
             Skeleton.log("return", false);
             return;
@@ -44,7 +44,7 @@ public class Student extends Person{
 
     @Override
     public void pickUp(Item item){
-        Skeleton.log("Student.pickUp()", true);
+        Skeleton.log(this.getName() + ".pickUp()", true);
         super.pickUp(item);
         if(getItemInventory().size() < 5)
             item.pickUp(this);
@@ -52,7 +52,7 @@ public class Student extends Person{
     }
 
     public boolean checkForDefensiveItems(){
-        Skeleton.log("Student.checkForDefensiveItems()", true);
+        Skeleton.log(this.getName() + ".checkForDefensiveItems()", true);
         for(Item item : getItemInventory()){
             if(item.defend()){
                 Skeleton.log("return true", false);
@@ -64,7 +64,7 @@ public class Student extends Person{
     }
 
     public void pairItems(){
-        Skeleton.log("Student.pairItems()", true);
+        Skeleton.log(this.getName() + ".pairItems()", true);
         List<Item> inventory = getItemInventory();
         for(int i = 0; i < inventory.size() - 1; i++){
             for(int j = i + 1; j < inventory.size(); j++){
@@ -75,7 +75,7 @@ public class Student extends Person{
     }
 
     public boolean checkForStunItems(){
-        Skeleton.log("Student.checkForStunItems()", true);
+        Skeleton.log(this.getName() + ".checkForStunItems()", true);
         for(Item item : getItemInventory()){
             if(item.stun()){
                 Skeleton.log("return true", false);

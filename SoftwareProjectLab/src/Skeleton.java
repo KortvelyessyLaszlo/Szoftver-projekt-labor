@@ -218,6 +218,7 @@ public class Skeleton {
         System.out.println(S);
         System.out.println(T1);
         System.out.println(T2);
+        System.out.println();
 
         logEnabled = true;
         S.useItem(T1);

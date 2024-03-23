@@ -18,7 +18,7 @@ public abstract class Person {
     }
 
     public void setPoisoned(boolean isPoisoned) {
-        Skeleton.log("Person.setPoisoned()", true);
+        Skeleton.log(this.name + ".setPoisoned()", true);
         this.isPoisoned = isPoisoned;
         Skeleton.log("return", false);
     }
@@ -28,7 +28,7 @@ public abstract class Person {
     }
 
     public void setName(String name) {
-        Skeleton.log("Person.setName()", true);
+        Skeleton.log(this.name + ".setName()", true);
         this.name = name;
         Skeleton.log("return", false);
     }
@@ -38,7 +38,7 @@ public abstract class Person {
     }
 
     public void setCurrentRoom(Room currentRoom) {
-        Skeleton.log("Person.setCurrentRoom()", true);
+        Skeleton.log(this.name + ".setCurrentRoom()", true);
         this.currentRoom = currentRoom;
         Skeleton.log("return", false);
     }
@@ -48,27 +48,27 @@ public abstract class Person {
     }
 
     public void setItemInventory(List<Item> itemInventory) {
-        Skeleton.log("Person.setItemInventory()", true);
+        Skeleton.log(this.name + ".setItemInventory()", true);
         this.itemInventory = itemInventory;
         Skeleton.log("return", false);
     }
 
     // Add an item to the person's inventory
     public void addItem(Item item) {
-        Skeleton.log("Person.addItem()", true);
+        Skeleton.log(this.name + ".addItem()", true);
         itemInventory.add(item);
         Skeleton.log("return", false);
     }
 
     // Remove an item from the person's inventory
     public void removeItem(Item item) {
-        Skeleton.log("Person.removeItem()", true);
+        Skeleton.log(this.name + ".removeItem()", true);
         itemInventory.remove(item);
         Skeleton.log("return", false);
     }
 
     public void enter(Room room){
-        Skeleton.log("Person.enter()", true);
+        Skeleton.log(this.name + ".enter()", true);
         if(!room.acceptNewPerson(this)) {
             Skeleton.log("return", false);
             return;
@@ -92,7 +92,7 @@ public abstract class Person {
     }
 
     public boolean checkForMask(){
-        Skeleton.log("Person.checkForMask()", true);
+        Skeleton.log(this.name + ".checkForMask()", true);
         for(Item item : itemInventory){
             if(item.defendAgainstGas()){
                 Skeleton.log("return true", false);
@@ -104,7 +104,7 @@ public abstract class Person {
     }
 
     public void pickUp(Item item){
-        Skeleton.log("Person.pickUp()", true);
+        Skeleton.log(this.name + ".pickUp()", true);
         if(itemInventory.size() >= 5) {
             Skeleton.log("return", false);
             return;
@@ -115,7 +115,7 @@ public abstract class Person {
     }
 
     public void dropItems(){
-        Skeleton.log("Person.dropItems()", true);
+        Skeleton.log(this.name + ".dropItems()", true);
         for(Item item : itemInventory){
             item.setActive(false);
             currentRoom.addItem(item);
