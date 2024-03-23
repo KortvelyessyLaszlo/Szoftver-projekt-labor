@@ -24,8 +24,8 @@ public class Skeleton {
 
     public void test1(){
         logEnabled = false;
-        Room R1 = new Room(2);
-        Room R2 = new Room(2);
+        Room R1 = new Room(2,0);
+        Room R2 = new Room(2,1);
         Teacher T = new Teacher("T");
         Student S = new Student("S");
         TVSZBatSkin TVSZ = new TVSZBatSkin(0);
@@ -60,7 +60,7 @@ public class Skeleton {
 
     public void test2(){
         logEnabled = false;
-        Room R = new Room(1);
+        Room R = new Room(1,0);
         Student S = new Student("S");
         CannedCamembert CC = new CannedCamembert(0);
 
@@ -85,8 +85,8 @@ public class Skeleton {
 
     public void test3(){
         logEnabled = false;
-        Room R1 = new Room(2);
-        Room R2 = new Room(2);
+        Room R1 = new Room(2,0);
+        Room R2 = new Room(2,1);
         Student S = new Student("S");
         FFP2Mask M = new FFP2Mask(0);
 
@@ -117,7 +117,7 @@ public class Skeleton {
 
     public void test4(){
         logEnabled = false;
-        Room R = new Room(1);
+        Room R = new Room(1,1);
         Student S = new Student("S");
         HolyBeerGlass HBG = new HolyBeerGlass(0);
 
@@ -142,8 +142,8 @@ public class Skeleton {
 
     public void test5(){
         logEnabled = false;
-        Room R1 = new Room(2);
-        Room R2 = new Room(2);
+        Room R1 = new Room(2,0);
+        Room R2 = new Room(2,1);
         Teacher T = new Teacher("T");
         Student S = new Student("S");
         WetWipeCloth WWC = new WetWipeCloth(0);
@@ -202,7 +202,7 @@ public class Skeleton {
 
     public void test7(){
         logEnabled = false;
-        Room R = new Room(1);
+        Room R = new Room(1,0);
         Student S = new Student("S");
         Transistor T1 = new Transistor(0);
         Transistor T2 = new Transistor(1);
@@ -233,8 +233,8 @@ public class Skeleton {
 
     public void test8(){
         logEnabled = false;
-        Room R1 = new Room(2);
-        Room R2 = new Room(2);
+        Room R1 = new Room(2,0);
+        Room R2 = new Room(2,0);
         Student S = new Student("S");
         Transistor T1 = new Transistor(0);
         Transistor T2 = new Transistor(1);
@@ -269,8 +269,8 @@ public class Skeleton {
 
     public void test9(){
         logEnabled = false;
-        Room R1 = new Room(1);
-        Room R2 = new Room(0);
+        Room R1 = new Room(1,0);
+        Room R2 = new Room(0,1);
         Student S = new Student("S");
 
         R1.addNeighbour(R2);
@@ -295,8 +295,8 @@ public class Skeleton {
 
     public void test10(){
         logEnabled = false;
-        Room R1 = new Room(1);
-        Room R2 = new Room(1);
+        Room R1 = new Room(1,0);
+        Room R2 = new Room(1,1);
         Student S = new Student("S");
         TVSZBatSkin TVSZ = new TVSZBatSkin(0);
 
@@ -326,7 +326,7 @@ public class Skeleton {
 
     public void test11(){
         logEnabled = false;
-        Room R = new Room(1);
+        Room R = new Room(1,0);
         Student S = new Student("S");
         HolyBeerGlass HBG = new HolyBeerGlass(0);
         Transistor T1 = new Transistor(1);
@@ -371,7 +371,7 @@ public class Skeleton {
 
     public void test12(){
         logEnabled = false;
-        Room R = new Room(1);
+        Room R = new Room(1,0);
         Student S = new Student("S");
         TVSZBatSkin TVSZ = new TVSZBatSkin(0);
 
@@ -399,8 +399,8 @@ public class Skeleton {
         logEnabled = false;
         Person T = new Teacher("Teacher");
         Person S = new Student("Student");
-        Room R1 = new Room(2);
-        Room R2 = new Room(2);
+        Room R1 = new Room(2,0);
+        Room R2 = new Room(2,1);
 
         T.setCurrentRoom(R1);
         S.setCurrentRoom(R2);
@@ -430,7 +430,7 @@ public class Skeleton {
 
     public void test14(){
         logEnabled = false;
-        Room R = new Room(1);
+        Room R = new Room(1,0);
         Person S = new Student("Student");
         Item SR = new SlideRule(0);
 
@@ -455,8 +455,8 @@ public class Skeleton {
 
     public void test15(){
         logEnabled = false;
-        Room R1 = new Room(3);
-        Room R2 = new Room(3);
+        Room R1 = new Room(3,0);
+        Room R2 = new Room(3,1);
 
         Person T = new Teacher("Teacher");
         Person S1 = new Student("Student1");
@@ -500,9 +500,9 @@ public class Skeleton {
 
     public void test16(){
         logEnabled = false;
-        Room R1 = new Room(1);
-        Room R2 = new Room(2);
-        Room R3 = new Room(0);
+        Room R1 = new Room(1,0);
+        Room R2 = new Room(2,1);
+        Room R3 = new Room(0,2);
 
         R1.addNeighbour(R2);
         R2.addNeighbour(R1);
@@ -529,7 +529,7 @@ public class Skeleton {
     public void test17(){
         logEnabled = false;
         Maze M = new Maze(0);
-        Room R = new Room(2);
+        Room R = new Room(2,0);
         R.setGassed(true);
         M.addRoom(R);
 
