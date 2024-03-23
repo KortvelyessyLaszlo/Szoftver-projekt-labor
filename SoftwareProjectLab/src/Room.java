@@ -145,7 +145,7 @@ public class Room {
             }
             room.removeNeighbour(neighbour);
         }
-
+        neighbour.neighbours.clear();
         Skeleton.log("return " + neighbour, false);
         return neighbour;
     }
