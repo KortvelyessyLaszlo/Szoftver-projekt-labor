@@ -203,7 +203,18 @@ public class Room {
 
     @Override
     public String toString() {
-        return "Room: capacity=" + capacity + ", isGassed=" + isGassed + ", peopleInRoom=" + Arrays.toString(peopleInRoom.toArray())
-                + ", itemInventory=" + Arrays.toString(itemInventory.toArray()) + ", neighbours=" + Arrays.toString(neighbours.toArray());
+
+        StringBuilder peopleInRoomString = new StringBuilder();
+        for(Person person : peopleInRoom){
+            peopleInRoomString.append(person.getName()).append(",");
+        }
+
+        StringBuilder itemInventoryString = new StringBuilder();
+        for(Item item : itemInventory){
+            itemInventoryString.append(item.getId()).append(",");
+        }
+
+        return "Type: " + this.getClass() + ", capacity=" + capacity + ", isGassed=" + isGassed + ", peopleInRoom= [" + peopleInRoomString
+                + "], itemInventory= [" + itemInventoryString + "], neighbours=" + neighbours.size();
     }
 }

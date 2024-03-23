@@ -33,6 +33,6 @@ public class TVSZBatSkin extends Item{
         }
         @Override
         public String toString(){
-            return super.toString()+"\ncharge: "+charge;
+            return super.toString() + ", charge: " + charge;
         }
 }

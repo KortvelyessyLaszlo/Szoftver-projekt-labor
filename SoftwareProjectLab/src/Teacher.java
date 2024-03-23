@@ -54,6 +54,6 @@ public class Teacher extends Person{
     }
     @Override
     public String toString(){
-        return super.toString()+"\nisStunned: "+isStunned;
+        return super.toString()+", isStunned: "+isStunned;
     }
 }

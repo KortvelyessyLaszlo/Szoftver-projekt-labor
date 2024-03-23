@@ -39,8 +39,23 @@ public class Skeleton {
         S.addItem(TVSZ);
         TVSZ.activate(S);
 
+        System.out.println(R1);
+        System.out.println(R2);
+        System.out.println(T);
+        System.out.println(S);
+        System.out.println(TVSZ);
+        System.out.println();
+
         logEnabled = true;
         S.enter(R1);
+        logEnabled = false;
+
+        System.out.println();
+        System.out.println(R1);
+        System.out.println(R2);
+        System.out.println(T);
+        System.out.println(S);
+        System.out.println(TVSZ);
     }
 
     public void test2(){

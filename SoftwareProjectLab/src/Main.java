@@ -7,7 +7,9 @@ public class Main {
         Skeleton skeleton = new Skeleton();
         boolean run = true;
         while (run) {
-            System.out.println("Választható teszesetek");
+            System.out.println();
+            System.out.println();
+            System.out.println("Választható tesztesetek");
             System.out.println("1. TVSZ Batskin használata");
             System.out.println("2. CannedCamembert használata");
             System.out.println("3. FFP2 Mask használata");
@@ -25,6 +27,8 @@ public class Main {
             System.out.println("15. Találkozás megbénult tanárral");
             System.out.println("16. Szobák egyesülése");
             System.out.println("17. Szobák szétválása");
+            System.out.println();
+            System.out.println();
 
             Scanner scan = new Scanner(System.in);
             String myLine = scan.nextLine();

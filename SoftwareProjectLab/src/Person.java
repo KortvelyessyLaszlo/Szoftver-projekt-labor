@@ -140,6 +140,11 @@ public abstract class Person {
 
     @Override
     public String toString() {
-        return "Type: " + this.getClass() + ", Name: " + name  + ", Poisoned: " + isPoisoned + ", Item Inventory: " + Arrays.toString(itemInventory.toArray());
+        StringBuilder itemInventoryString = new StringBuilder();
+        for(Item item : itemInventory){
+            itemInventoryString.append(item.getId()).append(",");
+        }
+
+        return "Type: " + this.getClass() + ", Name: " + name  + ", Poisoned: " + isPoisoned + ", Item Inventory: [" + itemInventoryString + "]";
     }
 }

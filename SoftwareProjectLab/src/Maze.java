@@ -72,6 +72,6 @@ public class Maze {
     }
     @Override
     public String toString(){
-        return this.getClass()+"\nplayerCount: "+playerCount+"\nroomCount: "+rooms.size();
+        return "Type: " + this.getClass() + ", playerCount: " + playerCount + ", roomCount: " + rooms.size();
     }
 }
