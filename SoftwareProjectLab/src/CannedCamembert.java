@@ -4,7 +4,7 @@ public class CannedCamembert extends Item {
     }
     @Override
     public void activate(Person person) {
-        Skeleton.log("CannedCamembert.activate()", true);
+        Skeleton.log("CannedCamembert"+this.getId()+".activate()", true);
         person.getCurrentRoom().setGassed(true);
         this.setDestroyed(true);
         person.removeItem(this);
