@@ -18,9 +18,12 @@ public class Room {
     private List<Room> neighbours = new ArrayList<Room>();
 
 
-    public Room(int capacity) {
+    public Room(int capacity, int id) {
         this.capacity = capacity;
+        this.id = id;
     }
+
+
 
     // Getters and setters
     public boolean isGassed() {
@@ -28,9 +31,13 @@ public class Room {
     }
 
     public void setGassed(boolean isGassed) {
-        Skeleton.log("Room.setGassed()", true);
+        Skeleton.log("Room" + this.getId() + ".setGassed()", true);
         this.isGassed = isGassed;
         Skeleton.log("return", false);
+    }
+
+    public int getId() {
+        return id;
     }
 
     public int getCapacity() {
