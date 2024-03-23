@@ -379,14 +379,16 @@ public class Skeleton {
         S.addItem(TVSZ);
         TVSZ.setActive(true);
 
-        logEnabled = true;
-
         System.out.println(R);
         System.out.println(S);
         System.out.println(TVSZ);
+        System.out.println();
 
+        logEnabled = true;
         S.dropItem(TVSZ);
+        logEnabled = false;
 
+        System.out.println();
         System.out.println(R);
         System.out.println(S);
         System.out.println(TVSZ);
@@ -408,15 +410,17 @@ public class Skeleton {
         R1.addPerson(T);
         R2.addPerson(S);
 
-        logEnabled = true;
-
         System.out.println(R1);
         System.out.println(R2);
         System.out.println(S);
         System.out.println(T);
+        System.out.println();
 
+        logEnabled = true;
         S.enter(R1);
+        logEnabled = false;
 
+        System.out.println();
         System.out.println(R1);
         System.out.println(R2);
         System.out.println(S);
@@ -433,14 +437,16 @@ public class Skeleton {
         R.addPerson(S);
         S.setCurrentRoom(R);
 
-        logEnabled = true;
-
         System.out.println(R);
         System.out.println(S);
         System.out.println(SR);
+        System.out.println();
 
+        logEnabled = true;
         S.pickUp(SR);
+        logEnabled = false;
 
+        System.out.println();
         System.out.println(R);
         System.out.println(S);
         System.out.println(SR);
@@ -471,17 +477,19 @@ public class Skeleton {
         WWC.setActive(true);
         S1.addItem(WWC);
 
-        logEnabled = true;
-
         System.out.println(R1);
         System.out.println(R2);
         System.out.println(S1);
         System.out.println(S2);
         System.out.println(T);
+        System.out.println();
 
+        logEnabled = true;
         S1.enter(R1);
         S2.enter(R1);
+        logEnabled = false;
 
+        System.out.println();
         System.out.println(R1);
         System.out.println(R2);
         System.out.println(S1);
@@ -501,15 +509,17 @@ public class Skeleton {
         R2.setGassed(true);
         R3.addNeighbour(R2);
 
-        logEnabled = true;
-
 
         System.out.println(R1);
         System.out.println(R2);
         System.out.println(R3);
+        System.out.println();
 
+        logEnabled = true;
         R1.combineRooms();
+        logEnabled = false;
 
+        System.out.println();
         System.out.println(R1);
         System.out.println(R2);
         System.out.println(R3);
@@ -522,13 +532,15 @@ public class Skeleton {
         R.setGassed(true);
         M.addRoom(R);
 
-        logEnabled = true;
-
         System.out.println(M);
         System.out.println(R);
+        System.out.println();
 
+        logEnabled = true;
         M.startSplitRooms();
+        logEnabled = false;
 
+        System.out.println();
         System.out.println(M);
         System.out.println(R);
     }
