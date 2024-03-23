@@ -380,7 +380,16 @@ public class Skeleton {
         TVSZ.setActive(true);
 
         logEnabled = true;
+
+        System.out.println(R);
+        System.out.println(S);
+        System.out.println(TVSZ);
+
         S.dropItem(TVSZ);
+
+        System.out.println(R);
+        System.out.println(S);
+        System.out.println(TVSZ);
     }
 
     public void test13(){
@@ -400,7 +409,18 @@ public class Skeleton {
         R2.addPerson(S);
 
         logEnabled = true;
+
+        System.out.println(R1);
+        System.out.println(R2);
+        System.out.println(S);
+        System.out.println(T);
+
         S.enter(R1);
+
+        System.out.println(R1);
+        System.out.println(R2);
+        System.out.println(S);
+        System.out.println(T);
     }
 
     public void test14(){
@@ -414,7 +434,16 @@ public class Skeleton {
         S.setCurrentRoom(R);
 
         logEnabled = true;
+
+        System.out.println(R);
+        System.out.println(S);
+        System.out.println(SR);
+
         S.pickUp(SR);
+
+        System.out.println(R);
+        System.out.println(S);
+        System.out.println(SR);
     }
 
     public void test15(){
@@ -443,8 +472,21 @@ public class Skeleton {
         S1.addItem(WWC);
 
         logEnabled = true;
+
+        System.out.println(R1);
+        System.out.println(R2);
+        System.out.println(S1);
+        System.out.println(S2);
+        System.out.println(T);
+
         S1.enter(R1);
         S2.enter(R1);
+
+        System.out.println(R1);
+        System.out.println(R2);
+        System.out.println(S1);
+        System.out.println(S2);
+        System.out.println(T);
     }
 
     public void test16(){
@@ -460,7 +502,17 @@ public class Skeleton {
         R3.addNeighbour(R2);
 
         logEnabled = true;
+
+
+        System.out.println(R1);
+        System.out.println(R2);
+        System.out.println(R3);
+
         R1.combineRooms();
+
+        System.out.println(R1);
+        System.out.println(R2);
+        System.out.println(R3);
     }
 
     public void test17(){
@@ -471,6 +523,13 @@ public class Skeleton {
         M.addRoom(R);
 
         logEnabled = true;
+
+        System.out.println(M);
+        System.out.println(R);
+
         M.startSplitRooms();
+
+        System.out.println(M);
+        System.out.println(R);
     }
 }
