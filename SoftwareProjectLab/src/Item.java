@@ -14,7 +14,7 @@ public abstract class Item {
     }
 
     public void setId(int id) {
-        Skeleton.log("Item"+this.getId()+".setId()", true);
+        Skeleton.log("Item"+this.getId()+".setId(" + id + ")", true);
         Skeleton.log("return", false);
         this.id = id;
     }
@@ -24,7 +24,7 @@ public abstract class Item {
     }
 
     public void setActive(boolean isActive) {
-        Skeleton.log("Item"+this.getId()+".setActive()", true);
+        Skeleton.log("Item"+this.getId()+".setActive(" + isActive + ")", true);
         Skeleton.log("return", false);
         this.isActive = isActive;
     }
@@ -34,18 +34,18 @@ public abstract class Item {
     }
 
     public void setDestroyed(boolean isDestroyed) {
-        Skeleton.log("Item"+this.getId()+".setDestroyed()", true);
+        Skeleton.log("Item"+this.getId()+".setDestroyed(" + isDestroyed + ")", true);
         Skeleton.log("return", false);
         this.isDestroyed = isDestroyed;
     }
 
     public void activate(Person person){
-        Skeleton.log("Item"+this.getId()+".activate()", true);
+        Skeleton.log("Item"+this.getId()+".activate(" + person.getName() + ")", true);
         Skeleton.log("return", false);
     }
 
     public void pickUp(Person person){
-        Skeleton.log("Item"+this.getId()+".pickUp()", true);
+        Skeleton.log("Item"+this.getId()+".pickUp(" + person.getName() + ")", true);
         Skeleton.log("return", false);
     }
 
@@ -56,7 +56,7 @@ public abstract class Item {
     }
 
     public void pair(Item item){
-        Skeleton.log("Item"+this.getId()+".pair()", true);
+        Skeleton.log("Item"+this.getId()+".pair(Item" + item.getId() + ")", true);
         Skeleton.log("return", false);
     }
 

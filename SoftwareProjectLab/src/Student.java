@@ -7,13 +7,13 @@ public class Student extends Person{
     }
 
     public void useItem(Item item){
-        Skeleton.log(this.getName() + ".useItem()", true);
+        Skeleton.log(this.getName() + ".useItem(Item" + item.getId() + ")", true);
         item.activate(this);
         Skeleton.log("return", false);
     }
 
     public void dropItem(Item item){
-        Skeleton.log(this.getName() + ".dropItem()", true);
+        Skeleton.log(this.getName() + ".dropItem(Item" + item.getId() + ")", true);
         item.setActive(false);
         getCurrentRoom().addItem(item);
         this.removeItem(item);
@@ -21,7 +21,7 @@ public class Student extends Person{
     }
 @Override
     public void meet(Teacher teacher){
-        Skeleton.log(this.getName() + ".meet()", true);
+        Skeleton.log(this.getName() + ".meet(" + teacher.getName() + ")", true);
         if(teacher.isPoisoned() || teacher.isStunned()){
             Skeleton.log("return", false);
             return;
@@ -44,7 +44,7 @@ public class Student extends Person{
 
     @Override
     public void pickUp(Item item){
-        Skeleton.log(this.getName() + ".pickUp()", true);
+        Skeleton.log(this.getName() + ".pickUp(Item" + item.getId() + ")", true);
         super.pickUp(item);
         if(getItemInventory().size() < 5)
             item.pickUp(this);

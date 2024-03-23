@@ -11,13 +11,13 @@ public class Teacher extends Person{
     }
 
     public void setStunned(boolean isStunned) {
-        Skeleton.log(this.getName() + ".setStunned()", true);
+        Skeleton.log(this.getName() + ".setStunned(" + isStunned + ")", true);
         this.isStunned = isStunned;
         Skeleton.log("return", false);
     }
     @Override
     public void meet(Student student){
-        Skeleton.log(this.getName() + ".meet()", true);
+        Skeleton.log(this.getName() + ".meet(" + student.getName() + ")", true);
         if(isPoisoned() || isStunned()){
             Skeleton.log("return", false);
             return;
@@ -37,7 +37,7 @@ public class Teacher extends Person{
     }
 
     public void eliminate(Student student){
-        Skeleton.log(this.getName() + ".eliminate()", true);
+        Skeleton.log(this.getName() + ".eliminate(" + student.getName() + ")", true);
         student.dropItems();
         student.getCurrentRoom().removePerson(student);
         Skeleton.log("return", false);

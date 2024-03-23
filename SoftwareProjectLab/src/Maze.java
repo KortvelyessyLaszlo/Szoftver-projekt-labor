@@ -19,7 +19,7 @@ public class Maze {
     }
 
     public void setPlayerCount(int playerCount) {
-        Skeleton.log("Maze.setPlayerCount()", true);
+        Skeleton.log("Maze.setPlayerCount(" + playerCount + ")", true);
         this.playerCount = playerCount;
         Skeleton.log("return", false);
     }
@@ -29,14 +29,14 @@ public class Maze {
     }
 
     public void setRooms(List<Room> rooms) {
-        Skeleton.log("Maze.setRooms()", true);
+        Skeleton.log("Maze.setRooms(" + rooms + ")", true);
         this.rooms = rooms;
         Skeleton.log("return", false);
     }
 
     // Add a room to the maze
     public void addRoom(Room room) {
-        Skeleton.log("Maze.addRoom()", true);
+        Skeleton.log("Maze.addRoom(Room" + room.getId() + ")", true);
         rooms.add(room);
         nextRoomId++;
         Skeleton.log("return", false);
@@ -44,7 +44,7 @@ public class Maze {
 
     // Remove a room from the maze
     public void removeRoom(Room room) {
-        Skeleton.log("Maze.removeRoom()", true);
+        Skeleton.log("Maze.removeRoom(Room" + room.getId() + ")", true);
         rooms.remove(room);
         Skeleton.log("return", false);
     }
@@ -74,6 +74,6 @@ public class Maze {
     }
     @Override
     public String toString(){
-        return this.getClass() + ", playerCount=" + playerCount + ", roomCount=" + rooms.size() + "rooms: " + Arrays.toString(rooms.toArray());
+        return this.getClass() + ", playerCount=" + playerCount + ", roomCount=" + rooms.size();
     }
 }

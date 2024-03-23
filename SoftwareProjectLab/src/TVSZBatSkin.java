@@ -7,14 +7,14 @@ public class TVSZBatSkin extends Item{
 
         @Override
         public void activate(Person person) {
-                Skeleton.log("TVSZBatSkin" + this.getId() + ".activate()", true);
+                Skeleton.log("TVSZBatSkin" + this.getId() + ".activate(" + person.getName() + ")", true);
                 setActive(true);
                 Skeleton.log("return", false);
         }
 
         @Override
         public void pickUp(Person person) {
-                Skeleton.log("TVSZBatSkin" + this.getId() + ".pickUp()", true);
+                Skeleton.log("TVSZBatSkin" + this.getId() + ".pickUp(" + person.getName() + ")", true);
                 activate(person);
                 Skeleton.log("return", false);
         }

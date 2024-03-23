@@ -6,14 +6,14 @@ public class FFP2Mask extends TimedItem{
 
     @Override
     public void activate(Person person) {
-        Skeleton.log("FFP2Mask"+this.getId()+".activate()", true);
+        Skeleton.log("FFP2Mask"+this.getId()+".activate(" + person.getName() + ")", true);
         setActive(true);
         Skeleton.log("return", false);
     }
 
     @Override
     public void pickUp(Person person) {
-        Skeleton.log("FFP2Mask"+this.getId()+".pickUp()", true);
+        Skeleton.log("FFP2Mask"+this.getId()+".pickUp(" + person.getName() + ")", true);
         activate(person);
         Skeleton.log("return", false);
     }

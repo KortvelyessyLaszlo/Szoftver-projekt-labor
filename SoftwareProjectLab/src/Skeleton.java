@@ -397,8 +397,8 @@ public class Skeleton {
 
     public void test13(){
         logEnabled = false;
-        Person T = new Teacher("Teacher");
-        Person S = new Student("Student");
+        Person T = new Teacher("T");
+        Person S = new Student("S");
         Room R1 = new Room(2,0);
         Room R2 = new Room(2,1);
 
@@ -431,7 +431,7 @@ public class Skeleton {
     public void test14(){
         logEnabled = false;
         Room R = new Room(1,0);
-        Person S = new Student("Student");
+        Person S = new Student("S");
         Item SR = new SlideRule(0);
 
         R.addItem(SR);
@@ -458,9 +458,9 @@ public class Skeleton {
         Room R1 = new Room(3,0);
         Room R2 = new Room(3,1);
 
-        Person T = new Teacher("Teacher");
-        Person S1 = new Student("Student1");
-        Person S2 = new Student("Student2");
+        Person T = new Teacher("T");
+        Person S1 = new Student("S1");
+        Person S2 = new Student("S2");
 
         Item WWC = new WetWipeCloth(0);
 
@@ -534,6 +534,9 @@ public class Skeleton {
         M.addRoom(R);
 
         System.out.println(M);
+        for (Room room : M.getRooms()) {
+            System.out.println(room);
+        }
         System.out.println();
 
         logEnabled = true;
@@ -542,5 +545,8 @@ public class Skeleton {
 
         System.out.println();
         System.out.println(M);
+        for (Room room : M.getRooms()) {
+            System.out.println(room);
+        }
     }
 }

@@ -48,7 +48,7 @@ public class CursedRoom extends Room{
 
     @Override
     public Room splitRoom(int newId) {
-        Skeleton.log("CursedRoom" + this.getId() + ".splitRoom()", true);
+        Skeleton.log("CursedRoom" + this.getId() + ".splitRoom(" + newId + ")", true);
         getNeighbours().addAll(invisibleRooms);
         invisibleRooms.clear();
         Room newRoom = super.splitRoom(newId);

@@ -29,7 +29,7 @@ public class Room {
     }
 
     public void setGassed(boolean isGassed) {
-        Skeleton.log("Room" + this.getId() + ".setGassed()", true);
+        Skeleton.log("Room" + this.getId() + ".setGassed(" + isGassed + ")", true);
         this.isGassed = isGassed;
         Skeleton.log("return", false);
     }
@@ -43,7 +43,7 @@ public class Room {
     }
 
     public void setCapacity(int capacity) {
-        Skeleton.log("Room" + this.getId() + ".setCapacity()", true);
+        Skeleton.log("Room" + this.getId() + ".setCapacity(" + capacity + ")", true);
         this.capacity = capacity;
         Skeleton.log("return", false);
     }
@@ -53,7 +53,7 @@ public class Room {
     }
 
     public void setPeopleInRoom(List<Person> peopleInRoom) {
-        Skeleton.log("Room" + this.getId() + ".setPeopleInRoom()", true);
+        Skeleton.log("Room" + this.getId() + ".setPeopleInRoom(" + peopleInRoom + ")", true);
         this.peopleInRoom = peopleInRoom;
         Skeleton.log("return", false);
     }
@@ -63,7 +63,7 @@ public class Room {
     }
 
     public void setItemInventory(List<Item> itemInventory) {
-        Skeleton.log("Room" + this.getId() + ".setItemInventory()", true);
+        Skeleton.log("Room" + this.getId() + ".setItemInventory(" + itemInventory + ")", true);
         this.itemInventory = itemInventory;
         Skeleton.log("return", false);
     }
@@ -73,49 +73,49 @@ public class Room {
     }
 
     public void setNeighbours(List<Room> neighbours) {
-        Skeleton.log("Room" + this.getId() + ".setNeighbours()", true);
+        Skeleton.log("Room" + this.getId() + ".setNeighbours(" + neighbours + ")", true);
         Skeleton.log("return", false);
         this.neighbours = neighbours;
     }
 
     // Add a person to the room
     public void addPerson(Person person) {
-        Skeleton.log("Room" + this.getId() + ".addPerson()", true);
+        Skeleton.log("Room" + this.getId() + ".addPerson(" + person.getName() + ")", true);
         Skeleton.log("return", false);
         peopleInRoom.add(person);
     }
 
     // Remove a person from the room
     public void removePerson(Person person) {
-        Skeleton.log("Room" + this.getId() + ".removePerson()", true);
+        Skeleton.log("Room" + this.getId() + ".removePerson(" + person.getName() + ")", true);
         peopleInRoom.remove(person);
         Skeleton.log("return", false);
     }
 
     // Add an item to the room
     public void addItem(Item item) {
-        Skeleton.log("Room" + this.getId() + ".addItem()", true);
+        Skeleton.log("Room" + this.getId() + ".addItem(Item" + item.getId() + ")", true);
         itemInventory.add(item);
         Skeleton.log("return", false);
     }
 
     // Remove an item from the room
     public void removeItem(Item item) {
-        Skeleton.log("Room" + this.getId() + ".removeItem()", true);
+        Skeleton.log("Room" + this.getId() + ".removeItem(Item" + item.getId() + ")", true);
         itemInventory.remove(item);
         Skeleton.log("return", false);
     }
 
     // Add a neighbour to the room
     public void addNeighbour(Room neighbour) {
-        Skeleton.log("Room" + this.getId() + ".addNeighbour()", true);
+        Skeleton.log("Room" + this.getId() + ".addNeighbour(Room" + neighbour.getId() + ")", true);
         neighbours.add(neighbour);
         Skeleton.log("return", false);
     }
 
     // Remove a neighbour from the room
     public void removeNeighbour(Room neighbour) {
-        Skeleton.log("Room" + this.getId() + ".removeNeighbour()", true);
+        Skeleton.log("Room" + this.getId() + ".removeNeighbour(Room" + neighbour.getId() + ")", true);
         neighbours.remove(neighbour);
         Skeleton.log("return", false);
     }
@@ -151,7 +151,7 @@ public class Room {
     }
 
     public Room splitRoom(int newId){
-        Skeleton.log("Room" + this.getId() + ".splitRoom()", true);
+        Skeleton.log("Room" + this.getId() + ".splitRoom(" + newId + ")", true);
         Random random = new Random();
 
         if(!this.peopleInRoom.isEmpty() || this.capacity <= 1){
@@ -189,7 +189,7 @@ public class Room {
     }
 
     public boolean acceptNewPerson(Person person){
-        Skeleton.log("Room.acceptNewPerson()", true);
+        Skeleton.log("Room" + this.getId() + ".acceptNewPerson(" + person.getName() + ")", true);
         if(peopleInRoom.size() >= capacity){
             Skeleton.log("return false", false);
             return false;

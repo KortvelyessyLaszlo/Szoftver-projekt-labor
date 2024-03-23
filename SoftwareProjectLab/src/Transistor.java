@@ -14,7 +14,7 @@ public class Transistor extends Item{
     }
 
     public void setPlacedTransistorRoom(Room placedTransistorRoom) {
-        Skeleton.log("Transistor"+this.getId()+".setPlacedTransistorRoom()", true);
+        Skeleton.log("Transistor"+this.getId()+".setPlacedTransistorRoom(" + placedTransistorRoom.getId() + ")", true);
         this.placedTransistorRoom = placedTransistorRoom;
         Skeleton.log("return", false);
     }
@@ -24,14 +24,14 @@ public class Transistor extends Item{
     }
 
     public void setPair(Transistor pair) {
-        Skeleton.log("Transistor"+this.getId()+".setPair()", true);
+        Skeleton.log("Transistor"+this.getId()+".setPair(Transistor" + pair.getId() + ")", true);
         this.pair = pair;
         Skeleton.log("return", false);
     }
 
     @Override
     public void activate(Person person) {
-        Skeleton.log("Transistor"+this.getId()+".activate()", true);
+        Skeleton.log("Transistor"+this.getId()+".activate(" + person.getName() + ")", true);
         if(pair.isActive()){
             person.enter(pair.placedTransistorRoom);
         }else{
@@ -44,14 +44,14 @@ public class Transistor extends Item{
 
     @Override
     public void pair(Item item){
-        Skeleton.log("Transistor"+this.getId()+".pair()", true);
+        Skeleton.log("Transistor"+this.getId()+".pair(Item" + item.getId() + ")", true);
         item.pair(this);
         Skeleton.log("return", false);
     }
 
     @Override
     public void pair(Transistor transistor){
-        Skeleton.log("Transistor"+this.getId()+".pair()", true);
+        Skeleton.log("Transistor"+this.getId()+".pair(Transistor" + transistor.getId() + ")", true);
         if(transistor.pair == null && this.pair == null && this != transistor){
             this.pair = transistor;
             transistor.pair = this;

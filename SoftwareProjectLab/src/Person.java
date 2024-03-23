@@ -18,9 +18,7 @@ public abstract class Person {
     }
 
     public void setPoisoned(boolean isPoisoned) {
-        Skeleton.log(this.name + ".setPoisoned()", true);
         this.isPoisoned = isPoisoned;
-        Skeleton.log("return", false);
     }
 
     public String getName() {
@@ -28,9 +26,7 @@ public abstract class Person {
     }
 
     public void setName(String name) {
-        Skeleton.log(this.name + ".setName()", true);
         this.name = name;
-        Skeleton.log("return", false);
     }
 
     public Room getCurrentRoom() {
@@ -38,9 +34,7 @@ public abstract class Person {
     }
 
     public void setCurrentRoom(Room currentRoom) {
-        Skeleton.log(this.name + ".setCurrentRoom()", true);
         this.currentRoom = currentRoom;
-        Skeleton.log("return", false);
     }
 
     public List<Item> getItemInventory() {
@@ -48,27 +42,23 @@ public abstract class Person {
     }
 
     public void setItemInventory(List<Item> itemInventory) {
-        Skeleton.log(this.name + ".setItemInventory()", true);
         this.itemInventory = itemInventory;
-        Skeleton.log("return", false);
     }
 
     // Add an item to the person's inventory
     public void addItem(Item item) {
-        Skeleton.log(this.name + ".addItem()", true);
         itemInventory.add(item);
-        Skeleton.log("return", false);
     }
 
     // Remove an item from the person's inventory
     public void removeItem(Item item) {
-        Skeleton.log(this.name + ".removeItem()", true);
+        Skeleton.log(this.name + ".removeItem(Item" + item.getId() + ")", true);
         itemInventory.remove(item);
         Skeleton.log("return", false);
     }
 
     public void enter(Room room){
-        Skeleton.log(this.name + ".enter()", true);
+        Skeleton.log(this.name + ".enter(Room" + room.getId() + ")", true);
         if(!room.acceptNewPerson(this)) {
             Skeleton.log("return", false);
             return;
@@ -104,14 +94,11 @@ public abstract class Person {
     }
 
     public void pickUp(Item item){
-        Skeleton.log(this.name + ".pickUp()", true);
         if(itemInventory.size() >= 5) {
-            Skeleton.log("return", false);
             return;
         }
         currentRoom.removeItem(item);
         itemInventory.add(item);
-        Skeleton.log("return", false);
     }
 
     public void dropItems(){
