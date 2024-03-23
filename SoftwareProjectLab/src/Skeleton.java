@@ -117,7 +117,7 @@ public class Skeleton {
 
     public void test4(){
         logEnabled = false;
-        Room R = new Room(1,1);
+        Room R = new Room(1,0);
         Student S = new Student("S");
         HolyBeerGlass HBG = new HolyBeerGlass(0);
 
@@ -234,7 +234,7 @@ public class Skeleton {
     public void test8(){
         logEnabled = false;
         Room R1 = new Room(2,0);
-        Room R2 = new Room(2,0);
+        Room R2 = new Room(2,1);
         Student S = new Student("S");
         Transistor T1 = new Transistor(0);
         Transistor T2 = new Transistor(1);
