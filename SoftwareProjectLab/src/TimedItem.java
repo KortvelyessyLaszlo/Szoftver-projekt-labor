@@ -11,7 +11,7 @@ public abstract class TimedItem extends Item{
     }
 
     public void setRemainingTime(int remainingTime) {
-        Skeleton.log("TimedItem.setRemainingTime()", true);
+        Skeleton.log("TimedItem" + this.getId() + "setRemainingTime()", true);
         this.remainingTime = remainingTime;
         Skeleton.log("return", false);
     }

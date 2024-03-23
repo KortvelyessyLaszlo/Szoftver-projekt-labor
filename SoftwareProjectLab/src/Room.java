@@ -23,8 +23,6 @@ public class Room {
         this.id = id;
     }
 
-
-
     // Getters and setters
     public boolean isGassed() {
         return isGassed;
@@ -45,7 +43,7 @@ public class Room {
     }
 
     public void setCapacity(int capacity) {
-        Skeleton.log("Room.setCapacity()", true);
+        Skeleton.log("Room" + this.getId() + ".setCapacity()", true);
         this.capacity = capacity;
         Skeleton.log("return", false);
     }
@@ -55,7 +53,7 @@ public class Room {
     }
 
     public void setPeopleInRoom(List<Person> peopleInRoom) {
-        Skeleton.log("Room.setPeopleInRoom()", true);
+        Skeleton.log("Room" + this.getId() + ".setPeopleInRoom()", true);
         this.peopleInRoom = peopleInRoom;
         Skeleton.log("return", false);
     }
@@ -65,7 +63,7 @@ public class Room {
     }
 
     public void setItemInventory(List<Item> itemInventory) {
-        Skeleton.log("Room.setItemInventory()", true);
+        Skeleton.log("Room" + this.getId() + ".setItemInventory()", true);
         this.itemInventory = itemInventory;
         Skeleton.log("return", false);
     }
@@ -75,55 +73,55 @@ public class Room {
     }
 
     public void setNeighbours(List<Room> neighbours) {
-        Skeleton.log("Room.setNeighbours()", true);
+        Skeleton.log("Room" + this.getId() + ".setNeighbours()", true);
         Skeleton.log("return", false);
         this.neighbours = neighbours;
     }
 
     // Add a person to the room
     public void addPerson(Person person) {
-        Skeleton.log("Room.addPerson()", true);
+        Skeleton.log("Room" + this.getId() + ".addPerson()", true);
         Skeleton.log("return", false);
         peopleInRoom.add(person);
     }
 
     // Remove a person from the room
     public void removePerson(Person person) {
-        Skeleton.log("Room.removePerson()", true);
+        Skeleton.log("Room" + this.getId() + ".removePerson()", true);
         peopleInRoom.remove(person);
         Skeleton.log("return", false);
     }
 
     // Add an item to the room
     public void addItem(Item item) {
-        Skeleton.log("Room.addItem()", true);
+        Skeleton.log("Room" + this.getId() + ".addItem()", true);
         itemInventory.add(item);
         Skeleton.log("return", false);
     }
 
     // Remove an item from the room
     public void removeItem(Item item) {
-        Skeleton.log("Room.removeItem()", true);
+        Skeleton.log("Room" + this.getId() + ".removeItem()", true);
         itemInventory.remove(item);
         Skeleton.log("return", false);
     }
 
     // Add a neighbour to the room
     public void addNeighbour(Room neighbour) {
-        Skeleton.log("Room.addNeighbour()", true);
+        Skeleton.log("Room" + this.getId() + ".addNeighbour()", true);
         neighbours.add(neighbour);
         Skeleton.log("return", false);
     }
 
     // Remove a neighbour from the room
     public void removeNeighbour(Room neighbour) {
-        Skeleton.log("Room.removeNeighbour()", true);
+        Skeleton.log("Room" + this.getId() + ".removeNeighbour()", true);
         neighbours.remove(neighbour);
         Skeleton.log("return", false);
     }
 
     public Room combineRooms(){
-        Skeleton.log("Room.combineRooms()", true);
+        Skeleton.log("Room" + this.getId() + ".combineRooms()", true);
         Random random = new Random();
         Room neighbour = neighbours.get(random.nextInt(neighbours.size()));
 
@@ -152,8 +150,8 @@ public class Room {
         return neighbour;
     }
 
-    public Room splitRoom(){
-        Skeleton.log("Room.splitRoom()", true);
+    public Room splitRoom(int newId){
+        Skeleton.log("Room" + this.getId() + ".splitRoom()", true);
         Random random = new Random();
 
         if(!this.peopleInRoom.isEmpty() || this.capacity <= 1){
@@ -161,7 +159,7 @@ public class Room {
             return null;
         }
 
-        Room newRoom = new Room(random.nextInt(this.capacity - 1) + 1);
+        Room newRoom = new Room(random.nextInt(this.capacity - 1) + 1, newId);
         this.capacity -= newRoom.capacity;
 
         newRoom.isGassed = this.isGassed;

@@ -6,8 +6,8 @@ import java.util.Random;
 public class CursedRoom extends Room{
     private List<Room> invisibleRooms = new ArrayList<Room>();
 
-    public CursedRoom(int capacity) {
-        super(capacity);
+    public CursedRoom(int capacity, int id) {
+        super(capacity, id);
     }
 
     // Getters and setters
@@ -30,7 +30,7 @@ public class CursedRoom extends Room{
     }
 
     public void updateCursedDoors() {
-        Skeleton.log("CursedRoom.updateCursedDoors()", true);
+        Skeleton.log("CursedRoom" + this.getId() + ".updateCursedDoors()", true);
         getNeighbours().addAll(invisibleRooms);
         invisibleRooms.clear();
 
@@ -47,18 +47,18 @@ public class CursedRoom extends Room{
     }
 
     @Override
-    public Room splitRoom() {
-        Skeleton.log("CursedRoom.splitRoom()", true);
+    public Room splitRoom(int newId) {
+        Skeleton.log("CursedRoom" + this.getId() + ".splitRoom()", true);
         getNeighbours().addAll(invisibleRooms);
         invisibleRooms.clear();
-        Room newRoom = super.splitRoom();
+        Room newRoom = super.splitRoom(newId);
         Skeleton.log("return" + newRoom, false);
         return newRoom;
     }
 
     @Override
     public Room combineRooms() {
-        Skeleton.log("CursedRoom.combineRooms()", true);
+        Skeleton.log("CursedRoom" + this.getId() + ".combineRooms()", true);
         getNeighbours().addAll(invisibleRooms);
         invisibleRooms.clear();
         Room neighbour = super.combineRooms();

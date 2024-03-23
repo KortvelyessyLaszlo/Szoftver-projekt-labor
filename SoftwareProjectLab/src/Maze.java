@@ -61,7 +61,7 @@ public class Maze {
         Random random = new Random();
         Room pickedRoom = rooms.get(random.nextInt(rooms.size()));
 
-        Room newRoom = pickedRoom.splitRoom();
+        Room newRoom = pickedRoom.splitRoom(rooms.size());
         if(newRoom != null)
             rooms.add(newRoom);
         Skeleton.log("return", false);
