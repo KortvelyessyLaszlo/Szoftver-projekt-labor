@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -73,6 +74,6 @@ public class Maze {
     }
     @Override
     public String toString(){
-        return this.getClass() + ", playerCount=" + playerCount + ", roomCount=" + rooms.size();
+        return this.getClass() + ", playerCount=" + playerCount + ", roomCount=" + rooms.size() + "rooms: " + Arrays.toString(rooms.toArray());
     }
 }

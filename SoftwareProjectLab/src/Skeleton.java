@@ -534,7 +534,6 @@ public class Skeleton {
         M.addRoom(R);
 
         System.out.println(M);
-        System.out.println(R);
         System.out.println();
 
         logEnabled = true;
@@ -543,6 +542,5 @@ public class Skeleton {
 
         System.out.println();
         System.out.println(M);
-        System.out.println(R);
     }
 }
