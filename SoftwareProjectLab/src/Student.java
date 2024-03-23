@@ -87,8 +87,6 @@ public class Student extends Person{
     }
     @Override
     public void meet(Person p){
-        Skeleton.log("Student.meet()", true);
         p.meet(this);
-        Skeleton.log("return", false);
     }
 }

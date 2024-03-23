@@ -14,8 +14,6 @@ public abstract class Person {
 
     // Getters and setters
     public boolean isPoisoned() {
-        Skeleton.log("Person.isPoisoned()", true);
-        Skeleton.log("return " + isPoisoned, false);
         return isPoisoned;
     }
 
@@ -26,8 +24,6 @@ public abstract class Person {
     }
 
     public String getName() {
-        Skeleton.log("Person.getName()", true);
-        Skeleton.log("return " + name, false);
         return name;
     }
 
@@ -38,8 +34,6 @@ public abstract class Person {
     }
 
     public Room getCurrentRoom() {
-        Skeleton.log("Person.getCurrentRoom()", true);
-        Skeleton.log("return " + currentRoom, false);
         return currentRoom;
     }
 
@@ -50,8 +44,6 @@ public abstract class Person {
     }
 
     public List<Item> getItemInventory() {
-        Skeleton.log("Person.getItemInventory()", true);
-        Skeleton.log("return ", false);
         return itemInventory;
     }
 

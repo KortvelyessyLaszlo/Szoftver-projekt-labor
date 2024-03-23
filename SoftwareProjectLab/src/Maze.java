@@ -12,8 +12,6 @@ public class Maze {
 
     // Getters and setters
     public int getPlayerCount() {
-        Skeleton.log("Maze.getPlayerCount()", true);
-        Skeleton.log("return " + playerCount, false);
         return playerCount;
     }
 
@@ -24,8 +22,6 @@ public class Maze {
     }
 
     public List<Room> getRooms() {
-        Skeleton.log("Maze.getRooms()", true);
-        Skeleton.log("return", false);
         return rooms;
     }
 

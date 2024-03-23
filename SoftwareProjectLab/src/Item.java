@@ -10,8 +10,6 @@ public abstract class Item {
     }
      // Getters and setters
     public int getId() {
-        Skeleton.log("Item.getId()", true);
-        Skeleton.log("return " + id, false);
         return id;
     }
 
@@ -22,8 +20,6 @@ public abstract class Item {
     }
 
     public boolean isActive() {
-        Skeleton.log("Item.isActive()", true);
-        Skeleton.log("return " + isActive, false);
         return isActive;
     }
 
@@ -34,8 +30,6 @@ public abstract class Item {
     }
 
     public boolean isDestroyed() {
-        Skeleton.log("Item.isDestroyed()", true);
-        Skeleton.log("return " + isDestroyed, false);
         return isDestroyed;
     }
 
@@ -66,10 +60,7 @@ public abstract class Item {
         Skeleton.log("return", false);
     }
 
-    public void pair(Transistor transistor){
-        Skeleton.log("Item.pair()", true);
-        Skeleton.log("return", false);
-    }
+    public void pair(Transistor transistor){}
 
     public boolean defendAgainstGas(){
         Skeleton.log("Item.defendAgainstGas()", true);

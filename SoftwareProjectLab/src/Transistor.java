@@ -10,8 +10,6 @@ public class Transistor extends Item{
 
     // Getters and setters
     public Room getPlacedTransistorRoom() {
-        Skeleton.log("Transistor.getPlacedTransistorRoom()", true);
-        Skeleton.log("return", false);
         return placedTransistorRoom;
     }
 
@@ -22,8 +20,6 @@ public class Transistor extends Item{
     }
 
     public Transistor getPair() {
-        Skeleton.log("Transistor.getPair()", true);
-        Skeleton.log("return", false);
         return pair;
     }
 
@@ -64,7 +60,7 @@ public class Transistor extends Item{
     }
     @Override
     public String toString(){
-        if(pair == null)return super.toString()+"\nRoom: "+placedTransistorRoom;
-        return super.toString()+"\nRoom: "+placedTransistorRoom+"\npairId: "+pair.getId();
+        if(pair == null)return super.toString();
+        return super.toString()  + ", pairId: " + pair.getId();
     }
 }

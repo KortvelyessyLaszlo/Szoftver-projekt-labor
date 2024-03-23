@@ -7,8 +7,6 @@ public abstract class TimedItem extends Item{
 
     // Getters and setters
     public int getRemainingTime() {
-        Skeleton.log("TimedItem.getRemainingTime()", true);
-        Skeleton.log("return " + remainingTime, false);
         return remainingTime;
     }
 

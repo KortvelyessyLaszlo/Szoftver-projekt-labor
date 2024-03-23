@@ -21,8 +21,6 @@ public class Room {
 
     // Getters and setters
     public boolean isGassed() {
-        Skeleton.log("Room.isGassed()", true);
-        Skeleton.log("return " + isGassed, false);
         return isGassed;
     }
 
@@ -33,8 +31,6 @@ public class Room {
     }
 
     public int getCapacity() {
-        Skeleton.log("Room.getCapacity()", true);
-        Skeleton.log("return " + capacity, false);
         return capacity;
     }
 
@@ -45,8 +41,6 @@ public class Room {
     }
 
     public List<Person> getPeopleInRoom() {
-        Skeleton.log("Room.getPeopleInRoom()", true);
-        Skeleton.log("return ", false);
         return peopleInRoom;
     }
 
@@ -57,8 +51,6 @@ public class Room {
     }
 
     public List<Item> getItemInventory() {
-        Skeleton.log("Room.getItemInventory()", true);
-        Skeleton.log("return ", false);
         return itemInventory;
     }
 
@@ -69,8 +61,6 @@ public class Room {
     }
 
     public List<Room> getNeighbours() {
-        Skeleton.log("Room.getNeighbours()", true);
-        Skeleton.log("return ", false);
         return neighbours;
     }
 
