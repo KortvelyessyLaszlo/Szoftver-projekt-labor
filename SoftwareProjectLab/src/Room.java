@@ -146,7 +146,7 @@ public class Room {
             room.removeNeighbour(neighbour);
         }
         neighbour.neighbours.clear();
-        Skeleton.log("return " + neighbour.getId(), false);
+        Skeleton.log("return Room" + neighbour.getId(), false);
         return neighbour;
     }
 
@@ -184,7 +184,7 @@ public class Room {
         this.neighbours.add(newRoom);
         newRoom.neighbours.add(this);
 
-        Skeleton.log("return " + newRoom.getId(), false);
+        Skeleton.log("return Room" + newRoom.getId(), false);
         return newRoom;
     }
 
