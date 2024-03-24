@@ -2,16 +2,31 @@ import java.util.List;
 
 public class Student extends Person{
 
+    /**
+     * A Student osztály konstruktora
+     * @param name : Az adott hallgató neve
+     */
     public Student(String name) {
         super(name);
     }
 
+    /**
+     * A hallgató használ egy tárgyat. A paraméterben átadott
+        tárgynak meghívja az activate() metódusát.
+     * @param item : A használandó tárgy
+     */
     public void useItem(Item item){
         Skeleton.log(this.getName() + ".useItem(Item" + item.getId() + ")", true);
         item.activate(this);
         Skeleton.log("return", false);
     }
 
+    /**
+     * A hallgató eldob egy tárgyat. A paraméterben átadott tárgy
+        törlődik a hallgató itemInventorty-ából, és bele kerül a currentRoom itemInventoryába.
+        A tárgy deaktiválódik.
+     * @param item : Az eldobandó tárgy
+     */
     public void dropItem(Item item){
         Skeleton.log(this.getName() + ".dropItem(Item" + item.getId() + ")", true);
         item.setActive(false);
@@ -19,6 +34,7 @@ public class Student extends Person{
         this.removeItem(item);
         Skeleton.log("return", false);
     }
+
     @Override
     public void meet(Teacher teacher){
         Skeleton.log(this.getName() + ".meet(" + teacher.getName() + ")", true);
@@ -51,6 +67,14 @@ public class Student extends Person{
         Skeleton.log("return", false);
     }
 
+    /**
+     * Végig megyünk a hallgatónál található tárgyakon
+        (itemInventory) mindegyiknek meghívjuk a defend() függvényét amely igazzal tér
+        vissza ha egy védő tárgy aktív. Amennyiben az egyik tárgy defend() függvénye
+        igazzal tér vissza, azaz van nála aktív védő tárgy a tanárok ellen, akkor a függvény
+        igazzal tér vissza.
+     * @return A hallgató rendelkezik-e olyan tárggyal, amely megvédi őt
+     */
     public boolean checkForDefensiveItems(){
         Skeleton.log(this.getName() + ".checkForDefensiveItems()", true);
         for(Item item : getItemInventory()){
@@ -63,6 +87,10 @@ public class Student extends Person{
         return false;
     }
 
+    /**
+     * A hallgatónál lévő tárgyakra páronként meghívja a pair()
+        függvényt.
+     */
     public void pairItems(){
         Skeleton.log(this.getName() + ".pairItems()", true);
         List<Item> inventory = getItemInventory();
@@ -74,6 +102,14 @@ public class Student extends Person{
         Skeleton.log("return", false);
     }
 
+    /**
+     * Végig megyünk a hallgatónál található tárgyakon
+        (itemInventory) mindegyiknek meghívjuk a stun() függvényét amely igazzal tér vissza
+        ha egy bénító tárgy aktív. Amennyiben az egyik tárgy stun() függvénye igazzal tér
+        vissza, azaz van nála aktív bénító tárgy a tanárok ellen, akkor a függvény igazzal tér
+        vissza.
+     * @return A hallgató rendelkezik-e olyan tárggyal, amely tud bénítani
+     */
     public boolean checkForStunItems(){
         Skeleton.log(this.getName() + ".checkForStunItems()", true);
         for(Item item : getItemInventory()){
@@ -85,6 +121,7 @@ public class Student extends Person{
         Skeleton.log("return false", false);
         return false;
     }
+    
     @Override
     public void meet(Person p){
         p.meet(this);

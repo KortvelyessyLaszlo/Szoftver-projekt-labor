@@ -1,11 +1,25 @@
 public class Skeleton {
 
+    /**
+     * Iteráció száma
+     */
     private static int indentationLevel = 0;
 
+    /**
+     * Behúzás
+     */
     private static final String INDENTATION = "\t";
 
+    /**
+     * Logolás engedélyezésére szolgáló attribútum
+     */
     private static boolean logEnabled;
 
+    /**
+     * A logolásért felelős függvény
+     * @param methodName : A futtatandó metódus neve
+     * @param call
+     */
     public static void log(String methodName, boolean call) {
         if(logEnabled) {
             if (call) {
@@ -22,6 +36,14 @@ public class Skeleton {
         return INDENTATION.repeat(Math.max(0, indentationLevel));
     }
 
+    /**
+     * A felhasználó használja a nála lévő TVSZ Batskin-t.
+     * <pre>
+     *  1. A karakter rendelkezik TVSZ Batskin tárgyal. 
+     *2. Találkozik egy tanárral.
+     *3. A tárgy megvédi őt és csökkenti a töltései számát.
+     * </pre>
+     */
     public void test1(){
         logEnabled = false;
         Room R1 = new Room(2,0);
@@ -58,6 +80,14 @@ public class Skeleton {
         System.out.println(TVSZ);
     }
 
+    /**
+     * A felhasználó használja a nála lévő Canned Camembert-et
+     * <pre>
+     *1. A karakter aktiválja a nála lévő Canned Camembert tárgyat
+     *2. A szoba, amelyben a karakter tartózkodik gázzal teli lesz.
+     *3. A Canned Camembert tárgy eltűnik a User inventory-jából
+     * </pre>
+     */
     public void test2(){
         logEnabled = false;
         Room R = new Room(1,0);
@@ -83,6 +113,14 @@ public class Skeleton {
         System.out.println(CC);
     }
 
+    /**
+     * A felhasználó használja a nála lévő FFP2 Mask-ot
+     * <pre>
+1. A karakter rendelkezik egy aktív FFP2 Mask tárgyal
+2. A karakter belép egy gázzal teli szobába.
+3. A gáz hatástalan lesz a karakter ellen.
+     * </pre>
+     */
     public void test3(){
         logEnabled = false;
         Room R1 = new Room(2,0);
@@ -115,6 +153,13 @@ public class Skeleton {
         System.out.println(M);
     }
 
+    /**
+     * A felhasználó használja a nála lévő Holy Beer Glass-t.
+     * <pre>
+1. A karakter aktiválja felvételkor a Holy Beer Glass-t.
+2. A Holy Beer Glass hátralévő ideje beállítódik.
+     * </pre>
+     */
     public void test4(){
         logEnabled = false;
         Room R = new Room(1,0);
@@ -140,6 +185,15 @@ public class Skeleton {
         System.out.println(HBG);
     }
 
+    /**
+     * A felhasználó használja a nála lévő Wet Wipe Cloth-ot.
+     * <pre>
+1. A karakter rendelkezik egy aktív wet wipe cloth tárgyal.
+2. A karakter egy olyan szobába lép be, amelyben található tanár.
+3. Találkozik a szobában lévő tanárral
+4. A tárgy megbénítja az oktatót, aki ezért nem támad rá az hallgatóra
+     * </pre>
+     */
     public void test5(){
         logEnabled = false;
         Room R1 = new Room(2,0);
@@ -176,6 +230,14 @@ public class Skeleton {
         System.out.println(WWC);
     }
 
+    /**
+     * A felhasználó párosít két nála található tranzisztort.
+     * <pre>
+1. A karakternél található két tranzisztor-tárgy.
+2. A tranzisztorokat ezután párosítja egymással.
+3. A két tranzisztor ezután párosítva lesz egymással.
+     * </pre>
+     */
     public void test6(){
         logEnabled = false;
         Student S = new Student("S");
@@ -200,6 +262,13 @@ public class Skeleton {
         System.out.println(T2);
     }
 
+    /**
+     * A felhasználó aktiválja a nála lévő tranzisztort, ha annak már van párja.
+     * <pre>
+1. A felhasználó aktiválja a nála lévő tranzisztort.
+2. Mivel a tranzisztor párja még nem aktív, akkor az aktivált tranzisztor a szoba inventory-jába kerül.
+     * </pre>
+     */
     public void test7(){
         logEnabled = false;
         Room R = new Room(1,0);
@@ -231,6 +300,13 @@ public class Skeleton {
         System.out.println(T2);
     }
 
+    /**
+     * A felhasználó aktiválja a nála lévő tranzisztort, és a vele párosított tranzisztorhoz teleportál.
+     * <pre>
+1. A karakternél található tranzisztort aktiváljuk.
+2. Mivel a tranzisztor párja aktív, a karakter a tranzisztorral párosított másik tranzisztor szobájába kerül.
+     * </pre>
+     */
     public void test8(){
         logEnabled = false;
         Room R1 = new Room(2,0);
@@ -267,6 +343,14 @@ public class Skeleton {
         System.out.println(T2);
     }
 
+    /**
+     * A felhasználó megpróbál belépni egy megtelt szobába.
+     * <pre>
+1. A felhasználó megpróbál belépni egy másik szobába.
+2. A szoba megtelt állapotban van ezért a felhasználó az eredeti szobában marad.
+
+     * </pre>
+     */
     public void test9(){
         logEnabled = false;
         Room R1 = new Room(1,0);
@@ -293,6 +377,15 @@ public class Skeleton {
         System.out.println(S);
     }
 
+    /**
+     * A felhasználónál található egy TVSZ Batskin. A gázos szobába való belépés után a felhasználó elkábul és kidobja a tárgyat.
+     * <pre>
+1. A felhasználó rendelkezik egy TVSZ Batskin tárgyal.
+2. A felhasználó belép egy gázos szobába.
+3. A szoba gázos ezért a felhasználó belépés után elkábul, és kidobja a tágyat.
+
+     * </pre>
+     */
     public void test10(){
         logEnabled = false;
         Room R1 = new Room(1,0);
@@ -324,6 +417,14 @@ public class Skeleton {
         System.out.println(TVSZ);
     }
 
+    /**
+     * A felhasználó megpróbál felvenni egy Holy Beer Glass tárgyat.
+     * <pre>
+1. A felhsználó megpróbál felvenni egy Holy Beer Glass tárgyat.
+2. A felhasználónál már található 5 darab tárgy, így nem tudja felvenni a kiválasztott tárgyat.
+
+     * </pre>
+     */
     public void test11(){
         logEnabled = false;
         Room R = new Room(1,0);
@@ -369,6 +470,15 @@ public class Skeleton {
         System.out.println(T5);
     }
 
+    /**
+     * A felhasználó letesz egy aktív TVSZ Batskin tárgyat.
+     * <pre>
+1. A felhasználó letesz egy aktív TVSZ Batskin tárgyat.
+2. A tárgy a szoba inventory-jába kerül.
+3. A játékos inventory-ából törlődik a tárgy.
+
+     * </pre>
+     */
     public void test12(){
         logEnabled = false;
         Room R = new Room(1,0);
@@ -395,6 +505,14 @@ public class Skeleton {
         System.out.println(TVSZ);
     }
 
+    /**
+     * A felhasználó találkozik egy oktatóval, és nincsenek nála tárgyak.
+     * <pre>
+1.	A felhasználó találkozik egy tanárral, és nem rendelkezik semmilyen tárggyal.
+2.	A tanár elveszi a hallgató lelkét.
+
+     * </pre>
+     */
     public void test13(){
         logEnabled = false;
         Person T = new Teacher("T");
@@ -428,6 +546,14 @@ public class Skeleton {
         System.out.println(T);
     }
 
+    /**
+     * A felhasználó felveszi a Logarlécet
+     * <pre>
+1. A felhasználó felveszi a Logarlécet
+2. A játékot a hallgatók megnyerik.
+
+     * </pre>
+     */
     public void test14(){
         logEnabled = false;
         Room R = new Room(1,0);
@@ -453,6 +579,15 @@ public class Skeleton {
         System.out.println(SR);
     }
 
+    /**
+     * Két felhasználó is találkozik ugyanazzal a tanárral, egymás után. Az első felhasználó rendelkezik nedves táblatörlő ronggyal, amivel elkábítja a tanárt. Ezután a második felhasználó is belép a szobába, akit nem támad meg a tanár mert meg van bénulva.
+     * <pre>
+1. Az első felhasználó találkozik egy tanárral. A felhasználó rendelkezik aktív nedves táblatörlő ronggyal, amivel megbénítja a tanárt.
+2. A második hallgató is belép ugyanebbe a szobába és találkozik a tanárral.
+3. Mivel tanár meg van bénítva ezért nem támadja meg a hallgatót.
+
+     * </pre>
+     */
     public void test15(){
         logEnabled = false;
         Room R1 = new Room(3,0);
@@ -498,6 +633,15 @@ public class Skeleton {
         System.out.println(T);
     }
 
+    /**
+     * Két szoba egyesülése
+     * <pre>
+1. A szoba kiválaszt a szomszédjai közül véletlenszerűen egyet, amelyben nem található játékos, gázos, illetve van egy olyan szomszédja, akivel ő nem szomszédos.
+2. A szoba átveszi a kiválasztott szoba tulajdonságait és szomszédjait.
+3. A szoba megszünteti a kiválasztott szoba szomszédsági kapcsolatait.
+
+     * </pre>
+     */
     public void test16(){
         logEnabled = false;
         Room R1 = new Room(1,0);
@@ -526,6 +670,17 @@ public class Skeleton {
         System.out.println(R3);
     }
 
+    /**
+     * Két szoba szétválása
+     * <pre>
+1. A labirintus egy véletlenszerűen kiválasztott szobának megkezdi a szétválasztó viselkedését.
+2. A kiválasztott szoba gázos, nincsenek szomszédjai és a kapacitása nulla.
+3. A szoba létrehoz egy új szobát, amelynek tulajdonságai megegyeznek az övével.
+4. A szoba elosztja a kapacitását, és szomszédjait kettejük között.
+5. A labirintus eltárolja az új szobát. 
+
+     * </pre>
+     */
     public void test17(){
         logEnabled = false;
         Maze M = new Maze(0);

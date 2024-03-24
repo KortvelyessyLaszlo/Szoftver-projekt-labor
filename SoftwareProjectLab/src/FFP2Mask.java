@@ -1,5 +1,9 @@
 public class FFP2Mask extends TimedItem{
 
+    /**
+     * Az FFP2Mask osztály konstruktora
+     * @param id : Az FFP2Mask azonosítója
+     */
     public FFP2Mask(int id) {
         super(id);
     }

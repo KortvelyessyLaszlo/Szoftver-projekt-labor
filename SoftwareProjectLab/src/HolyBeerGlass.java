@@ -1,5 +1,9 @@
 public class HolyBeerGlass extends TimedItem{
 
+    /**
+     * Az HolyBeerGlass osztály konstruktora
+     * @param id : Az HolyBeerGlass azonosítója
+     */
     public HolyBeerGlass(int id) {
         super(id);
     }

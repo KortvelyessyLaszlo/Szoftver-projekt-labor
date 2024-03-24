@@ -1,5 +1,13 @@
 public class TVSZBatSkin extends Item{
+        /**
+         * A visszamaradó megmentések száma
+         */
         int charge;
+
+        /**
+         * A TVSZBatSkin osztály konstruktora
+         * @param id : A TVSZBatSkin azonosítója
+         */
         public TVSZBatSkin(int id) {
             super(id);
             charge = 5;

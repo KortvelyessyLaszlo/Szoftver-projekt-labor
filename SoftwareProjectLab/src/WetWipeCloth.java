@@ -1,5 +1,9 @@
 public class WetWipeCloth extends TimedItem{
 
+        /**
+         * A WetWipeCloth osztály konstruktora
+         * @param id : A WetWipeCloth azonosítója
+         */
         public WetWipeCloth(int id) {
             super(id);
         }

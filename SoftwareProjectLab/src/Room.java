@@ -5,121 +5,212 @@ import java.util.Random;
 
 public class Room {
 
+    /**
+     * A szoba egyedi azonosítója
+     */
     private final int id;
 
+    /**
+     * A szoba gázosságára vonatkozó attribútum
+     */
     private boolean isGassed;
 
+    /**
+     * A szoba kapacitása
+     */
     private int capacity;
 
+    /**
+     * A szobában tartózkodó személyek listája
+     */
     private List<Person> peopleInRoom = new ArrayList<Person>();
 
+    /**
+     * A szobában lévő tárgyak listája
+     */
     private List<Item> itemInventory = new ArrayList<Item>();
 
+    /**
+     * A szobának a szomszédos szobáinak listája
+     */
     private List<Room> neighbours = new ArrayList<Room>();
 
 
+    /**
+     * A Room osztály konstruktora
+     * @param capacity : A szoba kapacitása
+     * @param id : A szoba egyedi azonosítója
+     */
     public Room(int capacity, int id) {
         this.capacity = capacity;
         this.id = id;
     }
 
-    // Getters and setters
+    /**
+     * A szoba gázosságára vonatkozó attribútum getter függvénye
+     * @return A szoba gázossága
+     */
     public boolean isGassed() {
         return isGassed;
     }
 
+    /**A szoba gázosságára vonatkozó attribútum setter függvénye
+     * @param isGassed : A szoba gázossága
+     */
     public void setGassed(boolean isGassed) {
         Skeleton.log("Room" + this.getId() + ".setGassed(" + isGassed + ")", true);
         this.isGassed = isGassed;
         Skeleton.log("return", false);
     }
 
+    /**
+     * A szoba egyedi azonosítójához tartozó getter függvény
+     * @return : A szoba egyedi azonosítója
+     */
     public int getId() {
         return id;
     }
 
+    /**
+     * A szoba kapacitására vonatkozó attribútum getter függvénye
+     * @return A szoba kapacitása
+     */
     public int getCapacity() {
         return capacity;
     }
 
+    /**
+     * A szoba kapacitására vonatkozó attribútum setter függvénye
+     * @param capacity : A szoba kapacitása
+     */
     public void setCapacity(int capacity) {
         Skeleton.log("Room" + this.getId() + ".setCapacity(" + capacity + ")", true);
         this.capacity = capacity;
         Skeleton.log("return", false);
     }
 
+    /**
+     * A szobában tartózkodó személyek listájának getter függvénye
+     * @return A szobában tartózkodó személyek listája
+     */
     public List<Person> getPeopleInRoom() {
         return peopleInRoom;
     }
 
+    /**
+     * A szobában tartózkodó személyek listájának getter függvénye
+     * @param peopleInRoom : A szobában tartózkodó személyek listája
+     */
     public void setPeopleInRoom(List<Person> peopleInRoom) {
         Skeleton.log("Room" + this.getId() + ".setPeopleInRoom(" + peopleInRoom + ")", true);
         this.peopleInRoom = peopleInRoom;
         Skeleton.log("return", false);
     }
 
+    /**
+     * A szobában lévő tárgyak listájának getter függvénye
+     * @return A szobában lévő tárgyak listája
+     */
     public List<Item> getItemInventory() {
         return itemInventory;
     }
 
+    /**
+     * A szobában lévő tárgyak listájának getter függvénye
+     * @param itemInventory : A szobában lévő tárgyak listája
+     */
     public void setItemInventory(List<Item> itemInventory) {
         Skeleton.log("Room" + this.getId() + ".setItemInventory(" + itemInventory + ")", true);
         this.itemInventory = itemInventory;
         Skeleton.log("return", false);
     }
 
+    /**
+     * A szobának a szomszédos szobáinak listájának getter függvénye
+     * @return A szobának a szomszédos szobáinak listája
+     */
     public List<Room> getNeighbours() {
         return neighbours;
     }
 
+    /**
+     * A szobának a szomszédos szobáinak listájának getter függvénye
+     * @param neighbours : A szobának a szomszédos szobáinak listája
+     */
     public void setNeighbours(List<Room> neighbours) {
         Skeleton.log("Room" + this.getId() + ".setNeighbours(" + neighbours + ")", true);
         Skeleton.log("return", false);
         this.neighbours = neighbours;
     }
 
-    // Add a person to the room
+    /**
+     * A szobához új személy hozzáadása
+     * @param person : A hozzáadandó személy
+     */
     public void addPerson(Person person) {
         Skeleton.log("Room" + this.getId() + ".addPerson(" + person.getName() + ")", true);
         Skeleton.log("return", false);
         peopleInRoom.add(person);
     }
 
-    // Remove a person from the room
+    /**
+     * A szobából egy meglévő személy eltávolítása
+     * @param person : Az eltávolítandó személy
+     */
     public void removePerson(Person person) {
         Skeleton.log("Room" + this.getId() + ".removePerson(" + person.getName() + ")", true);
         peopleInRoom.remove(person);
         Skeleton.log("return", false);
     }
 
-    // Add an item to the room
+    /**
+     * A szobához új tárgy hozzáadása
+     * @param item : A A hozzáadandó tárgy
+     */
     public void addItem(Item item) {
         Skeleton.log("Room" + this.getId() + ".addItem(Item" + item.getId() + ")", true);
         itemInventory.add(item);
         Skeleton.log("return", false);
     }
 
-    // Remove an item from the room
+    /**
+     * A szobából egy meglévő tárgy eltávolítása
+     * @param item : Az eltávolítandó tárgy
+     */
     public void removeItem(Item item) {
         Skeleton.log("Room" + this.getId() + ".removeItem(Item" + item.getId() + ")", true);
         itemInventory.remove(item);
         Skeleton.log("return", false);
     }
 
-    // Add a neighbour to the room
+    /**
+     * A szobához új szomszédos szoba hozzáadása
+     * @param neighbour : A hozzáadandó szomszédos szoba
+     */
     public void addNeighbour(Room neighbour) {
         Skeleton.log("Room" + this.getId() + ".addNeighbour(Room" + neighbour.getId() + ")", true);
         neighbours.add(neighbour);
         Skeleton.log("return", false);
     }
 
-    // Remove a neighbour from the room
+    /**
+     * A szobából egy meglévő szomszédos szoba eltávolítása
+     * @param neighbour : Az eltávolítandó szomszédos szoba
+     */
     public void removeNeighbour(Room neighbour) {
         Skeleton.log("Room" + this.getId() + ".removeNeighbour(Room" + neighbour.getId() + ")", true);
         neighbours.remove(neighbour);
         Skeleton.log("return", false);
     }
 
+    /**
+     * Ezt a függvényt a Maze startCombineRooms() függvénye
+        váltja ki. Kiválaszt a szomszédjai közül véletlenszerűen egy olyan szobát, amelyben nem
+        található játékos. Amelynek átveszi tulajdonságait és szomszédjait, ha a szomszédos
+        szoba kapacitása nagyobb, akkor átveszi a kapacitását is. Illetve visszatér a szomszédos
+        szobával.
+     * @return Az eredetileg szomszédos szoba
+     */
     public Room combineRooms(){
         Skeleton.log("Room" + this.getId() + ".combineRooms()", true);
         Random random = new Random();
@@ -150,6 +241,14 @@ public class Room {
         return neighbour;
     }
 
+    /**
+     * Ezt a függvényt a Maze startSplitRooms() függvénye váltja ki.
+        Létrehoz egy új szobát, amelynek tulajdonságai megegyeznek ezzel a szobával. A szoba
+        kapacitása és szomszédjai szétoszlanak a két szoba között véletlenszerűen. Visszatér az
+        újonnan létrehozott szobával.
+     * @param newId : A létrehozott szobának az azonosítója
+     * @return A létrehozott szoba
+     */
     public Room splitRoom(int newId){
         Skeleton.log("Room" + this.getId() + ".splitRoom(" + newId + ")", true);
         Random random = new Random();
@@ -188,6 +287,14 @@ public class Room {
         return newRoom;
     }
 
+    /**
+     * Igaz, ha a szobában tartózkodó személyek száma
+        kisebb mint a szoba kapacitása. Ezt a függvény a Person.enter(Room) függvénye hívja
+        meg. A paraméterként kapott személyt elhelyezi a szobában (peopleInRoom), ha van elég
+        hely.
+     * @param person : A személy, aki be szeretne lépni a szobába
+     * @return Sikerült-e belépni a szobába
+     */
     public boolean acceptNewPerson(Person person){
         Skeleton.log("Room" + this.getId() + ".acceptNewPerson(" + person.getName() + ")", true);
         if(peopleInRoom.size() >= capacity){
