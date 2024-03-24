@@ -126,7 +126,7 @@ public class Room {
         Room neighbour = neighbours.get(random.nextInt(neighbours.size()));
 
         if(!neighbour.peopleInRoom.isEmpty() || !this.peopleInRoom.isEmpty()){
-            Skeleton.log("return", false);
+            Skeleton.log("return null", false);
             return null;
         }
 
@@ -146,7 +146,7 @@ public class Room {
             room.removeNeighbour(neighbour);
         }
         neighbour.neighbours.clear();
-        Skeleton.log("return " + neighbour, false);
+        Skeleton.log("return " + neighbour.getId(), false);
         return neighbour;
     }
 
@@ -155,7 +155,7 @@ public class Room {
         Random random = new Random();
 
         if(!this.peopleInRoom.isEmpty() || this.capacity <= 1){
-            Skeleton.log("return", false);
+            Skeleton.log("return null", false);
             return null;
         }
 
@@ -184,7 +184,7 @@ public class Room {
         this.neighbours.add(newRoom);
         newRoom.neighbours.add(this);
 
-        Skeleton.log("return " + newRoom, false);
+        Skeleton.log("return " + newRoom.getId(), false);
         return newRoom;
     }
 
