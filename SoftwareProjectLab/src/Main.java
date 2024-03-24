@@ -15,14 +15,14 @@ public class Main {
             System.out.println("3. FFP2 Mask hasznalata");
             System.out.println("4. Holy Beer Glass felvetele");
             System.out.println("5. Wet Wipe Cloth hasznalata");
-            System.out.println("6. Transistor parosítasa");
+            System.out.println("6. Transistor parositasa");
             System.out.println("7. Transistor hasznalata");
             System.out.println("8. Teleportalas");
             System.out.println("9. Sikertelen belepes egy szobaba");
             System.out.println("10. Belepes egy gazos szobaba");
             System.out.println("11. Sikertelen targy felvetel");
             System.out.println("12. Targy eldobasa");
-            System.out.println("13. Tanarral való talalkozas targy nalkul.");
+            System.out.println("13. Tanarral valo talalkozas targy nelkul.");
             System.out.println("14. SlideRule felvetele");
             System.out.println("15. Talalkozas megbenult tanarral");
             System.out.println("16. Szobak egyesulese");
