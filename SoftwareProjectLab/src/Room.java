@@ -211,7 +211,12 @@ public class Room {
             itemInventoryString.append(item.getId()).append(",");
         }
 
+        StringBuilder neighboursString = new StringBuilder();
+        for(Room neighbour : neighbours){
+            neighboursString.append(neighbour.getId()).append(",");
+        }
+
         return this.getClass() + ", id=" + this.getId() + ", capacity=" + capacity + ", isGassed=" + isGassed + ", peopleInRoom=[" + peopleInRoomString
-                + "], itemInventory=[" + itemInventoryString + "], neighbours=" + neighbours.size();
+                + "], itemInventory=[" + itemInventoryString + "], neighbours=[" + neighboursString + "]";
     }
 }
