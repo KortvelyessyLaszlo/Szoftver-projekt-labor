@@ -1,7 +1,7 @@
 public class Skeleton {
 
     /**
-     * Iteráció száma
+     * Tabulátorok száma
      */
     private static int indentationLevel = 0;
 
@@ -18,7 +18,7 @@ public class Skeleton {
     /**
      * A logolásért felelős függvény
      * @param methodName : A futtatandó metódus neve
-     * @param call
+     * @param call : Függvényhívas vagy visszatérésről van szó
      */
     public static void log(String methodName, boolean call) {
         if(logEnabled) {
@@ -32,6 +32,10 @@ public class Skeleton {
         }
     }
 
+    /**
+     * A sor behúzásáért felelős függvény
+     * @return Annyi tabulátort egymás után fűzve, amennyi indentationLevel-be van írva
+     */
     private static String getIndentation() {
         return INDENTATION.repeat(Math.max(0, indentationLevel));
     }
