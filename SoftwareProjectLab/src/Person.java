@@ -76,7 +76,7 @@ public abstract class Person {
 
         for(Person person : currentRoom.getPeopleInRoom()){
             if(person != this)
-                person.meet(this);
+                this.meet(person);
         }
         Skeleton.log("return", false);
     }

@@ -140,10 +140,10 @@ public class Room {
 
         for(Room room : neighbour.neighbours){
             if(room != this) {
-                room.addNeighbour(this);
+                room.neighbours.add(this);
                 this.neighbours.add(room);
             }
-            room.removeNeighbour(neighbour);
+            room.neighbours.remove(neighbour);
         }
         neighbour.neighbours.clear();
         Skeleton.log("return Room" + neighbour.getId(), false);

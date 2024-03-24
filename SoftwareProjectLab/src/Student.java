@@ -19,7 +19,7 @@ public class Student extends Person{
         this.removeItem(item);
         Skeleton.log("return", false);
     }
-@Override
+    @Override
     public void meet(Teacher teacher){
         Skeleton.log(this.getName() + ".meet(" + teacher.getName() + ")", true);
         if(teacher.isPoisoned() || teacher.isStunned()){
