@@ -53,7 +53,7 @@ public class Skeleton {
         Room R1 = new Room(2,0);
         Room R2 = new Room(2,1);
         Teacher T = new Teacher("T");
-        Student S = new Student("S");
+        Student S = new Student("S");;
         TVSZBatSkin TVSZ = new TVSZBatSkin(0);
 
         R1.addNeighbour(R2);
