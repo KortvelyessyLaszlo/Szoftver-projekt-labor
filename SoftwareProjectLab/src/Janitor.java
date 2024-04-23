@@ -22,7 +22,7 @@ public class Janitor extends Person {
         currentRoom.setenterCounter(0);
 
         List<Room> temp = currentRoom.getNeighbours();
-        temp.removeIf(temproom -> temproom.getPeopleInRoom().size() == temproom.getNeighbours().size());
+        temp.removeIf(temproom -> temproom.getPeopleInRoom().size() == temproom.getCapacity());
 
         for(Person person : currentRoom.getPeopleInRoom()) {
             Collections.shuffle(temp);
