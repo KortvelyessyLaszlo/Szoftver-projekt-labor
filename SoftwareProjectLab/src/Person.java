@@ -16,7 +16,7 @@ public abstract class Person {
     /**
      * A szoba, amelyikben az adott személy tartózkodik
      */
-    private Room currentRoom;
+    protected Room currentRoom;
 
     /**
      * Az adott személy tárgylistája

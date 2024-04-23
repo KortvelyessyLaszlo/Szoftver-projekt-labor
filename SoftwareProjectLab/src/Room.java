@@ -15,6 +15,10 @@ public class Room {
      */
     private boolean isGassed;
 
+    private boolean isSticky;
+
+    private int enterCounter;
+
     /**
      * A szoba kapacitása
      */
@@ -54,12 +58,20 @@ public class Room {
         return isGassed;
     }
 
+    public boolean isSticky() { return isGassed; }
+
     /**A szoba gázosságára vonatkozó attribútum setter függvénye
      * @param isGassed : A szoba gázossága
      */
     public void setGassed(boolean isGassed) {
         Skeleton.log("Room" + this.getId() + ".setGassed(" + isGassed + ")", true);
         this.isGassed = isGassed;
+        Skeleton.log("return", false);
+    }
+
+    public void setSticky(boolean isSticky) {
+        Skeleton.log("Room" + this.getId() + ".setSticky(" + isSticky + ")", true);
+        this.isSticky = isSticky;
         Skeleton.log("return", false);
     }
 
@@ -79,6 +91,10 @@ public class Room {
         return capacity;
     }
 
+    public int getenterCounter() {
+        return enterCounter;
+    }
+
     /**
      * A szoba kapacitására vonatkozó attribútum setter függvénye
      * @param capacity : A szoba kapacitása
@@ -86,6 +102,12 @@ public class Room {
     public void setCapacity(int capacity) {
         Skeleton.log("Room" + this.getId() + ".setCapacity(" + capacity + ")", true);
         this.capacity = capacity;
+        Skeleton.log("return", false);
+    }
+
+    public void setenterCounter(int enterCounter) {
+        Skeleton.log("Room" + this.getId() + ".setenterCounter(" + enterCounter + ")", true);
+        this.enterCounter = enterCounter;
         Skeleton.log("return", false);
     }
 
@@ -302,6 +324,7 @@ public class Room {
             return false;
         }
         peopleInRoom.add(person);
+        this.setenterCounter(this.getenterCounter() + 1);
         Skeleton.log("return true", false);
         return true;
     }
