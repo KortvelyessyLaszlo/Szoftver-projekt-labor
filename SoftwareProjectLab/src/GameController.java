@@ -240,7 +240,6 @@ public class GameController {
         this.maze = new Maze();
         for(int i = 0; i < playerCount * 5; i++){
             maze.addRoom(new Room(random.nextInt(5) + 1, maze.getNextRoomId()));
-            maze.setNextRoomId(maze.getNextRoomId() + 1);
         }
 
         maze.getRooms().get(0).addNeighbour(maze.getRooms().get(1));
@@ -253,7 +252,12 @@ public class GameController {
         for(int i = 0; i < maze.getRooms().size(); ++i) {
             int neighbourCount = random.nextInt(4);
             for(int j = 0; j < neighbourCount; ++j) {
-                maze.getRooms().get(i).addNeighbour(maze.getRooms().get(random.nextInt(maze.getRooms().size())));
+                Room neighbour = maze.getRooms().get(random.nextInt(maze.getRooms().size()));
+                if(maze.getRooms().get(i).getNeighbours().contains(neighbour)  || neighbour == maze.getRooms().get(i)){
+                    j--;
+                    continue;
+                }
+                maze.getRooms().get(i).addNeighbour(neighbour);
             }
         }
 

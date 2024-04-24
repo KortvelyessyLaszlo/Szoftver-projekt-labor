@@ -25,6 +25,10 @@ public class FFP2Mask extends TimedItem{
     @Override
     public void activate(Person person) {
         Skeleton.log("FFP2Mask"+this.getId()+".activate(" + person.getName() + ")", true);
+        if(isFake){
+            Skeleton.log("return", false);
+            return;
+        }
         setActive(true);
         Skeleton.log("return", false);
     }

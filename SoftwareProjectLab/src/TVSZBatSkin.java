@@ -31,6 +31,10 @@ public class TVSZBatSkin extends Item{
         @Override
         public void activate(Person person) {
                 Skeleton.log("TVSZBatSkin" + this.getId() + ".activate(" + person.getName() + ")", true);
+                if(isFake){
+                        Skeleton.log("return", false);
+                        return;
+                }
                 setActive(true);
                 Skeleton.log("return", false);
         }

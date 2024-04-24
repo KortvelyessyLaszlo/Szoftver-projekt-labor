@@ -25,6 +25,10 @@ public class SlideRule extends Item{
     @Override
     public void activate(Person person) {
         Skeleton.log("SlideRule" + this.getId() + ".activate(" + person.getName() + ")", true);
+        if(isFake){
+            Skeleton.log("return", false);
+            return;
+        }
         victory(person);
         Skeleton.log("return", false);
     }

@@ -57,6 +57,8 @@ public class Transistor extends Item{
     @Override
     public void activate(Person person) {
         Skeleton.log("Transistor"+this.getId()+".activate(" + person.getName() + ")", true);
+        if(pair == null)
+            return;
         if(pair.isActive()){
             person.enter(pair.placedTransistorRoom);
         }else{
