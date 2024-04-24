@@ -3,7 +3,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 
-public class CursedRoom extends Room{
+public class CursedRoom extends Room implements ITickable{
     /**
      * A nem látható szobákat tároló lista
      */
@@ -90,5 +90,12 @@ public class CursedRoom extends Room{
         Room neighbour = super.combineRooms();
         Skeleton.log("return " + neighbour, false);
         return neighbour;
+    }
+
+    @Override
+    public void tick() {
+        Skeleton.log("CursedRoom" + this.getId() + ".tick()", true);
+        updateCursedDoors();
+        Skeleton.log("return", false);
     }
 }

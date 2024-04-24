@@ -1,8 +1,15 @@
-public class Teacher extends Person{
+import java.util.Random;
+
+public class Teacher extends Person implements ITickable{
     /**
      * A tanár bénult-e
      */
     private boolean isStunned;
+
+    /**
+     * A tanár bénulásának ideje
+     */
+    private int stunDuration = 0;
 
     /**
      * A Teacher osztály konstruktora
@@ -27,6 +34,7 @@ public class Teacher extends Person{
     public void setStunned(boolean isStunned) {
         Skeleton.log(this.getName() + ".setStunned(" + isStunned + ")", true);
         this.isStunned = isStunned;
+        this.stunDuration = 10;
         Skeleton.log("return", false);
     }
 
@@ -70,5 +78,41 @@ public class Teacher extends Person{
     @Override
     public String toString(){
         return super.toString()+", isStunned="+isStunned;
+    }
+
+
+    /**
+     * A tanár cselekedeteinek leírása
+     * A tanár véletlenszerűen választ egy cselekvést:
+     * 0: Tárgy felvétele
+     * 1: Szobaváltás
+     */
+    @Override
+    public void tick() {
+        Skeleton.log(this.getName() + ".tick()", true);
+        if(isStunned){
+            stunDuration--;
+            if(stunDuration == 0)
+                isStunned = false;
+        }
+        if(isPoisoned()){
+            setPoisonDuration(getPoisonDuration()-1);
+            if(getPoisonDuration() == 0)
+                setPoisoned(false);
+        }
+        if(isStunned() || isPoisoned()){
+            Skeleton.log("return", false);
+            return;
+        }
+        Random random = new Random();
+        int randomValue = random.nextInt(4);
+        if(randomValue == 0){
+            Item item = currentRoom.getItemInventory().get(random.nextInt(currentRoom.getItemInventory().size()));
+            pickUp(item);
+        }
+        if(randomValue == 1){
+            this.enter(currentRoom.getNeighbours().get(random.nextInt(currentRoom.getNeighbours().size())));
+        }
+        Skeleton.log("return", false);
     }
 }

@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public abstract class Person {
+public abstract class Person implements ITickable{
     /**
      * Az adott személy mérgezett állapota
      */
@@ -12,6 +12,11 @@ public abstract class Person {
      * Az adott személy neve
      */
     private String name;
+
+    /**
+     * Az adott személy mérgezésének ideje
+     */
+    private int poisonDuration = 0;
 
     /**
      * A szoba, amelyikben az adott személy tartózkodik
@@ -41,6 +46,23 @@ public abstract class Person {
      */
     public void setPoisoned(boolean isPoisoned) {
         this.isPoisoned = isPoisoned;
+        this.poisonDuration = 10;
+    }
+
+    /**
+     * A Person osztály poisonDuration adattagjának getter függvénye
+     * @return Az poisonDuration atrribútum értéke
+     */
+    public int getPoisonDuration() {
+        return poisonDuration;
+    }
+
+    /**
+     * A Person osztály poisonDuration adattagjának setter függvénye
+     * @param poisonDuration : Az poisonDuration atrribútum értéke
+     */
+    public void setPoisonDuration(int poisonDuration) {
+        this.poisonDuration = poisonDuration;
     }
 
     /**
@@ -165,11 +187,14 @@ public abstract class Person {
      * @param item : A tárgy, amelyet a személy fel szeretne venni
      */
     public void pickUp(Item item){
-        if(itemInventory.size() >= 5) {
+        Skeleton.log(this.name + ".pickUp(Item" + item.getId() + ")", true);
+        if(item.getClass() == SlideRule.class || itemInventory.size() >= 5) {
+            Skeleton.log("return", false);
             return;
         }
         currentRoom.removeItem(item);
         itemInventory.add(item);
+        Skeleton.log("return", false);
     }
 
     /**
@@ -224,5 +249,10 @@ public abstract class Person {
         }
 
         return this.getClass() + ", Name=" + name  + ", isPoisoned=" + isPoisoned + ", itemInventory=[" + itemInventoryString + "]";
+    }
+
+    @Override
+    public void tick() {
+
     }
 }

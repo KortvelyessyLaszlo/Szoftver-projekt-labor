@@ -1,6 +1,6 @@
 import java.util.List;
 
-public class Student extends Person{
+public class Student extends Person implements ITickable{
 
     /**
      * A Student osztály konstruktora
@@ -35,6 +35,14 @@ public class Student extends Person{
         Skeleton.log("return", false);
     }
 
+    /**
+     * A hallgató találkozik egy tanárral. Ha a tanár mérgezve
+        van, vagy bénult, akkor a függvény visszatér. Ellenkező esetben a hallgató megnézi,
+        hogy van-e nála bénító tárgy, ha igen, akkor a tanár bénul. Ha nincs, akkor megnézi,
+        hogy van-e nála védő tárgy, ha igen, akkor a függvény visszatér. Ha nincs, akkor a
+        diák eliminálódik.
+     * @param teacher : A tanár, akivel a hallgató találkozott
+     */
     @Override
     public void meet(Teacher teacher){
         Skeleton.log(this.getName() + ".meet(" + teacher.getName() + ")", true);
@@ -125,5 +133,22 @@ public class Student extends Person{
     @Override
     public void meet(Person p){
         p.meet(this);
+    }
+
+    /**
+     * A hallgató tick() függvénye, amely a hallgató
+        mérgezésének idejét csökkenti eggyel, ha a hallgató mérgezve van.
+     */
+    @Override
+    public void tick(){
+        Skeleton.log(this.getName() + ".tick()", true);
+        if(!isPoisoned()) {
+            Skeleton.log("return", false);
+            return;
+        }
+        setPoisonDuration(getPoisonDuration() - 1);
+        if(getPoisonDuration() == 0)
+            setPoisoned(false);
+        Skeleton.log("return", false);
     }
 }

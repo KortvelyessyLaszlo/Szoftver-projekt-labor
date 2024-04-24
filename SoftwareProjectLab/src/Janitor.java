@@ -1,7 +1,8 @@
 import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 
-public class Janitor extends Person {
+public class Janitor extends Person implements ITickable{
 
     public Janitor(String name) {
         super(name);
@@ -9,7 +10,8 @@ public class Janitor extends Person {
 
     @Override
     public void enter(Room room) {
-        if(!room.acceptNewPerson(this)) {
+        Skeleton.log(this.getName() + ".enter(" + room.getId() + ")", true);
+        if (!room.acceptNewPerson(this)) {
             Skeleton.log("return", false);
             return;
         }
@@ -24,11 +26,21 @@ public class Janitor extends Person {
         List<Room> temp = currentRoom.getNeighbours();
         temp.removeIf(temproom -> temproom.getPeopleInRoom().size() == temproom.getCapacity());
 
-        for(Person person : currentRoom.getPeopleInRoom()) {
+        for (Person person : currentRoom.getPeopleInRoom()) {
             Collections.shuffle(temp);
-            if(person != this && !temp.isEmpty()) {
+            if (person != this && !temp.isEmpty()) {
                 person.enter(temp.getFirst());
             }
         }
+        Skeleton.log("return", false);
+    }
+
+    @Override
+    public void tick() {
+        Skeleton.log(this.getName() + ".tick()", true);
+        Random rand = new Random();
+        if(rand.nextInt(4) == 0)
+            this.enter(currentRoom.getNeighbours().get(rand.nextInt(currentRoom.getNeighbours().size())));
+        Skeleton.log("return", false);
     }
 }

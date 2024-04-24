@@ -3,7 +3,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
-public class Room {
+public class Room implements ITickable{
 
     /**
      * A szoba egyedi azonosítója
@@ -348,5 +348,10 @@ public class Room {
 
         return this.getClass() + ", id=" + this.getId() + ", capacity=" + capacity + ", isGassed=" + isGassed + ", peopleInRoom=[" + peopleInRoomString
                 + "], itemInventory=[" + itemInventoryString + "], neighbours=[" + neighboursString + "]";
+    }
+
+    @Override
+    public void tick() {
+
     }
 }

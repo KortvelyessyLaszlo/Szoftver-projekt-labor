@@ -1,9 +1,10 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
-public class Maze {
+public class Maze implements ITickable, Serializable {
     /**
      * A labirintusban lévő játékosok száma
      */
@@ -120,5 +121,20 @@ public class Maze {
     @Override
     public String toString(){
         return this.getClass() + ", playerCount=" + playerCount + ", roomCount=" + rooms.size();
+    }
+
+    @Override
+    public void tick() {
+        Skeleton.log("Maze.tick()", true);
+        Random random = new Random();
+        int randomValue = random.nextInt(4);
+        if(randomValue > 0)
+            return;
+
+        if(random.nextBoolean())
+            startCombineRooms();
+        else
+            startSplitRooms();
+        Skeleton.log("return", false);
     }
 }

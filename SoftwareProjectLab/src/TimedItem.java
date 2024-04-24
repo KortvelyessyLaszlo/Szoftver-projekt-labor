@@ -1,4 +1,4 @@
-public abstract class TimedItem extends Item{
+public abstract class TimedItem extends Item implements ITickable{
     /**
      * A megmaradó aktív idő 
      */
@@ -27,6 +27,23 @@ public abstract class TimedItem extends Item{
     public void setRemainingTime(int remainingTime) {
         Skeleton.log("TimedItem" + this.getId() + "setRemainingTime(" + remainingTime + ")", true);
         this.remainingTime = remainingTime;
+        Skeleton.log("return", false);
+    }
+
+    /**
+     * A tárgy aktív idejének csökkentése
+     * Ha a tárgy aktív és nem megsemmisült, akkor a megmaradó időt csökkenti eggyel
+     * Ha a megmaradó idő 0, akkor a tárgy inaktiválódik
+     */
+    @Override
+    public void tick(){
+        Skeleton.log("TimedItem" + this.getId() + ".tick()", true);
+        if(isActive() && !isDestroyed())
+            remainingTime--;
+        if(remainingTime == 0){
+            setDestroyed(true);
+            setActive(false);
+        }
         Skeleton.log("return", false);
     }
 }
