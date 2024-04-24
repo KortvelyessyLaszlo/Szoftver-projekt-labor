@@ -1,4 +1,5 @@
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 
@@ -24,9 +25,11 @@ public class Janitor extends Person implements ITickable{
         currentRoom.setenterCounter(0);
 
         List<Room> temp = currentRoom.getNeighbours();
-        temp.removeIf(temproom -> temproom.getPeopleInRoom().size() == temproom.getCapacity());
 
-        for (Person person : currentRoom.getPeopleInRoom()) {
+        Iterator<Person> it = currentRoom.getPeopleInRoom().iterator();
+        while(it.hasNext()) {
+            Person person = it.next();
+            temp.removeIf(temproom -> temproom.getPeopleInRoom().size() == temproom.getCapacity());
             Collections.shuffle(temp);
             if (person != this && !temp.isEmpty()) {
                 person.enter(temp.getFirst());
