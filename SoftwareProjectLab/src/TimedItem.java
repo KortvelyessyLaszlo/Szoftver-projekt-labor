@@ -2,7 +2,7 @@ public abstract class TimedItem extends Item implements ITickable{
     /**
      * A megmaradó aktív idő 
      */
-    private int remainingTime;
+    private int remainingTime = 20;
 
     /**
      * A TimedItem osztály konstruktora

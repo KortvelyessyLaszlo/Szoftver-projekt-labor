@@ -8,7 +8,7 @@ public class Main {
      * @param args : Esetleges argumentumlista
      */
     public static void main(String[] args) {
-        Skeleton skeleton = new Skeleton();
+        /*Skeleton skeleton = new Skeleton();
         boolean run = true;
         while (run) {
             System.out.println();
@@ -93,6 +93,8 @@ public class Main {
                     run = false;
                     break;
             }
-        }
+        }*/
+        GameController gameController = new GameController();
+        gameController.processStart();
     }
 }

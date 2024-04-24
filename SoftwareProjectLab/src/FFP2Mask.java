@@ -1,11 +1,25 @@
 public class FFP2Mask extends TimedItem{
 
+    public boolean isFake() {
+        return isFake;
+    }
+
+    public void setFake(boolean fake) {
+        isFake = fake;
+    }
+
+    /**
+     * Az FFP2Mask osztály adattagja, ami jelzi, hogy a maszk hamis-e
+     */
+    private boolean isFake = false;
+
     /**
      * Az FFP2Mask osztály konstruktora
      * @param id : Az FFP2Mask azonosítója
      */
-    public FFP2Mask(int id) {
+    public FFP2Mask(int id, boolean isFake) {
         super(id);
+        this.isFake = isFake;
     }
 
     @Override

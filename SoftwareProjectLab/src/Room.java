@@ -167,12 +167,15 @@ public class Room implements ITickable{
 
     /**
      * A szobához új személy hozzáadása
+     * A személyt a szoba peopleInRoom listájához adja hozzá
+     * és beállítja a személy jelenlegi szobáját erre a szobára
      * @param person : A hozzáadandó személy
      */
     public void addPerson(Person person) {
         Skeleton.log("Room" + this.getId() + ".addPerson(" + person.getName() + ")", true);
         Skeleton.log("return", false);
         peopleInRoom.add(person);
+        person.setCurrentRoom(this);
     }
 
     /**

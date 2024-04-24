@@ -5,10 +5,6 @@ import java.util.List;
 import java.util.Random;
 
 public class Maze implements ITickable, Serializable {
-    /**
-     * A labirintusban lévő játékosok száma
-     */
-    private int playerCount;
 
     /**
      * A következő még nem kiosztott szoba id
@@ -21,29 +17,19 @@ public class Maze implements ITickable, Serializable {
     private List<Room> rooms = new ArrayList<Room>();
 
     /**
-     * A Maze osztály konstruktora
-     * @param playerCount : A játékosok száma
+     * A szoba id-jét beállító függvény
+     * @param nextRoomId : A következő szoba id-je
      */
-    public Maze(int playerCount) {
-        this.playerCount = playerCount;
+    public void setNextRoomId(int nextRoomId) {
+        this.nextRoomId = nextRoomId;
     }
 
     /**
-     * A Maze osztály playerCount attribútumához tartozó getter függvény
-     * @return A játékosok száma
+     * A következő szoba id-jét visszaadó függvény
+     * @return A következő szoba id-je
      */
-    public int getPlayerCount() {
-        return playerCount;
-    }
-
-    /**
-     * A Maze osztály playerCount attribútumához tartozó setter függvény
-     * @param playerCount : A játékosok száma
-     */
-    public void setPlayerCount(int playerCount) {
-        Skeleton.log("Maze.setPlayerCount(" + playerCount + ")", true);
-        this.playerCount = playerCount;
-        Skeleton.log("return", false);
+    public int getNextRoomId() {
+        return nextRoomId;
     }
 
     /**
@@ -120,9 +106,17 @@ public class Maze implements ITickable, Serializable {
     }
     @Override
     public String toString(){
-        return this.getClass() + ", playerCount=" + playerCount + ", roomCount=" + rooms.size();
+        return this.getClass() + ", RoomCount=" + rooms.size();
     }
 
+
+    /**
+     * A labirintus tickeléséért felelős függvény
+     * A függvény véletlenszerűen választ egy számot 0 és 3 között.
+     * Ha a szám nagyobb mint 0, akkor a függvény visszatér.
+     * Ha a szám páros, akkor a startCombineRooms() függvényt hívja meg.
+     * Ha a szám páratlan, akkor a startSplitRooms() függvényt hívja meg.
+     */
     @Override
     public void tick() {
         Skeleton.log("Maze.tick()", true);

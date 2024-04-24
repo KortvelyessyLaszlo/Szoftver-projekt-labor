@@ -107,8 +107,10 @@ public class Teacher extends Person implements ITickable{
         Random random = new Random();
         int randomValue = random.nextInt(4);
         if(randomValue == 0){
-            Item item = currentRoom.getItemInventory().get(random.nextInt(currentRoom.getItemInventory().size()));
-            pickUp(item);
+            if(!currentRoom.getItemInventory().isEmpty()) {
+                Item item = currentRoom.getItemInventory().get(random.nextInt(currentRoom.getItemInventory().size()));
+                pickUp(item);
+            }
         }
         if(randomValue == 1){
             this.enter(currentRoom.getNeighbours().get(random.nextInt(currentRoom.getNeighbours().size())));

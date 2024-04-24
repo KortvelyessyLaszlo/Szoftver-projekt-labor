@@ -8,12 +8,12 @@ public abstract class Item implements ITickable {
     /**
      * Az adott tárgy aktivált állapota
      */
-    private boolean isActive;
+    private boolean isActive = false;
 
     /**
      * Az adott tárgy megsemmisülésére vonatkozó tulajdonság
      */
-    private boolean isDestroyed;
+    private boolean isDestroyed = false;
 
     /**
      * Az Item osztály konstruktora

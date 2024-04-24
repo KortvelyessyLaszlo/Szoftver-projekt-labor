@@ -54,7 +54,7 @@ public class Skeleton {
         Room R2 = new Room(2,1);
         Teacher T = new Teacher("T");
         Student S = new Student("S");;
-        TVSZBatSkin TVSZ = new TVSZBatSkin(0);
+        TVSZBatSkin TVSZ = new TVSZBatSkin(0, false);
 
         R1.addNeighbour(R2);
         R1.addPerson(T);
@@ -130,7 +130,7 @@ public class Skeleton {
         Room R1 = new Room(2,0);
         Room R2 = new Room(2,1);
         Student S = new Student("S");
-        FFP2Mask M = new FFP2Mask(0);
+        FFP2Mask M = new FFP2Mask(0, false);
 
         R1.addNeighbour(R2);
         R1.setGassed(true);
@@ -395,7 +395,7 @@ public class Skeleton {
         Room R1 = new Room(1,0);
         Room R2 = new Room(1,1);
         Student S = new Student("S");
-        TVSZBatSkin TVSZ = new TVSZBatSkin(0);
+        TVSZBatSkin TVSZ = new TVSZBatSkin(0, false);
 
         R1.addNeighbour(R2);
         R2.setGassed(true);
@@ -487,7 +487,7 @@ public class Skeleton {
         logEnabled = false;
         Room R = new Room(1,0);
         Student S = new Student("S");
-        TVSZBatSkin TVSZ = new TVSZBatSkin(0);
+        TVSZBatSkin TVSZ = new TVSZBatSkin(0, false);
 
         R.addPerson(S);
         S.setCurrentRoom(R);
@@ -562,7 +562,7 @@ public class Skeleton {
         logEnabled = false;
         Room R = new Room(1,0);
         Person S = new Student("S");
-        Item SR = new SlideRule(0);
+        Item SR = new SlideRule(0, false);
 
         R.addItem(SR);
         R.addPerson(S);
@@ -687,7 +687,7 @@ public class Skeleton {
      */
     public void test17(){
         logEnabled = false;
-        Maze M = new Maze(0);
+        Maze M = new Maze();
         Room R = new Room(2,0);
         R.setGassed(true);
         M.addRoom(R);

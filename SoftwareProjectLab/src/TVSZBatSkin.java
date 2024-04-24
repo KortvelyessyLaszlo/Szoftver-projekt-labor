@@ -1,4 +1,18 @@
 public class TVSZBatSkin extends Item{
+
+        public boolean isFake() {
+                return isFake;
+        }
+
+        public void setFake(boolean fake) {
+                isFake = fake;
+        }
+
+        /**
+         * A TVSZBatSkin osztály adattagja, ami jelzi, hogy a bőr hamis-e
+         */
+        private boolean isFake = false;
+
         /**
          * A visszamaradó megmentések száma
          */
@@ -8,9 +22,10 @@ public class TVSZBatSkin extends Item{
          * A TVSZBatSkin osztály konstruktora
          * @param id : A TVSZBatSkin azonosítója
          */
-        public TVSZBatSkin(int id) {
-            super(id);
-            charge = 5;
+        public TVSZBatSkin(int id, boolean isFake) {
+                super(id);
+                this.isFake = isFake;
+                charge = 5;
         }
 
         @Override
