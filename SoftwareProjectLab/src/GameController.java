@@ -36,32 +36,26 @@ public class GameController {
 
         maze.tick();
         List<Room> rooms = maze.getRooms();
-        Iterator<Room> roomIterator = rooms.iterator();
-        while(roomIterator.hasNext()){
-            Room room = roomIterator.next();
-            room.tick();
-            List<Person> people = room.getPeopleInRoom();
-            Iterator<Person> iterator = people.iterator();
-            while(iterator.hasNext()){
-                Person person = iterator.next();
-                if(person instanceof Student student){
-                    playersAlive.add(student);
-                }
+        List<Person> people = new ArrayList<Person>();
+        List<Item> items = new ArrayList<Item>();
+        for(Room room : rooms){
+            people.addAll(room.getPeopleInRoom());
+            items.addAll(room.getItemInventory());
+        }
+        for(Person person : people){
+            if(person instanceof Student)
+                playersAlive.add((Student) person);
 
-                person.tick();
-                List<Item> items = person.getItemInventory();
-                Iterator<Item> itemIterator = items.iterator();
-                while (itemIterator.hasNext()){
-                    Item item = itemIterator.next();
-                    item.tick();
-                }
-            }
-            List<Item> items = room.getItemInventory();
-            Iterator<Item> itemIterator = items.iterator();
-            while(itemIterator.hasNext()){
-                Item item = itemIterator.next();
-                item.tick();
-            }
+            items.addAll(person.getItemInventory());
+        }
+        for(Item item : items){
+            item.tick();
+        }
+        for (Person person : people) {
+            person.tick();
+        }
+        for (Student player : playersAlive) {
+            player.tick();
         }
 
         players.removeIf(player -> !playersAlive.contains(player));

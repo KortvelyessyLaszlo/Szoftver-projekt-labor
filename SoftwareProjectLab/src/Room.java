@@ -1,7 +1,4 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 public class Room implements ITickable{
 
@@ -254,7 +251,9 @@ public class Room implements ITickable{
 
         this.itemInventory.addAll(neighbour.itemInventory);
 
-        for(Room room : neighbour.neighbours){
+        Iterator<Room> neighbourIterator = neighbour.neighbours.iterator();
+        while(neighbourIterator.hasNext()){
+            Room room = neighbourIterator.next();
             if(room != this) {
                 room.neighbours.add(this);
                 this.neighbours.add(room);
