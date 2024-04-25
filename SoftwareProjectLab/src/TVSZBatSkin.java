@@ -1,17 +1,9 @@
 public class TVSZBatSkin extends Item{
 
-        public boolean isFake() {
-                return isFake;
-        }
-
-        public void setFake(boolean fake) {
-                isFake = fake;
-        }
-
         /**
          * A TVSZBatSkin osztály adattagja, ami jelzi, hogy a bőr hamis-e
          */
-        private boolean isFake = false;
+        private final boolean isFake;
 
         /**
          * A visszamaradó megmentések száma
@@ -28,16 +20,31 @@ public class TVSZBatSkin extends Item{
                 charge = 5;
         }
 
+        /**
+         * A TVSZBatSkin aktiválása
+         * @param person : Az adott személy
+         */
         @Override
         public void activate(Person person) {
                 if(isFake)  return;
                 setActive(true);
         }
 
+        /**
+         * A TVSZBatSkin felvétele
+         * @param person : Az adott személy
+         */
         @Override
         public void pickUp(Person person) {
                 activate(person);
         }
+
+        /**
+         * A TVSZBatSkin védekezése
+         * Ha a bőr aktív és nem megsemmisült, akkor a megmentések számát csökkenti eggyel
+         * Ha a megmentések száma 0, akkor a bőr megsemmisül
+         * @return Igaz, ha a védekezés sikeres, egyébként hamis
+         */
         @Override
         public boolean defend() {
                 if(this.isActive() && !this.isDestroyed()){

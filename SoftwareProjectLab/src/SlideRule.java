@@ -1,17 +1,9 @@
 public class SlideRule extends Item{
 
-    public boolean isFake() {
-        return isFake;
-    }
-
-    public void setFake(boolean fake) {
-        isFake = fake;
-    }
-
     /**
      * Az adott logarléc hamis-e
      */
-    private boolean isFake = false;
+    private final boolean isFake;
 
     /**
      * A SlideRule osztály konstruktora
@@ -22,6 +14,10 @@ public class SlideRule extends Item{
         this.isFake = isFake;
     }
 
+    /**
+     * A SlideRule aktiválása
+     * @param person : Az adott személy
+     */
     @Override
     public void activate(Person person) {
         if(isFake)
@@ -29,6 +25,10 @@ public class SlideRule extends Item{
         victory(person);
     }
 
+    /**
+     * A SlideRule felvétele
+     * @param person : Az adott személy
+     */
     @Override
     public void pickUp(Person person) {
         activate(person);

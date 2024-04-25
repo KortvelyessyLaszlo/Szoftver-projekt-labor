@@ -1,6 +1,5 @@
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public abstract class Person implements ITickable, Serializable {
@@ -27,8 +26,12 @@ public abstract class Person implements ITickable, Serializable {
     /**
      * Az adott személy tárgylistája
      */
-    private List<Item> itemInventory = new ArrayList<Item>();
+    private List<Item> itemInventory = new ArrayList<>();
 
+    /**
+     * A Person osztály konstruktora
+     * @param name : Az adott személy neve
+     */
     public Person(String name) {
         this.name = name;
     }

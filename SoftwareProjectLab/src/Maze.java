@@ -1,6 +1,5 @@
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -14,15 +13,7 @@ public class Maze implements ITickable, Serializable {
     /**
      * A szobákat tároló lista
      */
-    private List<Room> rooms = new ArrayList<Room>();
-
-    /**
-     * A szoba id-jét beállító függvény
-     * @param nextRoomId : A következő szoba id-je
-     */
-    public void setNextRoomId(int nextRoomId) {
-        this.nextRoomId = nextRoomId;
-    }
+    private final List<Room> rooms = new ArrayList<>();
 
     /**
      * A következő szoba id-jét visszaadó függvény
@@ -41,28 +32,12 @@ public class Maze implements ITickable, Serializable {
     }
 
     /**
-     * A Maze osztály rooms attribútumához tartozó setter függvény
-     * @param rooms : A labirintusban lévő szobák listája
-     */
-    public void setRooms(List<Room> rooms) {
-        this.rooms = rooms;
-    }
-
-    /**
      * A laborintushoz egy szoba hozzáadásáért felelős függvény
      * @param room : A hozzáadandó szoba
      */
     public void addRoom(Room room) {
         rooms.add(room);
         nextRoomId++;
-    }
-
-    /**
-     * A laborintusból egy szoba eltávolításáért felelős függvény
-     * @param room : Eltávolítandó szoba
-     */
-    public void removeRoom(Room room) {
-        rooms.remove(room);
     }
 
     /**

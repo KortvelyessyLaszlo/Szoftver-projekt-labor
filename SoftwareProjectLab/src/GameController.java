@@ -4,16 +4,34 @@ import java.io.*;
 
 public class GameController implements Serializable {
 
+    /**
+     * A játékosok számát tároló változó
+     */
     private int playerCount;
 
+    /**
+     * A teszt mód beállításáért felelős változó
+     */
     private boolean isTestMode;
 
+    /**
+     * A játék elindult-e
+     */
     private boolean isGameStarted;
 
+    /**
+     * A játékban szereplő labirintust tároló változó
+     */
     private Maze maze;
 
-    private List<Student> players = new ArrayList<Student>();
+    /**
+     * A játékban szereplő játékosokat tároló lista
+     */
+    private List<Student> players = new ArrayList<>();
 
+    /**
+     * A jelenlegi játékos
+     */
     private Student currentPlayer;
 
     /**
@@ -23,7 +41,7 @@ public class GameController implements Serializable {
      */
     private List<String> parse(String input) {
         String[] parts = input.split(" ");
-        return new ArrayList<String>(Arrays.asList(parts));
+        return new ArrayList<>(Arrays.asList(parts));
     }
 
     /**
@@ -34,12 +52,12 @@ public class GameController implements Serializable {
      * Ha egy játékos meghal, akkor azt a játékosok listájából törli.
      */
     private void tickAll(){
-        List<Student> playersAlive = new ArrayList<Student>();
+        List<Student> playersAlive = new ArrayList<>();
 
         maze.tick();
         List<Room> rooms = maze.getRooms();
-        List<Person> people = new ArrayList<Person>();
-        List<Item> items = new ArrayList<Item>();
+        List<Person> people = new ArrayList<>();
+        List<Item> items = new ArrayList<>();
         for(Room room : rooms){
             people.addAll(room.getPeopleInRoom());
             items.addAll(room.getItemInventory());
@@ -68,6 +86,12 @@ public class GameController implements Serializable {
         }
     }
 
+    /**
+     * A játék indításáért felelős függvény
+     * A függvény addig kér be parancsokat a felhasználótól, amíg a felhasználó nem adja meg a 'test' vagy 'user' parancsot.
+     * Ha a felhasználó 'test' parancsot ad meg, akkor a teszt mód indul el.
+     * Ha a felhasználó 'user' parancsot ad meg, akkor a játék mód indul el.
+     */
     public void processStart(){
         Scanner scanner = new Scanner(System.in);
         String command = "";
@@ -83,6 +107,11 @@ public class GameController implements Serializable {
         }
     }
 
+    /**
+     * A teszt mód indításáért felelős függvény
+     * A függvény addig kér be parancsokat a felhasználótól, amíg a felhasználó ki nem lép a teszt módból.
+     * A függvény a felhasználó által megadott parancsokat értelmezi és végrehajtja.
+     */
     private void startTestMode(){
         System.out.println();
         System.out.println();
@@ -142,6 +171,16 @@ public class GameController implements Serializable {
         }
     }
 
+    /**
+     * A tesztet lefuttató függvény
+     * A függvény beolvassa a tesztesetet a megfelelő fájlból, majd végrehajtja a tesztesetet.
+     * A teszteset végrehajtása után összehasonlítja a teszteset kimenetét az elvárt kimenettel.
+     * Ha a kimenet megegyezik az elvárt kimenettel, akkor a teszt sikeres volt.
+     * Ha a kimenet nem egyezik meg az elvárt kimenettel, akkor a teszt sikertelen volt.
+     * Ha a teszt futtatása során kivétel keletkezik, akkor a teszt sikertelen volt.
+     * A teszt eredményét kiírja a konzolra.
+     * @param testNumber : A teszteset száma
+     */
     private void runTest(int testNumber) {
         Maze testMaze = null;
         List<Room> testRooms = new ArrayList<>();
@@ -161,9 +200,7 @@ public class GameController implements Serializable {
                 }
                 String commandName = parts.getFirst();
                 switch (commandName) {
-                    case "createMaze" -> {
-                        testMaze = new Maze();
-                    }
+                    case "createMaze" -> testMaze = new Maze();
                     case "createRoom" -> {
                         int capacity = Integer.parseInt(parts.get(1));
                         testRooms.add(new Room(capacity, nextRoomId++));
@@ -182,36 +219,24 @@ public class GameController implements Serializable {
                     }
                     case "createItem" -> {
                         switch (parts.get(1)) {
-                            case "AF" -> {
-                                testItems.add(new AirFreshener(nextItemId++));
-                            }
-                            case "CC" -> {
-                                testItems.add(new CannedCamembert(nextItemId++));
-                            }
+                            case "AF" -> testItems.add(new AirFreshener(nextItemId++));
+                            case "CC" -> testItems.add(new CannedCamembert(nextItemId++));
                             case "FFP2" -> {
                                 boolean isFake = Boolean.parseBoolean(parts.get(2));
                                 testItems.add(new FFP2Mask(nextItemId++, isFake));
                             }
-                            case "HBG" -> {
-                                testItems.add(new HolyBeerGlass(nextItemId++));
-                            }
-                            case "T" -> {
-                                testItems.add(new Transistor(nextItemId++));
-                            }
+                            case "HBG" -> testItems.add(new HolyBeerGlass(nextItemId++));
+                            case "T" -> testItems.add(new Transistor(nextItemId++));
                             case "TVSZ" -> {
                                 boolean isFake = Boolean.parseBoolean(parts.get(2));
                                 testItems.add(new TVSZBatSkin(nextItemId++, isFake));
                             }
-                            case "WWC" -> {
-                                testItems.add(new WetWipeCloth(nextItemId++));
-                            }
+                            case "WWC" -> testItems.add(new WetWipeCloth(nextItemId++));
                             case "SR" -> {
                                 boolean isFake = Boolean.parseBoolean(parts.get(2));
                                 testItems.add(new SlideRule(nextItemId++, isFake));
                             }
-                            default -> {
-                                System.out.println("Unknown item type: " + parts.get(1));
-                            }
+                            default -> System.out.println("Unknown item type: " + parts.get(1));
                         }
                     }
                     case "addPerson" -> {
@@ -407,15 +432,13 @@ public class GameController implements Serializable {
                             } catch (ClassCastException ignored) {}
                         }
                     }
-                    default -> {
-                        System.out.println("Unknown test command: " + command);
-                    }
+                    default -> System.out.println("Unknown test command: " + command);
                 }
             }
 
             StringBuilder testOutput = new StringBuilder();
             if (testMaze != null) {
-                testOutput.append(testMaze.toString()).append("\n");
+                testOutput.append(testMaze).append("\n");
                 for (Room room : testMaze.getRooms()) {
                     testOutput.append(room.toString()).append("\n");
                 }
@@ -456,6 +479,13 @@ public class GameController implements Serializable {
         }
     }
 
+    /**
+     * A játék mód indításáért felelős függvény
+     * A függvény addig kér be parancsokat a felhasználótól, amíg a játék véget nem ér.
+     * A függvény a felhasználó által megadott parancsokat értelmezi és végrehajtja.
+     * A függvény a játék működése során folyamatosan kiírja a játékosok statisztikáját.
+     * Ha a játék véget ér, akkor a függvény kiírja a játék végeredményét.
+     */
     private void startGameMode(){
         System.out.println("Available commands: ");
         System.out.println("start <playerCount> - Start the game");
@@ -494,7 +524,7 @@ public class GameController implements Serializable {
                 tickAll();
 
             if(isGameStarted){
-                List<Student> notPoisonedPlayers = new ArrayList<Student>();
+                List<Student> notPoisonedPlayers = new ArrayList<>();
                 for(Student player : players){
                     if(!player.isPoisoned()){
                         notPoisonedPlayers.add(player);
@@ -514,6 +544,12 @@ public class GameController implements Serializable {
         }
     }
 
+    /**
+     * A játék parancsa alapján végrehajtja a megfelelő műveletet.
+     * Ha a parancs nem értelmezhető, akkor a függvény kiírja, hogy az adott parancs érvénytelen.
+     * Ha a parancs értelmezhető, akkor a függvény végrehajtja a parancsot.
+     * @param command : A játék parancsa
+     */
     private void processGameCommand(String command){
         List<String> parts = parse(command);
         if(parts.isEmpty()){
@@ -642,6 +678,10 @@ public class GameController implements Serializable {
         }
     }
 
+    /**
+     * A soron következő játékos statisztikáját kiíró függvény
+     * A függvény kiírja a játékos nevét, hogy mérgezett-e, a játékos jelenlegi szobáját és a játékos tárgyait.
+     */
     private void showPlayerStat(){
         System.out.println("Player: \u001B[34m" + currentPlayer.getName() + "\u001B[0m isPoisoned= " + currentPlayer.isPoisoned());
         System.out.println("Room: " + currentPlayer.getCurrentRoom());
@@ -651,6 +691,13 @@ public class GameController implements Serializable {
         }
     }
 
+    /**
+     * A játék inicializálásáért felelős függvény
+     * A függvény inicializálja a játékot.
+     * A függvény létrehozza a játékosokat, a szobákat és az itemeket.
+     * A függvény beállítja a játék kezdeti állapotát.
+     * A függvény beállítja a játék kezdeti játékosát.
+     */
     private void initGame(){
         players.clear();
         Random random = new Random();
@@ -694,7 +741,7 @@ public class GameController implements Serializable {
             maze.getRooms().get(random.nextInt(maze.getRooms().size())).addItem(new WetWipeCloth(itemId++));
         }
         maze.getRooms().get(random.nextInt(maze.getRooms().size())).addItem(new SlideRule(itemId++, false));
-        maze.getRooms().get(random.nextInt(maze.getRooms().size())).addItem(new SlideRule(itemId++, true));
+        maze.getRooms().get(random.nextInt(maze.getRooms().size())).addItem(new SlideRule(itemId, true));
 
         for(int i = 0; i < playerCount; i++){
             Student student = new Student("Player" + i);
@@ -721,6 +768,14 @@ public class GameController implements Serializable {
         }
     }
 
+    /**
+     * A játék állapotának mentéséért felelős függvény
+     * A függvény elmenti a játék állapotát egy fájlba.
+     * A függvény a játék állapotát a GameController objektum segítségével menti el.
+     * A függvény a játék állapotát a resources/save.txt fájlba menti el.
+     * Ha a mentés sikeres volt, akkor a függvény kiírja a konzolra, hogy a játék sikeresen el lett mentve.
+     * Ha a mentés sikertelen volt, akkor a függvény kiírja a konzolra, hogy a játék mentése sikertelen volt.
+     */
     private void save(){
         try {
             FileOutputStream file = new FileOutputStream("resources\\save.txt");
@@ -734,6 +789,14 @@ public class GameController implements Serializable {
         }
     }
 
+    /**
+     * A játék állapotának betöltéséért felelős függvény
+     * A függvény betölti a játék állapotát egy fájlból.
+     * A függvény a játék állapotát a GameController objektum segítségével tölti be.
+     * A függvény a játék állapotát a resources/save.txt fájlból tölti be.
+     * Ha a betöltés sikeres volt, akkor a függvény kiírja a konzolra, hogy a játék sikeresen betöltve lett.
+     * Ha a betöltés sikertelen volt, akkor a függvény kiírja a konzolra, hogy a játék betöltése sikertelen volt.
+     */
     private void load(){
         try {
             GameController temp;
@@ -752,12 +815,8 @@ public class GameController implements Serializable {
             startGameMode();
         } catch (FileNotFoundException e) {
             System.out.println("No saved game found");
-        } catch (IOException e) {
+        } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
-            return;
-        } catch (ClassNotFoundException c) {
-            c.printStackTrace();
-            return;
         }
     }
 }

@@ -13,22 +13,6 @@ public abstract class TimedItem extends Item {
     }
 
     /**
-     * A TimedItem remainingTime attribútumára vonatkozó getter függvény
-     * @return A megmaradó aktív idő 
-     */
-    public int getRemainingTime() {
-        return remainingTime;
-    }
-
-    /**
-     * A TimedItem remainingTime attribútumára vonatkozó setter függvény
-     * @param remainingTime : A megmaradó aktív idő 
-     */
-    public void setRemainingTime(int remainingTime) {
-        this.remainingTime = remainingTime;
-    }
-
-    /**
      * A tárgy aktív idejének csökkentése
      * Ha a tárgy aktív és nem megsemmisült, akkor a megmaradó időt csökkenti eggyel
      * Ha a megmaradó idő 0, akkor a tárgy inaktiválódik

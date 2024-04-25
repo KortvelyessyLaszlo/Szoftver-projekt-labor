@@ -7,7 +7,7 @@ public class CursedRoom extends Room {
     /**
      * A nem látható szobákat tároló lista
      */
-    private List<Room> invisibleRooms = new ArrayList<Room>();
+    private final List<Room> invisibleRooms = new ArrayList<>();
 
     /**
      * A CursedRoom osztály konstruktora
@@ -19,41 +19,14 @@ public class CursedRoom extends Room {
     }
 
     /**
-     * A CursedRoom osztály getter függvénye
-     * @return A nem látható szobákat tároló lista
-     */
-    public List<Room> getInvisibleRooms() {
-        return invisibleRooms;
-    }
-
-    /**
-     * A CursedRoom osztály setter függvénye
-     * @param invisibleRooms : Egy nem látható szobákat tároló lista
-     */
-    public void setInvisibleRooms(List<Room> invisibleRooms) {
-        this.invisibleRooms = invisibleRooms;
-    }
-
-    /**
-     * A nem látható szobákat tároló listához egy új szoba hozzáadása
-     * @param room : A hozzáadandó szoba
-     */
-    public void addInvisibleRoom(Room room) {
-        invisibleRooms.add(room);
-    }
-
-    /**
-     * A nem látható szobákat tároló listából egy meglévő szoba eltávolítása
-     * @param room : Az eltávolítandó szoba
-     */
-    public void removeInvisibleRoom(Room room) {
-        invisibleRooms.remove(room);
-    }
-
-    /**
      *  Az invisbleRooms listában levő szobákat hozzáadja a
         neighbours listához, majd véletlenszerűen kiválaszt szobákat a neigbours listából.
         Ezeket törli és hozzáadja az invisbleRooms listához.
+     *  A szoba szomszédait frissíti
+     *  A szoba szomszédait véletlenszerűen kiválasztja
+     *  Ha a szoba szomszédai száma nagyobb mint 1, akkor a szoba szomszédai közül véletlenszerűen kiválaszt egyet
+     *  A kiválasztott szomszédot hozzáadja az invisibleRooms listához
+     *  A szoba szomszédait frissíti
      */
     public void updateCursedDoors() {
         Random random = new Random();
@@ -73,6 +46,12 @@ public class CursedRoom extends Room {
         setNeighbours(neighbours);
     }
 
+    /**
+     * A szoba szétválasztása
+     * Az invisibleRooms listában levő szobákat hozzáadja a neighbours listához
+     * @param newId : Az új szoba azonosítója
+     * @return : Az új szoba
+     */
     @Override
     public Room splitRoom(int newId) {
         getNeighbours().addAll(invisibleRooms);
@@ -80,6 +59,12 @@ public class CursedRoom extends Room {
         return super.splitRoom(newId);
     }
 
+    /**
+     * A szobák összevonása
+     * Az invisibleRooms listában levő szobákat hozzáadja a neighbours listához
+     * Az invisibleRooms listát törli
+     * @return : A kombinált szoba
+     */
     @Override
     public Room combineRooms() {
         getNeighbours().addAll(invisibleRooms);
@@ -87,6 +72,9 @@ public class CursedRoom extends Room {
         return super.combineRooms();
     }
 
+    /**
+     * A szoba frissítése
+     */
     @Override
     public void tick() {
         updateCursedDoors();

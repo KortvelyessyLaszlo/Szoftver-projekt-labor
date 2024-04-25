@@ -36,6 +36,12 @@ public class Teacher extends Person {
         this.stunDuration = 10;
     }
 
+    /**
+     * A tanár belép egy szobába
+     * Ha a tanár bénult, akkor nem lép be a szobába
+     *
+     * @param room : A szoba, amibe belép
+     */
     @Override
     public void enter(Room room){
         if(isStunned()){
@@ -44,6 +50,14 @@ public class Teacher extends Person {
         super.enter(room);
     }
 
+    /**
+     * A tanár találkozik egy hallgatóval. Ha a tanár mérgezve
+        van, vagy bénult, akkor a függvény visszatér. Ellenkező esetben a hallgató megnézi,
+        hogy van-e nála bénító tárgy, ha igen, akkor a tanár bénul. Ha nincs, akkor megnézi,
+        hogy van-e nála védő tárgy, ha igen, akkor a függvény visszatér. Ha nincs, akkor a
+        hallgató eliminálódik.
+     * @param student : A hallgató, akivel a tanár találkozott
+     */
     @Override
     public void meet(Student student){
         if(isPoisoned() || isStunned())

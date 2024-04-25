@@ -69,6 +69,14 @@ public class Transistor extends Item{
         item.pair(this);
     }
 
+    /**
+     * A tranzisztor felvétele
+     * A tranzisztor inaktiválódik, ha felvették
+     * Ha a tranzisztor egy párosított tranzisztort tartalmaz, akkor az is inaktiválódik
+     * Ha a tranzisztor egy szobában volt, akkor a szoba referencia is törlődik
+     * @param person : A személy, aki felveszi a tranzisztort
+     */
+    @Override
     public void pickUp(Person person) {
         this.setActive(false);
 
@@ -81,6 +89,9 @@ public class Transistor extends Item{
         }
     }
 
+    /**
+     * A tranzisztor párosítása
+     */
     @Override
     public void pair(Transistor transistor){
         if(transistor.pair == null && this.pair == null && this != transistor){

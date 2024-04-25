@@ -13,8 +13,14 @@ public class Room implements ITickable, Serializable {
      */
     private boolean isGassed;
 
+    /**
+     * A szoba ragadós tulajdonságára vonatkozó attribútum
+     */
     private boolean isSticky;
 
+    /**
+     * A szoba belépések számát tároló attribútum
+     */
     private int enterCounter;
 
     /**
@@ -25,12 +31,12 @@ public class Room implements ITickable, Serializable {
     /**
      * A szobában tartózkodó személyek listája
      */
-    private List<Person> peopleInRoom = new ArrayList<Person>();
+    private List<Person> peopleInRoom = new ArrayList<>();
 
     /**
      * A szobában lévő tárgyak listája
      */
-    private List<Item> itemInventory = new ArrayList<Item>();
+    private List<Item> itemInventory = new ArrayList<>();
 
     /**
      * A szobának a szomszédos szobáinak listája
@@ -56,6 +62,10 @@ public class Room implements ITickable, Serializable {
         return isGassed;
     }
 
+    /**
+     * A szoba ragadós tulajdonságára vonatkozó attribútum getter függvénye
+     * @return A szoba ragadós tulajdonsága
+     */
     public boolean isSticky() { return isSticky; }
 
     /**A szoba gázosságára vonatkozó attribútum setter függvénye
@@ -65,6 +75,10 @@ public class Room implements ITickable, Serializable {
         this.isGassed = isGassed;
     }
 
+    /**
+     * A szoba ragadós tulajdonságára vonatkozó attribútum setter függvénye
+     * @param isSticky : A szoba ragadós tulajdonsága
+     */
     public void setSticky(boolean isSticky) {
         this.isSticky = isSticky;
     }
@@ -85,7 +99,11 @@ public class Room implements ITickable, Serializable {
         return capacity;
     }
 
-    public int getenterCounter() {
+    /**
+     * A szoba belépések számát tároló attribútum getter függvénye
+     * @return A szoba belépések száma
+     */
+    public int getEnterCounter() {
         return enterCounter;
     }
 
@@ -97,6 +115,10 @@ public class Room implements ITickable, Serializable {
         this.capacity = capacity;
     }
 
+    /**
+     * A szoba belépések számát tároló attribútum setter függvénye
+     * @param enterCounter : A szoba belépések száma
+     */
     public void setEnterCounter(int enterCounter) {
         this.enterCounter = enterCounter;
     }
@@ -190,14 +212,6 @@ public class Room implements ITickable, Serializable {
      */
     public void addNeighbour(Room neighbour) {
         neighbours.add(neighbour);
-    }
-
-    /**
-     * A szobából egy meglévő szomszédos szoba eltávolítása
-     * @param neighbour : Az eltávolítandó szomszédos szoba
-     */
-    public void removeNeighbour(Room neighbour) {
-        neighbours.remove(neighbour);
     }
 
     /**
@@ -307,8 +321,8 @@ public class Room implements ITickable, Serializable {
             return false;
         }
         peopleInRoom.add(person);
-        this.setEnterCounter(this.getenterCounter() + 1);
-        if(this.getenterCounter() >= 10)
+        this.setEnterCounter(this.getEnterCounter() + 1);
+        if(this.getEnterCounter() >= 10)
             this.setSticky(true);
         return true;
     }
@@ -322,7 +336,7 @@ public class Room implements ITickable, Serializable {
 
         StringBuilder itemInventoryString = new StringBuilder();
         for(Item item : itemInventory){
-            itemInventoryString.append(item.getId()).append(" " + item.getClass().getName()).append(",");
+            itemInventoryString.append(item.getId()).append(" ").append(item.getClass().getName()).append(",");
         }
 
         StringBuilder neighboursString = new StringBuilder();

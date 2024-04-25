@@ -2,8 +2,15 @@ import java.util.List;
 
 public class Student extends Person {
 
+    /**
+     * Az adott hallgató győztes-e
+     */
     private boolean isWinner;
 
+    /**
+     * A hallgatő mérgezésének beállítása
+     * @param value : A mérgezés állapota
+     */
     @Override
     public void setPoisoned(boolean value) {
         super.setPoisoned(value);
@@ -11,9 +18,18 @@ public class Student extends Person {
             System.out.println("\u001B[31m" + this.getName() + " got poisoned \u001B[0m");
     }
 
+    /**
+     * A hallgató győztes állapotának getter függvénye
+     * @return A hallgató győztes-e
+     */
     public boolean isWinner() { return isWinner; }
 
+    /**
+     * A hallgató győztes állapotának setter függvénye
+     * @param value : A hallgató győztes állapota
+     */
     public void setWinner(boolean value) { isWinner = value; }
+
     /**
      * A Student osztály konstruktora
      * @param name : Az adott hallgató neve
@@ -67,6 +83,11 @@ public class Student extends Person {
         teacher.eliminate(this);
     }
 
+    /**
+     * A hallgató felvesz egy tárgyat. Ha a szoba ragacsos, akkor
+        a függvény visszatér. Ha a hallgató tárgyai száma eléri az 5-öt, akkor a függvény
+        visszatér. Ellenkező esetben a hallgató felveszi a tárgyat.
+     */
     @Override
     public void pickUp(Item item){
         super.pickUp(item);
@@ -91,7 +112,7 @@ public class Student extends Person {
         igazzal tér vissza.
      * @return A hallgató rendelkezik-e olyan tárggyal, amely megvédi őt
      */
-    public boolean checkForDefensiveItems(){;
+    public boolean checkForDefensiveItems(){
         for(Item item : getItemInventory()){
             if(item.defend())
                 return true;

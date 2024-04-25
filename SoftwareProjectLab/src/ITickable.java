@@ -1,3 +1,3 @@
 public interface ITickable {
-    public void tick();
+    void tick();
 }
