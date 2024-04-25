@@ -116,7 +116,6 @@ public class Teacher extends Person implements ITickable{
         if(randomValue == 1){
             var temp = currentRoom.getNeighbours().get(random.nextInt(currentRoom.getNeighbours().size()));
             this.enter(temp);
-            System.out.println("Tanár lép" + temp);
         }
         Skeleton.log("return", false);
     }
