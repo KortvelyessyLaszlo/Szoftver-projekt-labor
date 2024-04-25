@@ -666,13 +666,12 @@ public class GameController {
             maze.getRooms().get(i).addNeighbour(maze.getRooms().get(i + 1));
         }
         maze.getRooms().getLast().addNeighbour(maze.getRooms().get(maze.getRooms().size() - 2));
-;
+
         for(int i = 0; i < maze.getRooms().size(); ++i) {
             int neighbourCount = random.nextInt(4);
             for(int j = 0; j < neighbourCount; ++j) {
                 Room neighbour = maze.getRooms().get(random.nextInt(maze.getRooms().size()));
                 if(maze.getRooms().get(i).getNeighbours().contains(neighbour)  || neighbour == maze.getRooms().get(i)){
-                    //j--;
                     continue;
                 }
                 maze.getRooms().get(i).addNeighbour(neighbour);
@@ -704,9 +703,9 @@ public class GameController {
 
         int teacherCountAndJanitorCount;
         if(playerCount % 2 == 1){
-            teacherCountAndJanitorCount = playerCount ;
+            teacherCountAndJanitorCount = playerCount / 2 + 1;
         }else {
-            teacherCountAndJanitorCount = playerCount ;
+            teacherCountAndJanitorCount = playerCount / 2;
         }
         for(int i = 0; i <  teacherCountAndJanitorCount; i++){
             Teacher teacher = new Teacher("Teacher" + i);
