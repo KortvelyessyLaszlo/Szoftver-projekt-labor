@@ -59,6 +59,11 @@ public class GameController {
         }
 
         players.removeIf(player -> !playersAlive.contains(player));
+        if(players.isEmpty()) {
+            isGameStarted = false;
+            System.out.println("A tanulók vesztettek");
+            processStart();
+        }
     }
 
     public void processStart(){
@@ -93,8 +98,19 @@ public class GameController {
         System.out.println("pair - Pair the transistor in your inventory");
         System.out.println("use <itemId> - Use the specified item");
 
+        int i = 0;
+
         Scanner scanner = new Scanner(System.in);
         while (true) {
+            for(Student player : players) {
+                if(player.isWinner()) {
+                    player.setWinner(false);
+                    isGameStarted = false;
+                    processStart();
+                    return;
+                }
+            }
+
             if(isGameStarted)
                 showPlayerStat();
 
@@ -103,6 +119,18 @@ public class GameController {
 
             if(isGameStarted)
                 tickAll();
+
+            if (i >= players.size()) {
+                i = 0;
+            }
+
+            currentPlayer = players.get(i);
+
+            if (i == players.size() - 1) {
+                i = 0;
+            } else {
+                i++;
+            }
         }
     }
 
@@ -227,7 +255,7 @@ public class GameController {
     }
 
     private void showPlayerStat(){
-        System.out.println("Player: " + currentPlayer.getName());
+        System.out.println("Player: \u001B[34m" + currentPlayer.getName() + "\u001B[0m");
         System.out.println("Room: " + currentPlayer.getCurrentRoom());
         System.out.println("Items: ");
         for(Item item : currentPlayer.getItemInventory()){
@@ -236,6 +264,7 @@ public class GameController {
     }
 
     private void initGame(){
+        players.clear();
         Random random = new Random();
         this.maze = new Maze();
         for(int i = 0; i < playerCount * 5; i++){
@@ -248,13 +277,13 @@ public class GameController {
             maze.getRooms().get(i).addNeighbour(maze.getRooms().get(i + 1));
         }
         maze.getRooms().getLast().addNeighbour(maze.getRooms().get(maze.getRooms().size() - 2));
-
+;
         for(int i = 0; i < maze.getRooms().size(); ++i) {
             int neighbourCount = random.nextInt(4);
             for(int j = 0; j < neighbourCount; ++j) {
                 Room neighbour = maze.getRooms().get(random.nextInt(maze.getRooms().size()));
                 if(maze.getRooms().get(i).getNeighbours().contains(neighbour)  || neighbour == maze.getRooms().get(i)){
-                    j--;
+                    //j--;
                     continue;
                 }
                 maze.getRooms().get(i).addNeighbour(neighbour);
@@ -286,9 +315,9 @@ public class GameController {
 
         int teacherCountAndJanitorCount;
         if(playerCount % 2 == 1){
-            teacherCountAndJanitorCount = playerCount / 2 + 1;
+            teacherCountAndJanitorCount = playerCount ;
         }else {
-            teacherCountAndJanitorCount = playerCount / 2;
+            teacherCountAndJanitorCount = playerCount ;
         }
         for(int i = 0; i <  teacherCountAndJanitorCount; i++){
             Teacher teacher = new Teacher("Teacher" + i);

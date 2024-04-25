@@ -40,6 +40,7 @@ public class Teacher extends Person implements ITickable{
 
     @Override
     public void meet(Student student){
+        System.out.println("TEACHER MEET");
         Skeleton.log(this.getName() + ".meet(" + student.getName() + ")", true);
         if(isPoisoned() || isStunned()){
             Skeleton.log("return", false);
@@ -113,7 +114,9 @@ public class Teacher extends Person implements ITickable{
             }
         }
         if(randomValue == 1){
-            this.enter(currentRoom.getNeighbours().get(random.nextInt(currentRoom.getNeighbours().size())));
+            var temp = currentRoom.getNeighbours().get(random.nextInt(currentRoom.getNeighbours().size()));
+            this.enter(temp);
+            System.out.println("Tanár lép" + temp);
         }
         Skeleton.log("return", false);
     }

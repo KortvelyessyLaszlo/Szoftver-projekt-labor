@@ -340,7 +340,7 @@ public class Room implements ITickable{
 
         StringBuilder itemInventoryString = new StringBuilder();
         for(Item item : itemInventory){
-            itemInventoryString.append(item.getId()).append(",");
+            itemInventoryString.append(item.getId()).append(" " + item.getClass().getName()).append(",");
         }
 
         StringBuilder neighboursString = new StringBuilder();

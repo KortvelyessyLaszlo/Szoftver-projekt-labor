@@ -47,4 +47,8 @@ public class FFP2Mask extends TimedItem{
         Skeleton.log("return " + result, false);
         return result;
     }
+
+    public String toString(){
+        return super.toString() + ", isFake=" + isFake;
+    }
 }

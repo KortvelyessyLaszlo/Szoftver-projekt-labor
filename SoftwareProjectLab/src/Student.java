@@ -2,6 +2,11 @@ import java.util.List;
 
 public class Student extends Person implements ITickable{
 
+    private boolean isWinner;
+
+    public boolean isWinner() { return isWinner; }
+
+    public void setWinner(boolean value) { isWinner = value; }
     /**
      * A Student osztály konstruktora
      * @param name : Az adott hallgató neve
@@ -45,6 +50,7 @@ public class Student extends Person implements ITickable{
      */
     @Override
     public void meet(Teacher teacher){
+        System.out.println("TEACHER MEET");
         Skeleton.log(this.getName() + ".meet(" + teacher.getName() + ")", true);
         if(teacher.isPoisoned() || teacher.isStunned()){
             Skeleton.log("return", false);

@@ -47,7 +47,13 @@ public class SlideRule extends Item{
      */
     public void victory(Person person) {
         Skeleton.log("SlideRule" + this.getId() + ".victory(" + person.getName() + ")", true);
+        Student winner = (Student) person;
+        winner.setWinner(true);
         System.out.println(person.getName() + " has won the game!");
         Skeleton.log("return", false);
+    }
+
+    public String toString(){
+        return super.toString() + ", isFake=" + isFake;
     }
 }

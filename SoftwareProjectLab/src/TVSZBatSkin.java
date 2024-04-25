@@ -60,6 +60,6 @@ public class TVSZBatSkin extends Item{
         }
         @Override
         public String toString(){
-            return super.toString() + ", charge=" + charge;
+            return super.toString() + ", charge=" + charge + ", isFake=" + isFake;
         }
 }

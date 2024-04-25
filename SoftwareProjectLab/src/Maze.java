@@ -125,10 +125,12 @@ public class Maze implements ITickable, Serializable {
         if(randomValue > 0)
             return;
 
-        if(random.nextBoolean())
+        if(random.nextBoolean()) {
             startCombineRooms();
-        else
+        }
+        else {
             startSplitRooms();
+        }
         Skeleton.log("return", false);
     }
 }
