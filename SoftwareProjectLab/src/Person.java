@@ -188,7 +188,7 @@ public abstract class Person implements ITickable{
      */
     public void pickUp(Item item){
         Skeleton.log(this.name + ".pickUp(Item" + item.getId() + ")", true);
-        if((this.getClass() == Teacher.class && item.getClass() == SlideRule.class) || itemInventory.size() >= 5) {
+        if((this.getClass() == Teacher.class && item.getClass() == SlideRule.class) || itemInventory.size() >= 5 || this.getCurrentRoom().isSticky()) {
             Skeleton.log("return", false);
             return;
         }

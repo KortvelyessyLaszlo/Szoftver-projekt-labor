@@ -76,6 +76,9 @@ public class Student extends Person implements ITickable{
     public void pickUp(Item item){
         Skeleton.log(this.getName() + ".pickUp(Item" + item.getId() + ")", true);
         super.pickUp(item);
+
+        if(this.getCurrentRoom().isSticky()) System.out.println("\u001B[31m Pickup fail, the floor is sticky \u001B[0m");
+
         if(getItemInventory().size() < 5)
             item.pickUp(this);
         Skeleton.log("return", false);

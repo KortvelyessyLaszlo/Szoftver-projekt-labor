@@ -327,6 +327,7 @@ public class Room implements ITickable{
         }
         peopleInRoom.add(person);
         this.setenterCounter(this.getenterCounter() + 1);
+        if(this.getenterCounter() >= 10) this.setSticky(true);
         Skeleton.log("return true", false);
         return true;
     }
