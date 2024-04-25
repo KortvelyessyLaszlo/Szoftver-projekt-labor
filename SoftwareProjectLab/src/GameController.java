@@ -43,6 +43,7 @@ public class GameController implements Serializable {
         for(Room room : rooms){
             people.addAll(room.getPeopleInRoom());
             items.addAll(room.getItemInventory());
+            room.tick();
         }
         for(Person person : people){
             items.addAll(person.getItemInventory());
@@ -687,6 +688,7 @@ public class GameController implements Serializable {
             maze.getRooms().get(random.nextInt(maze.getRooms().size())).addItem(new CannedCamembert(itemId++));
             maze.getRooms().get(random.nextInt(maze.getRooms().size())).addItem(new FFP2Mask(itemId++, random.nextInt(4) == 0));
             maze.getRooms().get(random.nextInt(maze.getRooms().size())).addItem(new HolyBeerGlass(itemId++));
+            maze.getRooms().get(random.nextInt(maze.getRooms().size())).addItem(new Transistor(itemId++));
             maze.getRooms().get(random.nextInt(maze.getRooms().size())).addItem(new Transistor(itemId++));
             maze.getRooms().get(random.nextInt(maze.getRooms().size())).addItem(new TVSZBatSkin(itemId++, random.nextInt(4) == 0));
             maze.getRooms().get(random.nextInt(maze.getRooms().size())).addItem(new WetWipeCloth(itemId++));

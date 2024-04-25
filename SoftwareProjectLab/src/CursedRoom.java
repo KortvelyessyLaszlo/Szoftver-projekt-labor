@@ -56,11 +56,13 @@ public class CursedRoom extends Room {
         Ezeket törli és hozzáadja az invisbleRooms listához.
      */
     public void updateCursedDoors() {
-        getNeighbours().addAll(invisibleRooms);
+        Random random = new Random();
+        List<Room> neighbours = new ArrayList<>(getNeighbours());
+
+        neighbours.addAll(invisibleRooms);
         invisibleRooms.clear();
 
-        Random random = new Random();
-        Iterator<Room> iterator = getNeighbours().iterator();
+        Iterator<Room> iterator = neighbours.iterator();
         while (iterator.hasNext()) {
             Room neighbour = iterator.next();
             if(random.nextBoolean() && getNeighbours().size() > 1){
@@ -68,6 +70,7 @@ public class CursedRoom extends Room {
                 iterator.remove();
             }
         }
+        setNeighbours(neighbours);
     }
 
     @Override
