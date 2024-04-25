@@ -710,7 +710,7 @@ public class GameController {
         }
         for(int i = 0; i <  teacherCountAndJanitorCount; i++){
             Teacher teacher = new Teacher("Teacher" + i);
-            maze.getRooms().get(random.nextInt(maze.getRooms().size())).addPerson(teacher);
+            //maze.getRooms().get(random.nextInt(maze.getRooms().size())).addPerson(teacher);
 
             Janitor janitor = new Janitor("Janitor" + i);
             maze.getRooms().get(random.nextInt(maze.getRooms().size())).addPerson(janitor);

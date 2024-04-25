@@ -65,6 +65,7 @@ public class Transistor extends Item{
             setActive(true);
             person.getCurrentRoom().addItem(this);
             person.removeItem(this);
+            this.placedTransistorRoom = person.getCurrentRoom();
         }
         Skeleton.log("return", false);
     }
@@ -74,6 +75,18 @@ public class Transistor extends Item{
         Skeleton.log("Transistor"+this.getId()+".pair(Item" + item.getId() + ")", true);
         item.pair(this);
         Skeleton.log("return", false);
+    }
+
+    public void pickUp(Person person) {
+        this.setActive(false);
+
+        if(this.getPlacedTransistorRoom() != null)
+            this.setPlacedTransistorRoom(null);
+
+        if(this.getPair() != null) {
+            this.getPair().setPair(null);
+            this.setPair(null);
+        }
     }
 
     @Override

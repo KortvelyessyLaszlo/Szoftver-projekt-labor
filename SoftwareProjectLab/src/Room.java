@@ -251,6 +251,12 @@ public class Room implements ITickable{
 
         this.itemInventory.addAll(neighbour.itemInventory);
 
+        for(var item : this.itemInventory) {
+            if(item instanceof Transistor && ((Transistor) item).getPlacedTransistorRoom() != null) {
+                ((Transistor) item).setPlacedTransistorRoom(this);
+            }
+        }
+
         Iterator<Room> neighbourIterator = neighbour.neighbours.iterator();
         while(neighbourIterator.hasNext()){
             Room room = neighbourIterator.next();
@@ -293,6 +299,12 @@ public class Room implements ITickable{
             this.itemInventory = this.itemInventory.subList(0, splitIndex);
         }
 
+        for(var item : newRoom.itemInventory) {
+            if(item instanceof Transistor && ((Transistor) item).getPlacedTransistorRoom() != null) {
+                ((Transistor) item).setPlacedTransistorRoom(newRoom);
+            }
+        }
+
         if(!this.neighbours.isEmpty()){
             int splitIndex = random.nextInt(this.neighbours.size());
             newRoom.neighbours.addAll(this.neighbours.subList(splitIndex, this.neighbours.size()));
@@ -329,7 +341,7 @@ public class Room implements ITickable{
         }
         peopleInRoom.add(person);
         this.setenterCounter(this.getenterCounter() + 1);
-        if(this.getenterCounter() >= 2)
+        if(this.getenterCounter() >= 10)
             this.setSticky(true);
         Skeleton.log("return true", false);
         return true;
