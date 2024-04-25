@@ -38,6 +38,7 @@ public class Janitor extends Person {
     public void tick() {
         Random rand = new Random();
         if(rand.nextInt(4) == 0)
-            this.enter(currentRoom.getNeighbours().get(rand.nextInt(currentRoom.getNeighbours().size())));
+            if(!currentRoom.getNeighbours().isEmpty())
+                this.enter(currentRoom.getNeighbours().get(rand.nextInt(currentRoom.getNeighbours().size())));
     }
 }

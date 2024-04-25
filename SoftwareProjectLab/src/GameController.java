@@ -45,23 +45,20 @@ public class GameController implements Serializable {
             items.addAll(room.getItemInventory());
         }
         for(Person person : people){
-            if(person instanceof Student)
-                playersAlive.add((Student) person);
-
             items.addAll(person.getItemInventory());
+            person.tick();
         }
         for(Item item : items){
             item.tick();
         }
-        for (Person person : people) {
-            person.tick();
-        }
-        for (Student player : playersAlive) {
-            player.tick();
+        for(Room room : rooms){
+            for(Person person : room.getPeopleInRoom()){
+                if(person instanceof Student)
+                    playersAlive.add((Student) person);
+            }
         }
 
         players.removeIf(player -> !playersAlive.contains(player));
-
 
         if(players.isEmpty()) {
             isGameStarted = false;
@@ -541,7 +538,8 @@ public class GameController implements Serializable {
                 startTestMode();
             }
             case "load" -> {
-                if (isGameStarted || parts.size() != 1) {
+                File f = new File("resources\\save.txt");
+                if (isGameStarted || parts.size() != 1 || !f.exists()) {
                     System.out.println("Invalid command");
                     return;
                 }
@@ -657,7 +655,12 @@ public class GameController implements Serializable {
         Random random = new Random();
         this.maze = new Maze();
         for(int i = 0; i < playerCount * 5; i++){
-            maze.addRoom(new Room(random.nextInt(5) + 1, maze.getNextRoomId()));
+            if(random.nextInt(10) > 0)
+                maze.addRoom(new Room(random.nextInt(5) + 1, maze.getNextRoomId()));
+            else{
+                System.out.println("Cursed room added" + maze.getNextRoomId());
+                maze.addRoom(new CursedRoom(random.nextInt(5) + 1, maze.getNextRoomId()));
+            }
         }
 
         maze.getRooms().get(0).addNeighbour(maze.getRooms().get(1));
@@ -718,7 +721,7 @@ public class GameController implements Serializable {
 
     private void save(){
         try {
-            FileOutputStream file = new FileOutputStream("resources\\serialize\\save.txt");
+            FileOutputStream file = new FileOutputStream("resources\\save.txt");
             ObjectOutputStream out = new ObjectOutputStream(file);
             out.writeObject(this);
             out.close();
@@ -732,7 +735,7 @@ public class GameController implements Serializable {
     private void load(){
         try {
             GameController temp;
-            FileInputStream fileIn = new FileInputStream("resources\\serialize\\save.txt");
+            FileInputStream fileIn = new FileInputStream("resources\\save.txt");
             ObjectInputStream in = new ObjectInputStream(fileIn);
             temp = (GameController) in.readObject();
             this.playerCount = temp.playerCount;
@@ -745,6 +748,8 @@ public class GameController implements Serializable {
             fileIn.close();
 
             startGameMode();
+        } catch (FileNotFoundException e) {
+            System.out.println("No saved game found");
         } catch (IOException e) {
             e.printStackTrace();
             return;

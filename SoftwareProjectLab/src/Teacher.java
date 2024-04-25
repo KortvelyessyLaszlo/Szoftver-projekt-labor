@@ -109,8 +109,8 @@ public class Teacher extends Person {
             }
         }
         if(randomValue == 1){
-            var temp = currentRoom.getNeighbours().get(random.nextInt(currentRoom.getNeighbours().size()));
-            this.enter(temp);
+            if(!currentRoom.getNeighbours().isEmpty())
+                enter(currentRoom.getNeighbours().get(random.nextInt(currentRoom.getNeighbours().size())));
         }
     }
 }

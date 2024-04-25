@@ -42,8 +42,9 @@ public class TVSZBatSkin extends Item{
         public boolean defend() {
                 if(this.isActive() && !this.isDestroyed()){
                     charge--;
-                    if(charge == 0) setDestroyed(true);
-                        return true;
+                    if(charge == 0) setDestroyed(true);{
+                            return true;
+                        }
                 }
                 return false;
         }
