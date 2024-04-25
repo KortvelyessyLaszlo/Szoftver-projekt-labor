@@ -34,7 +34,7 @@ public class Room implements ITickable{
     /**
      * A szobának a szomszédos szobáinak listája
      */
-    private List<Room> neighbours = new ArrayList<Room>();
+    private List<Room> neighbours = new ArrayList<>();
 
 
     /**

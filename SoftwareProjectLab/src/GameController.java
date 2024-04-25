@@ -122,17 +122,13 @@ public class GameController {
             if(isGameStarted)
                 tickAll();
 
-            if (i >= players.size()) {
-                i = 0;
-            }
-
             currentPlayer = players.get(i);
 
-            if (i == players.size() - 1) {
+            if (i >= players.size() - 1)
                 i = 0;
-            } else {
+            else
                 i++;
-            }
+
         }
     }
 
