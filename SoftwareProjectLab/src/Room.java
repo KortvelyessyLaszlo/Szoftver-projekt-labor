@@ -323,6 +323,8 @@ public class Room implements ITickable{
         Skeleton.log("Room" + this.getId() + ".acceptNewPerson(" + person.getName() + ")", true);
         if(peopleInRoom.size() >= capacity){
             Skeleton.log("return false", false);
+            if(person instanceof Student)
+                System.out.println("\u001B[31mRoom is full. You can't enter.\u001B[0m");
             return false;
         }
         peopleInRoom.add(person);

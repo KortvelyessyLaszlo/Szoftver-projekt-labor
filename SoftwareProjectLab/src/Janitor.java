@@ -24,17 +24,17 @@ public class Janitor extends Person implements ITickable{
         currentRoom.setSticky(false);
         currentRoom.setenterCounter(0);
 
-        List<Room> temp = currentRoom.getNeighbours();
+        List<Room> neighbours = currentRoom.getNeighbours();
+        List<Person> people = currentRoom.getPeopleInRoom();
 
-        Iterator<Person> it = currentRoom.getPeopleInRoom().iterator();
-        while(it.hasNext()) {
-            Person person = it.next();
-            temp.removeIf(temproom -> temproom.getPeopleInRoom().size() == temproom.getCapacity());
-            Collections.shuffle(temp);
-            if (person != this && !temp.isEmpty()) {
-                person.enter(temp.getFirst());
+        for (Person person : people) {
+            neighbours.removeIf(temproom -> temproom.getPeopleInRoom().size() == temproom.getCapacity());
+            Collections.shuffle(neighbours);
+            if (person != this && !neighbours.isEmpty()) {
+                person.enter(neighbours.getFirst());
             }
         }
+        System.out.println("\u001B[31m" + this.getName() + " has cleared Room "+ room.getId() + "\u001B[0m");
         Skeleton.log("return", false);
     }
 

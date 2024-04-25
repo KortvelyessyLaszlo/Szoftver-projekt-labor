@@ -69,7 +69,7 @@ public class Teacher extends Person implements ITickable{
         student.dropItems();
         student.getCurrentRoom().removePerson(student);
         Skeleton.log("return", false);
-        System.out.println(student.getName() + "\u001B[31m Hallgató lelkét elvették\u001B[0m");
+        System.out.println("\u001B[31m" + this.getName() + " has slayed " + student.getName() + "\u001B[0m");
     }
 
     @Override

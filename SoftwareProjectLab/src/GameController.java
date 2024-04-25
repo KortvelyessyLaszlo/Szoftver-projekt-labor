@@ -63,7 +63,7 @@ public class GameController {
 
         if(players.isEmpty()) {
             isGameStarted = false;
-            System.out.println("\u001B[31mA tanulók vesztettek\u001B[0m");
+            System.out.println("\u001B[31mThe players lost!GET REKT\u001B[0m");
             processStart();
         }
     }
