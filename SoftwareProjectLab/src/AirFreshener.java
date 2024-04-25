@@ -1,6 +1,6 @@
 public class AirFreshener extends Item {
 
-    ˛/**
+    /**
      * Az AirFreshener osztály konstruktora
      * @param id : Az AirFreshener azonosítója
      */
