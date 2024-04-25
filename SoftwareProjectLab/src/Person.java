@@ -149,7 +149,7 @@ public abstract class Person implements ITickable{
         currentRoom = room;
 
         if(currentRoom.isGassed() && !checkForMask()) {
-            isPoisoned = true;
+            setPoisoned(true);
             dropItems();
             Skeleton.log("return", false);
             return;

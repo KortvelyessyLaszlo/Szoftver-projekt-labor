@@ -4,6 +4,12 @@ public class Student extends Person implements ITickable{
 
     private boolean isWinner;
 
+    @Override
+    public void setPoisoned(boolean value) {
+        super.setPoisoned(value);
+        if(value) System.out.println("\u001B[31m" + this.getName() + " got poisoned \u001B[0m");
+    }
+
     public boolean isWinner() { return isWinner; }
 
     public void setWinner(boolean value) { isWinner = value; }
@@ -50,7 +56,6 @@ public class Student extends Person implements ITickable{
      */
     @Override
     public void meet(Teacher teacher){
-        System.out.println("TEACHER MEET");
         Skeleton.log(this.getName() + ".meet(" + teacher.getName() + ")", true);
         if(teacher.isPoisoned() || teacher.isStunned()){
             Skeleton.log("return", false);

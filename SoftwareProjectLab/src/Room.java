@@ -55,7 +55,7 @@ public class Room implements ITickable{
         return isGassed;
     }
 
-    public boolean isSticky() { return isGassed; }
+    public boolean isSticky() { return isSticky; }
 
     /**A szoba gázosságára vonatkozó attribútum setter függvénye
      * @param isGassed : A szoba gázossága
@@ -329,7 +329,8 @@ public class Room implements ITickable{
         }
         peopleInRoom.add(person);
         this.setenterCounter(this.getenterCounter() + 1);
-        if(this.getenterCounter() >= 10) this.setSticky(true);
+        if(this.getenterCounter() >= 2)
+            this.setSticky(true);
         Skeleton.log("return true", false);
         return true;
     }
@@ -351,7 +352,8 @@ public class Room implements ITickable{
             neighboursString.append(neighbour.getId()).append(",");
         }
 
-        return this.getClass() + ", id=" + this.getId() + ", capacity=" + capacity + ", isGassed=" + isGassed + ", peopleInRoom=[" + peopleInRoomString
+        return this.getClass() + ", id=" + this.getId() + ", capacity=" + capacity + ", isGassed=" + isGassed
+                + ", isSticky=" + isSticky + ", peopleInRoom=[" + peopleInRoomString
                 + "], itemInventory=[" + itemInventoryString + "], neighbours=[" + neighboursString + "]";
     }
 

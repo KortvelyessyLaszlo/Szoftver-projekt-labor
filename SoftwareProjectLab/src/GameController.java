@@ -63,7 +63,7 @@ public class GameController {
 
         if(players.isEmpty()) {
             isGameStarted = false;
-            System.out.println("\u001B[31mThe players lost!GET REKT\u001B[0m");
+            System.out.println("\u001B[31mThe players lost!\u001B[0m");
             processStart();
         }
     }
@@ -122,7 +122,8 @@ public class GameController {
             if(isGameStarted)
                 tickAll();
 
-            currentPlayer = players.get(i);
+            if(isGameStarted)
+                currentPlayer = players.get(i);
 
             if (i >= players.size() - 1)
                 i = 0;
