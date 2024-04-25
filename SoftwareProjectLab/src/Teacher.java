@@ -40,7 +40,6 @@ public class Teacher extends Person implements ITickable{
 
     @Override
     public void meet(Student student){
-        System.out.println("TEACHER MEET");
         Skeleton.log(this.getName() + ".meet(" + student.getName() + ")", true);
         if(isPoisoned() || isStunned()){
             Skeleton.log("return", false);
@@ -70,6 +69,7 @@ public class Teacher extends Person implements ITickable{
         student.dropItems();
         student.getCurrentRoom().removePerson(student);
         Skeleton.log("return", false);
+        System.out.println(student.getName() + "\u001B[31m Hallgató lelkét elvették\u001B[0m");
     }
 
     @Override

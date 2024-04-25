@@ -59,9 +59,11 @@ public class GameController {
         }
 
         players.removeIf(player -> !playersAlive.contains(player));
+
+
         if(players.isEmpty()) {
             isGameStarted = false;
-            System.out.println("A tanulók vesztettek");
+            System.out.println("\u001B[31mA tanulók vesztettek\u001B[0m");
             processStart();
         }
     }
