@@ -1,0 +1,4 @@
+createMaze
+createRoom 3
+addRoom 0
+split

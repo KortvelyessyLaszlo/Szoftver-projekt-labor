@@ -1,0 +1,12 @@
+createRoom 2
+createRoom 2
+createStudent S
+createItem T true
+createItem T true
+addPerson 0 S
+addItem 1 0
+addItem S 1
+pairItems S
+setActive 0 true
+setPlacedTransistorRoom 0 1
+useItem S 1

@@ -1,0 +1,14 @@
+createRoom 3
+createRoom 3
+createTeacher T
+createStudent S1
+createStudent S2
+createItem WWC true
+addNeighbour 0 1
+addPerson 0 T
+addPerson 1 S1
+addPerson 1 S2
+addItem S1 0
+setActive 0 true
+enter S1 0
+enter S2 0

@@ -1,0 +1,5 @@
+class Room, id=0, capacity=2, enterCounter=1, isGassed=false, isSticky=false, peopleInRoom=[T,S,], itemInventory=[], neighbours=[1,]
+class Room, id=1, capacity=2, enterCounter=0, isGassed=false, isSticky=false, peopleInRoom=[], itemInventory=[], neighbours=[0,]
+class Teacher, Name=T, isPoisoned=false, itemInventory=[], isStunned=false
+class Student, Name=S, isPoisoned=false, itemInventory=[0,]
+class TVSZBatSkin, id=0, isActive=true, isDestroyed=false, charge=4

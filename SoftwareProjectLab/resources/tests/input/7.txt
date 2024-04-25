@@ -1,0 +1,11 @@
+createRoom 2
+createRoom 2
+createTeacher T
+createStudent S
+createItem WWC true
+addNeighbour 0 1
+addPerson 0 T
+addPerson 1 S
+addItem S 0
+activate S 0
+enter S 0

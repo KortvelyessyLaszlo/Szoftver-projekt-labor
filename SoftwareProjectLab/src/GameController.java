@@ -1,3 +1,4 @@
+import java.io.File;
 import java.util.*;
 
 public class GameController {
@@ -84,7 +85,377 @@ public class GameController {
     }
 
     private void startTestMode(){
+        System.out.println();
+        System.out.println();
+        System.out.println("Valaszthato tesztesetek");
+        System.out.println("1. TVSZ Batskin hasznalata");
+        System.out.println("2. CannedCamembert hasznalata");
+        System.out.println("3. FFP2 Mask hasznalata");
+        System.out.println("4. Air Freshener hasznalata");
+        System.out.println("5. Holy Beer Glass felvetele");
+        System.out.println("6. Holy Beer Glass hasznalata");
+        System.out.println("7. Wet Wipe Cloth hasznalata");
+        System.out.println("8. Transistor parositasa");
+        System.out.println("9. Transistor hasznalata");
+        System.out.println("10. Teleportalas");
+        System.out.println("11. Fake FFP2 Mask hasznalata");
+        System.out.println("12. Sikertelen belepes egy szobaba");
+        System.out.println("13. Belepes egy gazos szobaba");
+        System.out.println("14. Sikertelen targy felvetel");
+        System.out.println("15. Targy eldobasa");
+        System.out.println("16. Tanarral valo talalkozas targy nelkul.");
+        System.out.println("17. SlideRule felvetele");
+        System.out.println("18. Talalkozas megbenult tanarral");
+        System.out.println("19. Szobak egyesulese");
+        System.out.println("20. Szobak szetvalasa");
+        System.out.println("21. Takarito szobaba lepese");
+        System.out.println();
+        System.out.println();
 
+        Scanner scanner = new Scanner(System.in);
+        while (true) {
+            String command = scanner.nextLine();
+            List<String> parts = parse(command);
+            if(parts.isEmpty()){
+                System.out.println("Invalid command");
+                return;
+            }
+            String commandName = parts.getFirst();
+            switch (commandName) {
+                case "run" -> {
+                    if (parts.size() != 2) {
+                        System.out.println("Invalid command");
+                        return;
+                    }
+                    int testNumber = Integer.parseInt(parts.get(1));
+                    runTest(testNumber);
+                }
+                case "help" -> {
+                    System.out.println("Available commands: ");
+                    System.out.println("run <testNumber> - Run the specified test");
+                    System.out.println("exit - Exit test mode");
+                }
+                case "exit" -> {
+                    return;
+                }
+                default -> System.out.println("Invalid command");
+            }
+        }
+    }
+
+    private void runTest(int testNumber) {
+        Maze testMaze = null;
+        List<Room> testRooms = new ArrayList<>();
+        List<Person> testPeople = new ArrayList<>();
+        List<Item> testItems = new ArrayList<>();
+        int nextRoomId = 0;
+        int nextItemId = 0;
+        try {
+            File inputFile = new File("./resources/tests/input/" + testNumber + ".txt");
+            Scanner inputScanner = new Scanner(inputFile);
+            while (inputScanner.hasNextLine()) {
+                String command = inputScanner.nextLine();
+                List<String> parts = parse(command);
+                if(parts.isEmpty()){
+                    System.out.println("Invalid command");
+                    return;
+                }
+                String commandName = parts.getFirst();
+                switch (commandName) {
+                    case "createMaze" -> {
+                        testMaze = new Maze();
+                    }
+                    case "createRoom" -> {
+                        int capacity = Integer.parseInt(parts.get(1));
+                        testRooms.add(new Room(capacity, nextRoomId++));
+                    }
+                    case "createTeacher" -> {
+                        String name = parts.get(1);
+                        testPeople.add(new Teacher(name));
+                    }
+                    case "createStudent" -> {
+                        String name = parts.get(1);
+                        testPeople.add(new Student(name));
+                    }
+                    case "createJanitor" -> {
+                        String name = parts.get(1);
+                        testPeople.add(new Janitor(name));
+                    }
+                    case "createItem" -> {
+                        switch (parts.get(1)) {
+                            case "AF" -> {
+                                testItems.add(new AirFreshener(nextItemId++));
+                            }
+                            case "CC" -> {
+                                testItems.add(new CannedCamembert(nextItemId++));
+                            }
+                            case "FFP2" -> {
+                                boolean isFake = Boolean.parseBoolean(parts.get(2));
+                                testItems.add(new FFP2Mask(nextItemId++, isFake));
+                            }
+                            case "HBG" -> {
+                                testItems.add(new HolyBeerGlass(nextItemId++));
+                            }
+                            case "T" -> {
+                                testItems.add(new Transistor(nextItemId++));
+                            }
+                            case "TVSZ" -> {
+                                boolean isFake = Boolean.parseBoolean(parts.get(2));
+                                testItems.add(new TVSZBatSkin(nextItemId++, isFake));
+                            }
+                            case "WWC" -> {
+                                testItems.add(new WetWipeCloth(nextItemId++));
+                            }
+                            case "SR" -> {
+                                boolean isFake = Boolean.parseBoolean(parts.get(2));
+                                testItems.add(new SlideRule(nextItemId++, isFake));
+                            }
+                            default -> {
+                                System.out.println("Unknown item type: " + parts.get(1));
+                            }
+                        }
+                    }
+                    case "addPerson" -> {
+                        for (Room room : testRooms) {
+                            try {
+                                if (room.getId() == Integer.parseInt(parts.get(1))) {
+                                    for (Person person : testPeople) {
+                                        if (person.getName().equals(parts.get(2))) {
+                                            room.addPerson(person);
+                                            person.setCurrentRoom(room);
+                                            break;
+                                        }
+                                    }
+                                }
+                            } catch (ClassCastException ignored) {}
+                        }
+                    }
+                    case "addNeighbour" -> {
+                        for (Room room1 : testRooms) {
+                            try {
+                                if (room1.getId() == Integer.parseInt(parts.get(1))) {
+                                    for (Room room2 : testRooms) {
+                                        if (room2.getId() == Integer.parseInt(parts.get(2))) {
+                                            room1.addNeighbour(room2);
+                                            room2.addNeighbour(room1);
+                                            break;
+                                        }
+                                    }
+                                }
+                            } catch (ClassCastException ignored) {}
+                        }
+                    }
+                    case "addItem" -> {
+                        for (Item item : testItems) {
+                            try {
+                                if (item.getId() == Integer.parseInt(parts.get(2))) {
+                                    for (Room room : testRooms) {
+                                        if (room.getId() == Integer.parseInt(parts.get(1))) {
+                                            room.addItem(item);
+                                            break;
+                                        }
+                                    }
+                                    for (Person person : testPeople) {
+                                        if (person.getName().equals(parts.get(1))) {
+                                            person.addItem(item);
+                                            break;
+                                        }
+                                    }
+                                }
+                            } catch (ClassCastException | NumberFormatException ignored) {}
+                        }
+                    }
+                    case "activate" -> {
+                        for (Person person : testPeople) {
+                            try {
+                                if (person.getName().equals(parts.get(2))) {
+                                    for (Item item : testItems) {
+                                        if (item.getId() == Integer.parseInt(parts.get(1))) {
+                                            item.activate(person);
+                                            break;
+                                        }
+                                    }
+                                }
+                            } catch (ClassCastException ignored) {}
+                        }
+                    }
+                    case "enter" -> {
+                        for (Person person : testPeople) {
+                            try {
+                                if (person.getName().equals(parts.get(1))) {
+                                    for (Room room : testRooms) {
+                                        if (room.getId() == Integer.parseInt(parts.get(2))) {
+                                            person.enter(room);
+                                            break;
+                                        }
+                                    }
+                                }
+                            } catch (ClassCastException ignored) {}
+                        }
+                    }
+                    case "useItem" -> {
+                        for (Person person : testPeople) {
+                            try {
+                                if (person.getName().equals(parts.get(1))) {
+                                    for (Item item : testItems) {
+                                        if (item.getId() == Integer.parseInt(parts.get(2))) {
+                                            ((Student) person).useItem(item);
+                                            break;
+                                        }
+                                    }
+                                }
+                            } catch (ClassCastException ignored) {}
+                        }
+                    }
+                    case "setGassed" -> {
+                        for (Room room : testRooms) {
+                            try {
+                                if (room.getId() == Integer.parseInt(parts.get(1))) {
+                                    room.setGassed(Boolean.parseBoolean(parts.get(2)));
+                                    break;
+                                }
+                            } catch (ClassCastException ignored) {}
+                        }
+                    }
+                    case "pickUp" -> {
+                        for (Person person : testPeople) {
+                            try {
+                                if (person.getName().equals(parts.get(1))) {
+                                    for (Item item : testItems) {
+                                        if (item.getId() == Integer.parseInt(parts.get(2))) {
+                                            person.pickUp(item);
+                                            break;
+                                        }
+                                    }
+                                }
+                            } catch (ClassCastException ignored) {}
+                        }
+                    }
+                    case "pairItems" -> {
+                        for (Person person : testPeople) {
+                            try {
+                                if (person.getName().equals(parts.get(1))) {
+                                    ((Student) person).pairItems();
+                                    break;
+                                }
+                            } catch (ClassCastException ignored) {}
+                        }
+                    }
+                    case "setActive" -> {
+                        for (Item item : testItems) {
+                            try {
+                                if (item.getId() == Integer.parseInt(parts.get(1))) {
+                                    item.setActive(Boolean.parseBoolean(parts.get(2)));
+                                    break;
+                                }
+                            } catch (ClassCastException ignored) {}
+                        }
+                    }
+                    case "setSticky" -> {
+                        for (Room room : testRooms) {
+                            try {
+                                if (room.getId() == Integer.parseInt(parts.get(1))) {
+                                    room.setSticky(Boolean.parseBoolean(parts.get(2)));
+                                    break;
+                                }
+                            } catch (ClassCastException ignored) {}
+                        }
+                    }
+                    case "combineRooms" -> {
+                        for (Room room : testRooms) {
+                            try {
+                                if (room.getId() == Integer.parseInt(parts.get(1))) {
+                                    room.combineRooms();
+                                    break;
+                                }
+                            } catch (ClassCastException ignored) {}
+                        }
+                    }
+                    case "split" -> {
+                        if (testMaze != null) {
+                            testMaze.startSplitRooms();
+                        }
+                    }
+                    case "addRoom" -> {
+                        for (Room room : testRooms) {
+                            if (testMaze != null && room.getId() == Integer.parseInt(parts.get(1))) {
+                                testMaze.addRoom(room);
+                                break;
+                            }
+                        }
+                    }
+                    case "dropItem" -> {
+                        for (Person person : testPeople) {
+                            try {
+                                if (person.getName().equals(parts.get(1))) {
+                                    for (Item item : testItems) {
+                                        if (item.getId() == Integer.parseInt(parts.get(2))) {
+                                            ((Student) person).dropItem(item);
+                                            break;
+                                        }
+                                    }
+                                }
+                            } catch (ClassCastException ignored) {}
+                        }
+                    }
+                    case "setPlacedTransistorRoom" -> {
+                        for (Item item : testItems) {
+                            try {
+                                if (item.getId() == Integer.parseInt(parts.get(1))) {
+                                    for (Room room : testRooms) {
+                                        if (room.getId() == Integer.parseInt(parts.get(2))) {
+                                            ((Transistor) item).setPlacedTransistorRoom(room);
+                                            break;
+                                        }
+                                    }
+                                }
+                            } catch (ClassCastException ignored) {}
+                        }
+                    }
+                    default -> {
+                        System.out.println("Unknown test command: " + command);
+                    }
+                }
+            }
+
+            StringBuilder testOutput = new StringBuilder();
+            if (testMaze != null) {
+                testOutput.append(testMaze.toString()).append("\n");
+            }
+            for (Room room : testRooms) {
+                testOutput.append(room.toString()).append("\n");
+            }
+            for (Person person : testPeople) {
+                testOutput.append(person.toString()).append("\n");
+            }
+            for (Item item : testItems) {
+                testOutput.append(item.toString()).append("\n");
+            }
+
+            System.out.println("Test output:");
+            System.out.println(testOutput);
+            System.out.println();
+            System.out.println();
+
+            File outputFile = new File("./resources/tests/output/" + testNumber + ".txt");
+            Scanner outputScanner = new Scanner(outputFile);
+
+            StringBuilder expectedOutput = new StringBuilder();
+            while (outputScanner.hasNextLine()) {
+                expectedOutput.append(outputScanner.nextLine()).append("\n");
+            }
+
+            System.out.println("Expected output:");
+            System.out.println(expectedOutput);
+            System.out.println();
+
+            boolean testPassed = testOutput.toString().contentEquals(expectedOutput);
+            System.out.println(testPassed ? "SUCCESS" : "FAIL");
+        }
+        catch (Exception e){
+            System.out.println("Test failed: " + e.getMessage());
+            e.printStackTrace();
+        }
     }
 
     private void startGameMode(){
@@ -161,6 +532,13 @@ public class GameController {
                 isGameStarted = true;
                 playerCount = Integer.parseInt(parts.get(1));
                 initGame();
+            }
+            case "test" -> {
+                if (parts.size() != 1 || isGameStarted) {
+                    System.out.println("Invalid command");
+                    return;
+                }
+                startTestMode();
             }
             case "load" -> {
                 if (isGameStarted || parts.size() != 1) {

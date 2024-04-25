@@ -1,0 +1,6 @@
+createRoom 1
+createStudent S
+createItem SR true
+addPerson 0 S
+addItem S 0
+pickup S 0

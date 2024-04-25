@@ -1,0 +1,6 @@
+createRoom 1
+createRoom 0
+createStudent S
+addNeighbour 0 1
+addPerson 0 S
+enter S 1

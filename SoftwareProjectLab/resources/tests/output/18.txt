@@ -1,0 +1,5 @@
+class Room, id=0, capacity=3, enterCounter=2, isGassed=false, isSticky=false, peopleInRoom=[T,S1,S2,], itemInventory=[], neighbours=[1,]
+class Room, id=1, capacity=3, enterCounter=0, isGassed=false, isSticky=false, peopleInRoom=[], itemInventory=[], neighbours=[0,]
+class Student, Name=S1, isPoisoned=false, itemInventory=[0,]
+class Student, Name=S2, isPoisoned=false, itemInventory=[]
+class Teacher, Name=T, isPoisoned=false, itemInventory=[], isStunned=true

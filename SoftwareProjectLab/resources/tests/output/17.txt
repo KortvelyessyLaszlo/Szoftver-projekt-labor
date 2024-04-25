@@ -1,0 +1,3 @@
+class Room, id=0, capacity=1, enterCounter=0, isGassed=false, isSticky=false, peopleInRoom=[S,], itemInventory=[], neighbours=[]
+class Student, Name=S, isPoisoned=false, itemInventory=[0,]
+class SlideRule, id=0, isActive=false, isDestroyed=false

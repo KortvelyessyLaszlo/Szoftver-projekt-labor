@@ -1,0 +1,3 @@
+class Maze, playerCount=0, roomCount=2
+class Room, id=0, capacity=1, enterCounter=0, isGassed=true, isSticky=false, peopleInRoom=[], itemInventory=[], neighbours=[1,]
+class Room, id=1, capacity=1, enterCounter=0, isGassed=true, isSticky=false, peopleInRoom=[], itemInventory=[], neighbours=[0,]

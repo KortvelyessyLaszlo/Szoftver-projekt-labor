@@ -1,0 +1,8 @@
+class Room, id=0, capacity=1, enterCounter=0, isGassed=false, isSticky=false, peopleInRoom=[S,], itemInventory=[0,], neighbours=[]
+class Student, Name=S, isPoisoned=false, itemInventory=[1,2,3,4,5,]
+class HolyBeerGlass, id=0, isActive=false, isDestroyed=false
+class Transistor, id=1, isActive=false, isDestroyed=false
+class Transistor, id=2, isActive=false, isDestroyed=false
+class Transistor, id=3, isActive=false, isDestroyed=false
+class Transistor, id=4, isActive=false, isDestroyed=false
+class Transistor, id=5, isActive=false, isDestroyed=false
