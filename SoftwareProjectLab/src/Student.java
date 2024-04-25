@@ -156,13 +156,13 @@ public class Student extends Person implements ITickable{
     @Override
     public void tick(){
         Skeleton.log(this.getName() + ".tick()", true);
-        if(!isPoisoned()) {
-            Skeleton.log("return", false);
-            return;
+        if(isPoisoned()) {
+            setPoisonDuration(getPoisonDuration() - 1);
+            if(getPoisonDuration() == 0)
+                setPoisoned(false);
         }
-        setPoisonDuration(getPoisonDuration() - 1);
-        if(getPoisonDuration() == 0)
-            setPoisoned(false);
+
+        this.getItemInventory().removeIf(item -> item instanceof TimedItem && item.isDestroyed());
         Skeleton.log("return", false);
     }
 }

@@ -116,19 +116,31 @@ public class GameController {
             if(isGameStarted)
                 showPlayerStat();
 
-            String command = scanner.nextLine();
-            processGameCommand(command);
+            if(!(isGameStarted && players.size() == 1 && currentPlayer.isPoisoned())) {
+                String command = scanner.nextLine();
+                processGameCommand(command);
+            }
 
             if(isGameStarted)
                 tickAll();
 
-            if(isGameStarted)
-                currentPlayer = players.get(i);
+            if(isGameStarted){
+                List<Student> notPoisonedPlayers = new ArrayList<Student>();
+                for(Student player : players){
+                    if(!player.isPoisoned()){
+                        notPoisonedPlayers.add(player);
+                    }
+                }
 
-            if (i >= players.size() - 1)
-                i = 0;
-            else
-                i++;
+                if(notPoisonedPlayers.isEmpty())
+                    continue;
+
+                currentPlayer = notPoisonedPlayers.get(i);
+                if(i >= notPoisonedPlayers.size() - 1)
+                    i = 0;
+                else
+                    i++;
+            }
 
         }
     }
@@ -254,7 +266,7 @@ public class GameController {
     }
 
     private void showPlayerStat(){
-        System.out.println("Player: \u001B[34m" + currentPlayer.getName() + "\u001B[0m");
+        System.out.println("Player: \u001B[34m" + currentPlayer.getName() + "\u001B[0m isPoisoned= " + currentPlayer.isPoisoned());
         System.out.println("Room: " + currentPlayer.getCurrentRoom());
         System.out.println("Items: ");
         for(Item item : currentPlayer.getItemInventory()){

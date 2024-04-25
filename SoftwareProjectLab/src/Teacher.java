@@ -39,6 +39,16 @@ public class Teacher extends Person implements ITickable{
     }
 
     @Override
+    public void enter(Room room){
+        Skeleton.log(this.getName() + ".enter(Room" + room.getId() + ")", true);
+        if(isStunned()){
+            return;
+        }
+        super.enter(room);
+        Skeleton.log("return", false);
+    }
+
+    @Override
     public void meet(Student student){
         Skeleton.log(this.getName() + ".meet(" + student.getName() + ")", true);
         if(isPoisoned() || isStunned()){

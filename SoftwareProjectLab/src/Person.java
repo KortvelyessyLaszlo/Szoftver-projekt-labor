@@ -16,7 +16,7 @@ public abstract class Person implements ITickable{
     /**
      * Az adott személy mérgezésének ideje
      */
-    private int poisonDuration = 0;
+    private int poisonDuration = 5;
 
     /**
      * A szoba, amelyikben az adott személy tartózkodik
@@ -140,6 +140,9 @@ public abstract class Person implements ITickable{
      */
     public void enter(Room room){
         Skeleton.log(this.name + ".enter(Room" + room.getId() + ")", true);
+        if(isPoisoned)
+            return;
+
         if(!room.acceptNewPerson(this)) {
             Skeleton.log("return", false);
             return;
