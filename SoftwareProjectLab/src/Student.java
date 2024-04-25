@@ -1,6 +1,6 @@
 import java.util.List;
 
-public class Student extends Person implements ITickable{
+public class Student extends Person {
 
     private boolean isWinner;
 

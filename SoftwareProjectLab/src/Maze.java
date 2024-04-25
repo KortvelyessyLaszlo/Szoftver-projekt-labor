@@ -117,7 +117,6 @@ public class Maze implements ITickable, Serializable {
      * Ha a szám páros, akkor a startCombineRooms() függvényt hívja meg.
      * Ha a szám páratlan, akkor a startSplitRooms() függvényt hívja meg.
      */
-    @Override
     public void tick() {
         Skeleton.log("Maze.tick()", true);
         Random random = new Random();

@@ -1,4 +1,4 @@
-public abstract class TimedItem extends Item implements ITickable{
+public abstract class TimedItem extends Item {
     /**
      * A megmaradó aktív idő 
      */

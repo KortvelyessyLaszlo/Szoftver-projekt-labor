@@ -1,6 +1,6 @@
 import java.util.Random;
 
-public class Teacher extends Person implements ITickable{
+public class Teacher extends Person {
     /**
      * A tanár bénult-e
      */

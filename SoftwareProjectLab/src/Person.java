@@ -254,7 +254,6 @@ public abstract class Person implements ITickable{
         return this.getClass() + ", Name=" + name  + ", isPoisoned=" + isPoisoned + ", itemInventory=[" + itemInventoryString + "]";
     }
 
-    @Override
     public void tick() {
 
     }

@@ -3,7 +3,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 
-public class CursedRoom extends Room implements ITickable{
+public class CursedRoom extends Room {
     /**
      * A nem látható szobákat tároló lista
      */

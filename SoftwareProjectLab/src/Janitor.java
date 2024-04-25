@@ -3,7 +3,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 
-public class Janitor extends Person implements ITickable{
+public class Janitor extends Person {
 
     public Janitor(String name) {
         super(name);
