@@ -247,8 +247,10 @@ public class Room implements ITickable, Serializable {
 
         for (Room room : neighbour.neighbours) {
             if (room != this) {
-                room.neighbours.add(this);
-                this.neighbours.add(room);
+                if(!room.getNeighbours().contains(this))
+                    room.neighbours.add(this);
+                if(!this.getNeighbours().contains(room))
+                    this.neighbours.add(room);
             }
             room.neighbours.remove(neighbour);
         }
