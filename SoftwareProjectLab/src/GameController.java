@@ -1,7 +1,8 @@
 import java.io.File;
 import java.util.*;
+import java.io.*;
 
-public class GameController {
+public class GameController implements Serializable {
 
     private int playerCount;
 
@@ -708,7 +709,7 @@ public class GameController {
         }
         for(int i = 0; i <  teacherCountAndJanitorCount; i++){
             Teacher teacher = new Teacher("Teacher" + i);
-            //maze.getRooms().get(random.nextInt(maze.getRooms().size())).addPerson(teacher);
+            maze.getRooms().get(random.nextInt(maze.getRooms().size())).addPerson(teacher);
 
             Janitor janitor = new Janitor("Janitor" + i);
             maze.getRooms().get(random.nextInt(maze.getRooms().size())).addPerson(janitor);
@@ -716,10 +717,40 @@ public class GameController {
     }
 
     private void save(){
-
+        try {
+            FileOutputStream file = new FileOutputStream("resources\\serialize\\save.txt");
+            ObjectOutputStream out = new ObjectOutputStream(file);
+            out.writeObject(this);
+            out.close();
+            file.close();
+            System.out.println("\u001B[31mGame Saved\u001B[0m");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void load(){
+        try {
+            GameController temp;
+            FileInputStream fileIn = new FileInputStream("resources\\serialize\\save.txt");
+            ObjectInputStream in = new ObjectInputStream(fileIn);
+            temp = (GameController) in.readObject();
+            this.playerCount = temp.playerCount;
+            this.isTestMode = temp.isTestMode;
+            this.isGameStarted = temp.isGameStarted;
+            this.maze = temp.maze;
+            this.players = temp.players;
+            this.currentPlayer = temp.currentPlayer;
+            in.close();
+            fileIn.close();
 
+            startGameMode();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return;
+        } catch (ClassNotFoundException c) {
+            c.printStackTrace();
+            return;
+        }
     }
 }

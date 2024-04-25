@@ -1,8 +1,9 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public abstract class Person implements ITickable{
+public abstract class Person implements ITickable, Serializable {
     /**
      * Az adott személy mérgezett állapota
      */

@@ -1,6 +1,7 @@
+import java.io.Serializable;
 import java.util.*;
 
-public class Room implements ITickable{
+public class Room implements ITickable, Serializable {
 
     /**
      * A szoba egyedi azonosítója

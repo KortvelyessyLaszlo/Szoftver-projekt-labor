@@ -1,4 +1,6 @@
-public abstract class Item implements ITickable {
+import java.io.Serializable;
+
+public abstract class Item implements ITickable, Serializable {
     
     /**
      * Az adott tárgy azonosítója
