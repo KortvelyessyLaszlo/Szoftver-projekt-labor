@@ -1,4 +1,5 @@
 createMaze
-createRoom 3
+createRoom 2
+setGassed 0 true
 addRoom 0
 split

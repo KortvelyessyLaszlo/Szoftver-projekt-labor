@@ -1,5 +1,5 @@
-class Room, id=0, capacity=2, enterCounter=0, enterCounter=0, isGassed=false, isSticky=false, peopleInRoom=[], itemInventory=[], neighbours=[]
-class Room, id=1, capacity=2, enterCounter=1, enterCounter=1, isGassed=false, isSticky=false, peopleInRoom=[S,], itemInventory=[0,], neighbours=[]
+class Room, id=0, capacity=2, enterCounter=0, isGassed=false, isSticky=false, peopleInRoom=[], itemInventory=[], neighbours=[]
+class Room, id=1, capacity=2, enterCounter=1, isGassed=false, isSticky=false, peopleInRoom=[S,], itemInventory=[0 Transistor,], neighbours=[]
 class Student, Name=S, isPoisoned=false, itemInventory=[1,]
 class Transistor, id=0, isActive=true, isDestroyed=false, pairId=1
 class Transistor, id=1, isActive=false, isDestroyed=false, pairId=0

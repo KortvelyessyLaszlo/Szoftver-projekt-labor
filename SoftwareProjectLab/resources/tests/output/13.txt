@@ -1,4 +1,4 @@
 class Room, id=0, capacity=1, enterCounter=0, isGassed=false, isSticky=false, peopleInRoom=[], itemInventory=[], neighbours=[1,]
-class Room, id=1, capacity=1, enterCounter=1, isGassed=true, isSticky=false, peopleInRoom=[S,], itemInventory=[0,], neighbours=[0,]
+class Room, id=1, capacity=1, enterCounter=1, isGassed=true, isSticky=false, peopleInRoom=[S,], itemInventory=[0 TVSZBatSkin,], neighbours=[0,]
 class Student, Name=S, isPoisoned=true, itemInventory=[]
-class TVSZBatSkin, id=0, isActive=false, isDestroyed=false, charge=5
+class TVSZBatSkin, id=0, isActive=false, isDestroyed=false, charge=5, isFake=true

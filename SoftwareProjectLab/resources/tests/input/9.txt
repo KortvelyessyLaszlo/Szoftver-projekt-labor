@@ -1,6 +1,8 @@
+createRoom 1
 createStudent S
 createItem T true
 createItem T true
+addPerson 0 S
 addItem S 0
 addItem S 1
 pairItems S

@@ -3,7 +3,7 @@ createRoom 3
 createTeacher T
 createStudent S1
 createStudent S2
-createItem WWC true
+createItem WWC false
 addNeighbour 0 1
 addPerson 0 T
 addPerson 1 S1

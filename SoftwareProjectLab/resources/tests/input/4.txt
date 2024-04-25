@@ -1,10 +1,10 @@
 createRoom 2
 createRoom 2
 createStudent S
-createItem FFP2 true
+createItem FFP2 false
 addNeighbour 0 1
 setGassed 0 true
 addPerson 1 S
 addItem S 0
-activate S 0
+activate 0 S
 enter S 0

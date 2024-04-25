@@ -255,14 +255,18 @@ public class GameController {
                                             break;
                                         }
                                     }
-                                    for (Person person : testPeople) {
-                                        if (person.getName().equals(parts.get(1))) {
-                                            person.addItem(item);
-                                            break;
-                                        }
+                                }
+                            } catch (NumberFormatException ignored) {}
+                        }
+                        for (Item item : testItems) {
+                            if (item.getId() == Integer.parseInt(parts.get(2))) {
+                                for (Person person : testPeople) {
+                                    if (person.getName().equals(parts.get(1))) {
+                                        person.addItem(item);
+                                        break;
                                     }
                                 }
-                            } catch (ClassCastException | NumberFormatException ignored) {}
+                            }
                         }
                     }
                     case "activate" -> {
@@ -317,7 +321,7 @@ public class GameController {
                             } catch (ClassCastException ignored) {}
                         }
                     }
-                    case "pickUp" -> {
+                    case "pickup" -> {
                         for (Person person : testPeople) {
                             try {
                                 if (person.getName().equals(parts.get(1))) {
@@ -339,6 +343,16 @@ public class GameController {
                                     break;
                                 }
                             } catch (ClassCastException ignored) {}
+                        }
+                    }
+                    case "pair" -> {
+                        for (Item item : testItems) {
+                            for (Item item2 : testItems) {
+                                if (item.getId() == Integer.parseInt(parts.get(1)) && item2.getId() == Integer.parseInt(parts.get(2))) {
+                                    item.pair(item2);
+                                    break;
+                                }
+                            }
                         }
                     }
                     case "setActive" -> {
@@ -421,8 +435,11 @@ public class GameController {
             StringBuilder testOutput = new StringBuilder();
             if (testMaze != null) {
                 testOutput.append(testMaze.toString()).append("\n");
+                for (Room room : testMaze.getRooms()) {
+                    testOutput.append(room.toString()).append("\n");
+                }
             }
-            for (Room room : testRooms) {
+            else for (Room room : testRooms) {
                 testOutput.append(room.toString()).append("\n");
             }
             for (Person person : testPeople) {

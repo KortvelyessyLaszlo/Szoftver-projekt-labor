@@ -246,6 +246,9 @@ public class Room implements ITickable{
         if(neighbour.isGassed)
             this.isGassed = true;
 
+        if(neighbour.isSticky)
+            this.isSticky = true;
+
         if(neighbour.capacity > this.capacity)
             this.capacity = neighbour.capacity;
 
@@ -292,6 +295,7 @@ public class Room implements ITickable{
         this.capacity -= newRoom.capacity;
 
         newRoom.isGassed = this.isGassed;
+        newRoom.isSticky = this.isSticky;
 
         if(!this.itemInventory.isEmpty()){
             int splitIndex = random.nextInt(this.itemInventory.size());
@@ -364,7 +368,7 @@ public class Room implements ITickable{
             neighboursString.append(neighbour.getId()).append(",");
         }
 
-        return this.getClass() + ", id=" + this.getId() + ", capacity=" + capacity + ", isGassed=" + isGassed
+        return this.getClass() + ", id=" + this.getId() + ", capacity=" + capacity + ", enterCounter=" + enterCounter + ", isGassed=" + isGassed
                 + ", isSticky=" + isSticky + ", peopleInRoom=[" + peopleInRoomString
                 + "], itemInventory=[" + itemInventoryString + "], neighbours=[" + neighboursString + "]";
     }

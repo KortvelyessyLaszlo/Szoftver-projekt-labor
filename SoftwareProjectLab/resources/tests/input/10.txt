@@ -6,7 +6,7 @@ createItem T true
 addPerson 0 S
 addItem 1 0
 addItem S 1
-pairItems S
+pair 0 1
 setActive 0 true
 setPlacedTransistorRoom 0 1
 useItem S 1

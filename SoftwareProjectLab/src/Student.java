@@ -82,10 +82,16 @@ public class Student extends Person {
         Skeleton.log(this.getName() + ".pickUp(Item" + item.getId() + ")", true);
         super.pickUp(item);
 
-        if(this.getCurrentRoom().isSticky()) System.out.println("\u001B[31m Pickup fail, the floor is sticky \u001B[0m");
+        if(this.getCurrentRoom().isSticky()) {
+            System.out.println("\u001B[31m Pickup fail, the floor is sticky \u001B[0m");
+            return;
+        }
+        if(this.getItemInventory().size() >= 5) {
+            System.out.println("\u001B[31m Pickup fail, inventory is full \u001B[0m");
+            return;
+        }
 
-        if(getItemInventory().size() < 5)
-            item.pickUp(this);
+        item.pickUp(this);
         Skeleton.log("return", false);
     }
 

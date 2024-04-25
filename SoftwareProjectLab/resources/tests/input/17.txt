@@ -1,6 +1,6 @@
 createRoom 1
 createStudent S
-createItem SR true
+createItem SR false
 addPerson 0 S
-addItem S 0
+addItem 0 0
 pickup S 0

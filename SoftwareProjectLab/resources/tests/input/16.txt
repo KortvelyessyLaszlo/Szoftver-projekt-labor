@@ -5,4 +5,4 @@ createStudent S
 addNeighbour 0 1
 addPerson 0 S
 addPerson 1 T
-enter S 0
+enter S 1

@@ -2,7 +2,7 @@ createRoom 2
 createRoom 2
 createTeacher T
 createStudent S
-createItem TVSZ true
+createItem TVSZ false
 addNeighbour 0 1
 addPerson 0 T
 addPerson 1 S

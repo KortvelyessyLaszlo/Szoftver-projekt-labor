@@ -2,8 +2,9 @@ createRoom 2
 createRoom 2
 createStudent S
 createJanitor J
-setGassed 1 true
-setSticky 1 true
+setGassed 0 true
+setSticky 0 true
+addNeighbour 0 1
 addPerson 0 S
 addPerson 1 J
 enter J 0

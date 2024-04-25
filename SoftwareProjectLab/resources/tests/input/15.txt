@@ -1,6 +1,6 @@
 createRoom 1
 createStudent S
-createItem TVSZ true
+createItem TVSZ false
 addPerson 0 S
 addItem S 0
 setActive 0 true

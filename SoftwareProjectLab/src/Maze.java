@@ -106,7 +106,7 @@ public class Maze implements ITickable, Serializable {
     }
     @Override
     public String toString(){
-        return this.getClass() + ", RoomCount=" + rooms.size();
+        return this.getClass() + ", roomCount=" + rooms.size();
     }
 
 
