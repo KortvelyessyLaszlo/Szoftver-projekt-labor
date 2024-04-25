@@ -7,7 +7,8 @@ public class Student extends Person {
     @Override
     public void setPoisoned(boolean value) {
         super.setPoisoned(value);
-        if(value) System.out.println("\u001B[31m" + this.getName() + " got poisoned \u001B[0m");
+        if(value)
+            System.out.println("\u001B[31m" + this.getName() + " got poisoned \u001B[0m");
     }
 
     public boolean isWinner() { return isWinner; }
@@ -27,9 +28,7 @@ public class Student extends Person {
      * @param item : A használandó tárgy
      */
     public void useItem(Item item){
-        Skeleton.log(this.getName() + ".useItem(Item" + item.getId() + ")", true);
         item.activate(this);
-        Skeleton.log("return", false);
     }
 
     /**
@@ -39,11 +38,9 @@ public class Student extends Person {
      * @param item : Az eldobandó tárgy
      */
     public void dropItem(Item item){
-        Skeleton.log(this.getName() + ".dropItem(Item" + item.getId() + ")", true);
         item.setActive(false);
         getCurrentRoom().addItem(item);
         this.removeItem(item);
-        Skeleton.log("return", false);
     }
 
     /**
@@ -56,30 +53,22 @@ public class Student extends Person {
      */
     @Override
     public void meet(Teacher teacher){
-        Skeleton.log(this.getName() + ".meet(" + teacher.getName() + ")", true);
-        if(teacher.isPoisoned() || teacher.isStunned()){
-            Skeleton.log("return", false);
+        if(teacher.isPoisoned() || teacher.isStunned())
             return;
-        }
 
         if(checkForStunItems()){
             teacher.setStunned(true);
-            Skeleton.log("return", false);
             return;
         }
 
-        if(checkForDefensiveItems()){
-            Skeleton.log("return", false);
+        if(checkForDefensiveItems())
             return;
-        }
 
         teacher.eliminate(this);
-        Skeleton.log("return", false);
     }
 
     @Override
     public void pickUp(Item item){
-        Skeleton.log(this.getName() + ".pickUp(Item" + item.getId() + ")", true);
         super.pickUp(item);
 
         if(this.getCurrentRoom().isSticky()) {
@@ -92,7 +81,6 @@ public class Student extends Person {
         }
 
         item.pickUp(this);
-        Skeleton.log("return", false);
     }
 
     /**
@@ -103,15 +91,11 @@ public class Student extends Person {
         igazzal tér vissza.
      * @return A hallgató rendelkezik-e olyan tárggyal, amely megvédi őt
      */
-    public boolean checkForDefensiveItems(){
-        Skeleton.log(this.getName() + ".checkForDefensiveItems()", true);
+    public boolean checkForDefensiveItems(){;
         for(Item item : getItemInventory()){
-            if(item.defend()){
-                Skeleton.log("return true", false);
+            if(item.defend())
                 return true;
-            }
         }
-        Skeleton.log("return false", false);
         return false;
     }
 
@@ -120,14 +104,11 @@ public class Student extends Person {
         függvényt.
      */
     public void pairItems(){
-        Skeleton.log(this.getName() + ".pairItems()", true);
         List<Item> inventory = getItemInventory();
         for(int i = 0; i < inventory.size() - 1; i++){
-            for(int j = i + 1; j < inventory.size(); j++){
+            for(int j = i + 1; j < inventory.size(); j++)
                 inventory.get(i).pair(inventory.get(j));
-            }
         }
-        Skeleton.log("return", false);
     }
 
     /**
@@ -139,14 +120,10 @@ public class Student extends Person {
      * @return A hallgató rendelkezik-e olyan tárggyal, amely tud bénítani
      */
     public boolean checkForStunItems(){
-        Skeleton.log(this.getName() + ".checkForStunItems()", true);
         for(Item item : getItemInventory()){
-            if(item.stun()){
-                Skeleton.log("return true", false);
+            if(item.stun())
                 return true;
-            }
         }
-        Skeleton.log("return false", false);
         return false;
     }
     
@@ -161,7 +138,6 @@ public class Student extends Person {
      */
     @Override
     public void tick(){
-        Skeleton.log(this.getName() + ".tick()", true);
         if(isPoisoned()) {
             setPoisonDuration(getPoisonDuration() - 1);
             if(getPoisonDuration() == 0)
@@ -169,6 +145,5 @@ public class Student extends Person {
         }
 
         this.getItemInventory().removeIf(item -> item instanceof TimedItem && item.isDestroyed());
-        Skeleton.log("return", false);
     }
 }

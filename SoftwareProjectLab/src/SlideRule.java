@@ -24,20 +24,14 @@ public class SlideRule extends Item{
 
     @Override
     public void activate(Person person) {
-        Skeleton.log("SlideRule" + this.getId() + ".activate(" + person.getName() + ")", true);
-        if(isFake){
-            Skeleton.log("return", false);
+        if(isFake)
             return;
-        }
         victory(person);
-        Skeleton.log("return", false);
     }
 
     @Override
     public void pickUp(Person person) {
-        Skeleton.log("SlideRule" + this.getId() + ".pickUp(" + person.getName() + ")", true);
         activate(person);
-        Skeleton.log("return", false);
     }
 
     /**
@@ -46,11 +40,9 @@ public class SlideRule extends Item{
      * @param person : A játékos, akinél a logarléc megtalálható
      */
     public void victory(Person person) {
-        Skeleton.log("SlideRule" + this.getId() + ".victory(" + person.getName() + ")", true);
         Student winner = (Student) person;
         winner.setWinner(true);
         System.out.println("\u001B[31m" + person.getName() + " has won the game!\u001B[0m");
-        Skeleton.log("return", false);
     }
 
     public String toString(){

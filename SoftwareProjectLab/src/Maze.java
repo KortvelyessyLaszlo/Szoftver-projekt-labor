@@ -45,9 +45,7 @@ public class Maze implements ITickable, Serializable {
      * @param rooms : A labirintusban lévő szobák listája
      */
     public void setRooms(List<Room> rooms) {
-        Skeleton.log("Maze.setRooms(" + rooms + ")", true);
         this.rooms = rooms;
-        Skeleton.log("return", false);
     }
 
     /**
@@ -55,10 +53,8 @@ public class Maze implements ITickable, Serializable {
      * @param room : A hozzáadandó szoba
      */
     public void addRoom(Room room) {
-        Skeleton.log("Maze.addRoom(Room" + room.getId() + ")", true);
         rooms.add(room);
         nextRoomId++;
-        Skeleton.log("return", false);
     }
 
     /**
@@ -66,9 +62,7 @@ public class Maze implements ITickable, Serializable {
      * @param room : Eltávolítandó szoba
      */
     public void removeRoom(Room room) {
-        Skeleton.log("Maze.removeRoom(Room" + room.getId() + ")", true);
         rooms.remove(room);
-        Skeleton.log("return", false);
     }
 
     /**
@@ -77,14 +71,12 @@ public class Maze implements ITickable, Serializable {
         függvényét, amikor ez visszatér egy szobával, azt törli a szoba listájából.
      */
     public void startCombineRooms() {
-        Skeleton.log("Maze.startCombineRooms()", true);
         Random random = new Random();
         Room pickedRoom = rooms.get(random.nextInt(rooms.size()));
 
         Room neighbour = pickedRoom.combineRooms();
         if(neighbour != null)
             rooms.remove(neighbour);
-        Skeleton.log("return", false);
     }
 
     /**
@@ -93,7 +85,6 @@ public class Maze implements ITickable, Serializable {
         visszatér egy szobával, a visszakapott szobát elhelyezi a szobák listájába.
      */
     public void startSplitRooms() {
-        Skeleton.log("Maze.startSplitRooms()", true);
         Random random = new Random();
         Room pickedRoom = rooms.get(random.nextInt(rooms.size()));
 
@@ -102,7 +93,6 @@ public class Maze implements ITickable, Serializable {
             rooms.add(newRoom);
             nextRoomId++;
         }
-        Skeleton.log("return", false);
     }
     @Override
     public String toString(){
@@ -118,18 +108,15 @@ public class Maze implements ITickable, Serializable {
      * Ha a szám páratlan, akkor a startSplitRooms() függvényt hívja meg.
      */
     public void tick() {
-        Skeleton.log("Maze.tick()", true);
         Random random = new Random();
         int randomValue = random.nextInt(4);
         if(randomValue > 0)
             return;
 
-        if(random.nextBoolean()) {
+        if(random.nextBoolean())
             startCombineRooms();
-        }
-        else {
+        else
             startSplitRooms();
-        }
-        Skeleton.log("return", false);
+
     }
 }

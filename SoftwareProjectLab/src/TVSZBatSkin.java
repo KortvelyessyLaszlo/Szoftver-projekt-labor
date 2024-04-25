@@ -30,33 +30,22 @@ public class TVSZBatSkin extends Item{
 
         @Override
         public void activate(Person person) {
-                Skeleton.log("TVSZBatSkin" + this.getId() + ".activate(" + person.getName() + ")", true);
-                if(isFake){
-                        Skeleton.log("return", false);
-                        return;
-                }
+                if(isFake)  return;
                 setActive(true);
-                Skeleton.log("return", false);
         }
 
         @Override
         public void pickUp(Person person) {
-                Skeleton.log("TVSZBatSkin" + this.getId() + ".pickUp(" + person.getName() + ")", true);
                 activate(person);
-                Skeleton.log("return", false);
         }
-
         @Override
         public boolean defend() {
-                Skeleton.log("TVSZBatSkin" + this.getId() + ".defend()", true);
-            if(this.isActive() && !this.isDestroyed()){
+                if(this.isActive() && !this.isDestroyed()){
                     charge--;
                     if(charge == 0) setDestroyed(true);
-                    Skeleton.log("return true", false);
-                    return true;
-            }
-            Skeleton.log("return false", false);
-            return false;
+                        return true;
+                }
+                return false;
         }
         @Override
         public String toString(){

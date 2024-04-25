@@ -38,8 +38,6 @@ public abstract class Item implements ITickable, Serializable {
      * @param id : Egy Item "id" adattagja
      */
     public void setId(int id) {
-        Skeleton.log("Item"+this.getId()+".setId(" + id + ")", true);
-        Skeleton.log("return", false);
         this.id = id;
     }
 
@@ -56,8 +54,6 @@ public abstract class Item implements ITickable, Serializable {
      * @param isActive : Egy Item "isActive" adattagja
      */
     public void setActive(boolean isActive) {
-        Skeleton.log("Item"+this.getId()+".setActive(" + isActive + ")", true);
-        Skeleton.log("return", false);
         this.isActive = isActive;
     }
 
@@ -74,8 +70,6 @@ public abstract class Item implements ITickable, Serializable {
      * @param isDestroyed : Egy Item "isDestroyed" adattagja
      */
     public void setDestroyed(boolean isDestroyed) {
-        Skeleton.log("Item"+this.getId()+".setDestroyed(" + isDestroyed + ")", true);
-        Skeleton.log("return", false);
         this.isDestroyed = isDestroyed;
     }
 
@@ -87,10 +81,7 @@ public abstract class Item implements ITickable, Serializable {
         igazra állítja.
      * @param person : A Person aki a tárgyat aktiválta
      */
-    public void activate(Person person){
-        Skeleton.log("Item"+this.getId()+".activate(" + person.getName() + ")", true);
-        Skeleton.log("return", false);
-    }
+    public void activate(Person person){}
 
     /**
      *  Ha egy személy felveszi ezt a tárgyat átadásra kerül,
@@ -98,10 +89,7 @@ public abstract class Item implements ITickable, Serializable {
         felüldefiniálja
      * @param person : A Person aki a tárgyat felvette
      */
-    public void pickUp(Person person){
-        Skeleton.log("Item"+this.getId()+".pickUp(" + person.getName() + ")", true);
-        Skeleton.log("return", false);
-    }
+    public void pickUp(Person person){}
 
     /**
      *  A függvény igazzal tér vissza ha egy védőtárgy aktív
@@ -109,8 +97,6 @@ public abstract class Item implements ITickable, Serializable {
      * @return Az tárgy aktiválójának védettsége (alapértelmezésben hamis)
      */
     public boolean defend(){
-        Skeleton.log("Item"+this.getId()+".defend()", true);
-        Skeleton.log("return false", false);
         return false;
     }
 
@@ -118,10 +104,7 @@ public abstract class Item implements ITickable, Serializable {
      * A tárgyak párosítására szolgáló függvény
      * @param item : A párosítandó tárgy
      */
-    public void pair(Item item){
-        Skeleton.log("Item"+this.getId()+".pair(Item" + item.getId() + ")", true);
-        Skeleton.log("return", false);
-    }
+    public void pair(Item item){}
 
     /**
      * A tranzisztorok párosítására szolgáló függvény
@@ -136,8 +119,6 @@ public abstract class Item implements ITickable, Serializable {
      * @return A tárgy védelmet ad-e a mérgező gázzal szemben
      */
     public boolean defendAgainstGas(){
-        Skeleton.log("Item"+this.getId()+".defendAgainstGas()", true);
-        Skeleton.log("return false", false);
         return false;
     }
 
@@ -147,8 +128,6 @@ public abstract class Item implements ITickable, Serializable {
      * @return A tárgy képes-e megbénítani az oktatókat
      */
     public boolean stun(){
-        Skeleton.log("Item"+this.getId()+".stun()", true);
-        Skeleton.log("return false", false);
         return false;
     }
 
@@ -158,8 +137,5 @@ public abstract class Item implements ITickable, Serializable {
         return this.getClass() + ", id=" + id + ", isActive=" + isActive + ", isDestroyed=" + isDestroyed;
     }
 
-    public void tick() {
-        Skeleton.log("Item"+this.getId()+".tick()", true);
-        Skeleton.log("return", false);
-    }
+    public void tick() {}
 }

@@ -25,9 +25,7 @@ public abstract class TimedItem extends Item {
      * @param remainingTime : A megmaradó aktív idő 
      */
     public void setRemainingTime(int remainingTime) {
-        Skeleton.log("TimedItem" + this.getId() + "setRemainingTime(" + remainingTime + ")", true);
         this.remainingTime = remainingTime;
-        Skeleton.log("return", false);
     }
 
     /**
@@ -37,13 +35,11 @@ public abstract class TimedItem extends Item {
      */
     @Override
     public void tick(){
-        Skeleton.log("TimedItem" + this.getId() + ".tick()", true);
         if(isActive() && !isDestroyed())
             remainingTime--;
         if(remainingTime == 0){
             setDestroyed(true);
             setActive(false);
         }
-        Skeleton.log("return", false);
     }
 }

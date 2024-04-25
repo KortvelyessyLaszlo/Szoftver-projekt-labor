@@ -32,41 +32,30 @@ public class Teacher extends Person {
      * @param isStunned : A tanár bénult-e
      */
     public void setStunned(boolean isStunned) {
-        Skeleton.log(this.getName() + ".setStunned(" + isStunned + ")", true);
         this.isStunned = isStunned;
         this.stunDuration = 10;
-        Skeleton.log("return", false);
     }
 
     @Override
     public void enter(Room room){
-        Skeleton.log(this.getName() + ".enter(Room" + room.getId() + ")", true);
         if(isStunned()){
             return;
         }
         super.enter(room);
-        Skeleton.log("return", false);
     }
 
     @Override
     public void meet(Student student){
-        Skeleton.log(this.getName() + ".meet(" + student.getName() + ")", true);
-        if(isPoisoned() || isStunned()){
-            Skeleton.log("return", false);
+        if(isPoisoned() || isStunned())
             return;
-        }
 
         if(student.checkForStunItems()){
             isStunned = true;
-            Skeleton.log("return", false);
             return;
         }
-        if(student.checkForDefensiveItems()){
-            Skeleton.log("return", false);
+        if(student.checkForDefensiveItems())
             return;
-        }
         eliminate(student);
-        Skeleton.log("return", false);
     }
 
     /**
@@ -75,10 +64,8 @@ public class Teacher extends Person {
      * @param student : Az eliminált hallgató
      */
     public void eliminate(Student student){
-        Skeleton.log(this.getName() + ".eliminate(" + student.getName() + ")", true);
         student.dropItems();
         student.getCurrentRoom().removePerson(student);
-        Skeleton.log("return", false);
         System.out.println("\u001B[31m" + this.getName() + " has slayed " + student.getName() + "\u001B[0m");
     }
 
@@ -100,7 +87,6 @@ public class Teacher extends Person {
      */
     @Override
     public void tick() {
-        Skeleton.log(this.getName() + ".tick()", true);
         if(isStunned){
             stunDuration--;
             if(stunDuration == 0)
@@ -111,10 +97,9 @@ public class Teacher extends Person {
             if(getPoisonDuration() == 0)
                 setPoisoned(false);
         }
-        if(isStunned() || isPoisoned()){
-            Skeleton.log("return", false);
+        if(isStunned() || isPoisoned())
             return;
-        }
+
         Random random = new Random();
         int randomValue = random.nextInt(4);
         if(randomValue == 0){
@@ -127,6 +112,5 @@ public class Teacher extends Person {
             var temp = currentRoom.getNeighbours().get(random.nextInt(currentRoom.getNeighbours().size()));
             this.enter(temp);
         }
-        Skeleton.log("return", false);
     }
 }

@@ -56,7 +56,6 @@ public class CursedRoom extends Room {
         Ezeket törli és hozzáadja az invisbleRooms listához.
      */
     public void updateCursedDoors() {
-        Skeleton.log("CursedRoom" + this.getId() + ".updateCursedDoors()", true);
         getNeighbours().addAll(invisibleRooms);
         invisibleRooms.clear();
 
@@ -69,33 +68,24 @@ public class CursedRoom extends Room {
                 iterator.remove();
             }
         }
-        Skeleton.log("return", false);
     }
 
     @Override
     public Room splitRoom(int newId) {
-        Skeleton.log("CursedRoom" + this.getId() + ".splitRoom(" + newId + ")", true);
         getNeighbours().addAll(invisibleRooms);
         invisibleRooms.clear();
-        Room newRoom = super.splitRoom(newId);
-        Skeleton.log("return" + newRoom, false);
-        return newRoom;
+        return super.splitRoom(newId);
     }
 
     @Override
     public Room combineRooms() {
-        Skeleton.log("CursedRoom" + this.getId() + ".combineRooms()", true);
         getNeighbours().addAll(invisibleRooms);
         invisibleRooms.clear();
-        Room neighbour = super.combineRooms();
-        Skeleton.log("return " + neighbour, false);
-        return neighbour;
+        return super.combineRooms();
     }
 
     @Override
     public void tick() {
-        Skeleton.log("CursedRoom" + this.getId() + ".tick()", true);
         updateCursedDoors();
-        Skeleton.log("return", false);
     }
 }

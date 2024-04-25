@@ -127,9 +127,7 @@ public abstract class Person implements ITickable, Serializable {
      * @param item : Az adott személy inventoryjából elvétlre kerülő tárgy
      */
     public void removeItem(Item item) {
-        Skeleton.log(this.name + ".removeItem(Item" + item.getId() + ")", true);
         itemInventory.remove(item);
-        Skeleton.log("return", false);
     }
 
     /**
@@ -140,14 +138,11 @@ public abstract class Person implements ITickable, Serializable {
      * @param room : A szoba, ahova a személy be szeretne lépni
      */
     public void enter(Room room){
-        Skeleton.log(this.name + ".enter(Room" + room.getId() + ")", true);
         if(isPoisoned)
             return;
 
-        if(!room.acceptNewPerson(this)) {
-            Skeleton.log("return", false);
+        if(!room.acceptNewPerson(this))
             return;
-        }
 
         currentRoom.removePerson(this);
         currentRoom = room;
@@ -155,7 +150,6 @@ public abstract class Person implements ITickable, Serializable {
         if(currentRoom.isGassed() && !checkForMask()) {
             setPoisoned(true);
             dropItems();
-            Skeleton.log("return", false);
             return;
         }
 
@@ -163,7 +157,6 @@ public abstract class Person implements ITickable, Serializable {
             if(person != this)
                 this.meet(person);
         }
-        Skeleton.log("return", false);
     }
 
     /**
@@ -173,14 +166,10 @@ public abstract class Person implements ITickable, Serializable {
      * @return A személy rendelkezik-e olyan tárggyal ami megvédi a gáz hatásától
      */
     public boolean checkForMask(){
-        Skeleton.log(this.name + ".checkForMask()", true);
         for(Item item : itemInventory){
-            if(item.defendAgainstGas()){
-                Skeleton.log("return true", false);
+            if(item.defendAgainstGas())
                 return true;
-            }
         }
-        Skeleton.log("return false", false);
         return false;
     }
 
@@ -191,14 +180,12 @@ public abstract class Person implements ITickable, Serializable {
      * @param item : A tárgy, amelyet a személy fel szeretne venni
      */
     public void pickUp(Item item){
-        Skeleton.log(this.name + ".pickUp(Item" + item.getId() + ")", true);
-        if((this.getClass() == Teacher.class && item.getClass() == SlideRule.class) || itemInventory.size() >= 5 || this.getCurrentRoom().isSticky() || (this.getClass() == Teacher.class && item.getClass() == Transistor.class) ) {
-            Skeleton.log("return", false);
+        if((this.getClass() == Teacher.class && item.getClass() == SlideRule.class) || itemInventory.size() >= 5 || this.getCurrentRoom().isSticky()
+                || (this.getClass() == Teacher.class && item.getClass() == Transistor.class) )
             return;
-        }
+
         currentRoom.removeItem(item);
         itemInventory.add(item);
-        Skeleton.log("return", false);
     }
 
     /**
@@ -206,13 +193,11 @@ public abstract class Person implements ITickable, Serializable {
         itemInventory-ába.
      */
     public void dropItems(){
-        Skeleton.log(this.name + ".dropItems()", true);
         for(Item item : itemInventory){
             item.setActive(false);
             currentRoom.addItem(item);
         }
         itemInventory.clear();
-        Skeleton.log("return", false);
     }
 
     /**
@@ -255,7 +240,5 @@ public abstract class Person implements ITickable, Serializable {
         return this.getClass() + ", Name=" + name  + ", isPoisoned=" + isPoisoned + ", itemInventory=[" + itemInventoryString + "]";
     }
 
-    public void tick() {
-
-    }
+    public void tick() {}
 }

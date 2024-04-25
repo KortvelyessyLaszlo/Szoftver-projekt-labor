@@ -62,15 +62,11 @@ public class Room implements ITickable, Serializable {
      * @param isGassed : A szoba gázossága
      */
     public void setGassed(boolean isGassed) {
-        Skeleton.log("Room" + this.getId() + ".setGassed(" + isGassed + ")", true);
         this.isGassed = isGassed;
-        Skeleton.log("return", false);
     }
 
     public void setSticky(boolean isSticky) {
-        Skeleton.log("Room" + this.getId() + ".setSticky(" + isSticky + ")", true);
         this.isSticky = isSticky;
-        Skeleton.log("return", false);
     }
 
     /**
@@ -98,15 +94,11 @@ public class Room implements ITickable, Serializable {
      * @param capacity : A szoba kapacitása
      */
     public void setCapacity(int capacity) {
-        Skeleton.log("Room" + this.getId() + ".setCapacity(" + capacity + ")", true);
         this.capacity = capacity;
-        Skeleton.log("return", false);
     }
 
-    public void setenterCounter(int enterCounter) {
-        Skeleton.log("Room" + this.getId() + ".setenterCounter(" + enterCounter + ")", true);
+    public void setEnterCounter(int enterCounter) {
         this.enterCounter = enterCounter;
-        Skeleton.log("return", false);
     }
 
     /**
@@ -122,9 +114,7 @@ public class Room implements ITickable, Serializable {
      * @param peopleInRoom : A szobában tartózkodó személyek listája
      */
     public void setPeopleInRoom(List<Person> peopleInRoom) {
-        Skeleton.log("Room" + this.getId() + ".setPeopleInRoom(" + peopleInRoom + ")", true);
         this.peopleInRoom = peopleInRoom;
-        Skeleton.log("return", false);
     }
 
     /**
@@ -140,9 +130,7 @@ public class Room implements ITickable, Serializable {
      * @param itemInventory : A szobában lévő tárgyak listája
      */
     public void setItemInventory(List<Item> itemInventory) {
-        Skeleton.log("Room" + this.getId() + ".setItemInventory(" + itemInventory + ")", true);
         this.itemInventory = itemInventory;
-        Skeleton.log("return", false);
     }
 
     /**
@@ -158,8 +146,6 @@ public class Room implements ITickable, Serializable {
      * @param neighbours : A szobának a szomszédos szobáinak listája
      */
     public void setNeighbours(List<Room> neighbours) {
-        Skeleton.log("Room" + this.getId() + ".setNeighbours(" + neighbours + ")", true);
-        Skeleton.log("return", false);
         this.neighbours = neighbours;
     }
 
@@ -170,8 +156,6 @@ public class Room implements ITickable, Serializable {
      * @param person : A hozzáadandó személy
      */
     public void addPerson(Person person) {
-        Skeleton.log("Room" + this.getId() + ".addPerson(" + person.getName() + ")", true);
-        Skeleton.log("return", false);
         peopleInRoom.add(person);
         person.setCurrentRoom(this);
     }
@@ -181,9 +165,7 @@ public class Room implements ITickable, Serializable {
      * @param person : Az eltávolítandó személy
      */
     public void removePerson(Person person) {
-        Skeleton.log("Room" + this.getId() + ".removePerson(" + person.getName() + ")", true);
         peopleInRoom.remove(person);
-        Skeleton.log("return", false);
     }
 
     /**
@@ -191,9 +173,7 @@ public class Room implements ITickable, Serializable {
      * @param item : A A hozzáadandó tárgy
      */
     public void addItem(Item item) {
-        Skeleton.log("Room" + this.getId() + ".addItem(Item" + item.getId() + ")", true);
         itemInventory.add(item);
-        Skeleton.log("return", false);
     }
 
     /**
@@ -201,9 +181,7 @@ public class Room implements ITickable, Serializable {
      * @param item : Az eltávolítandó tárgy
      */
     public void removeItem(Item item) {
-        Skeleton.log("Room" + this.getId() + ".removeItem(Item" + item.getId() + ")", true);
         itemInventory.remove(item);
-        Skeleton.log("return", false);
     }
 
     /**
@@ -211,9 +189,7 @@ public class Room implements ITickable, Serializable {
      * @param neighbour : A hozzáadandó szomszédos szoba
      */
     public void addNeighbour(Room neighbour) {
-        Skeleton.log("Room" + this.getId() + ".addNeighbour(Room" + neighbour.getId() + ")", true);
         neighbours.add(neighbour);
-        Skeleton.log("return", false);
     }
 
     /**
@@ -221,9 +197,7 @@ public class Room implements ITickable, Serializable {
      * @param neighbour : Az eltávolítandó szomszédos szoba
      */
     public void removeNeighbour(Room neighbour) {
-        Skeleton.log("Room" + this.getId() + ".removeNeighbour(Room" + neighbour.getId() + ")", true);
         neighbours.remove(neighbour);
-        Skeleton.log("return", false);
     }
 
     /**
@@ -235,14 +209,11 @@ public class Room implements ITickable, Serializable {
      * @return Az eredetileg szomszédos szoba
      */
     public Room combineRooms(){
-        Skeleton.log("Room" + this.getId() + ".combineRooms()", true);
         Random random = new Random();
         Room neighbour = neighbours.get(random.nextInt(neighbours.size()));
 
-        if(!neighbour.peopleInRoom.isEmpty() || !this.peopleInRoom.isEmpty()){
-            Skeleton.log("return null", false);
+        if(!neighbour.peopleInRoom.isEmpty() || !this.peopleInRoom.isEmpty())
             return null;
-        }
 
         if(neighbour.isGassed)
             this.isGassed = true;
@@ -256,22 +227,18 @@ public class Room implements ITickable, Serializable {
         this.itemInventory.addAll(neighbour.itemInventory);
 
         for(var item : this.itemInventory) {
-            if(item instanceof Transistor && ((Transistor) item).getPlacedTransistorRoom() != null) {
+            if(item instanceof Transistor && ((Transistor) item).getPlacedTransistorRoom() != null)
                 ((Transistor) item).setPlacedTransistorRoom(this);
-            }
         }
 
-        Iterator<Room> neighbourIterator = neighbour.neighbours.iterator();
-        while(neighbourIterator.hasNext()){
-            Room room = neighbourIterator.next();
-            if(room != this) {
+        for (Room room : neighbour.neighbours) {
+            if (room != this) {
                 room.neighbours.add(this);
                 this.neighbours.add(room);
             }
             room.neighbours.remove(neighbour);
         }
         neighbour.neighbours.clear();
-        Skeleton.log("return Room" + neighbour.getId(), false);
         return neighbour;
     }
 
@@ -284,11 +251,9 @@ public class Room implements ITickable, Serializable {
      * @return A létrehozott szoba
      */
     public Room splitRoom(int newId){
-        Skeleton.log("Room" + this.getId() + ".splitRoom(" + newId + ")", true);
         Random random = new Random();
 
         if(!this.peopleInRoom.isEmpty() || this.capacity <= 1){
-            Skeleton.log("return null", false);
             return null;
         }
 
@@ -324,7 +289,6 @@ public class Room implements ITickable, Serializable {
         this.neighbours.add(newRoom);
         newRoom.neighbours.add(this);
 
-        Skeleton.log("return Room" + newRoom.getId(), false);
         return newRoom;
     }
 
@@ -337,18 +301,15 @@ public class Room implements ITickable, Serializable {
      * @return Sikerült-e belépni a szobába
      */
     public boolean acceptNewPerson(Person person){
-        Skeleton.log("Room" + this.getId() + ".acceptNewPerson(" + person.getName() + ")", true);
         if(peopleInRoom.size() >= capacity){
-            Skeleton.log("return false", false);
             if(person instanceof Student)
                 System.out.println("\u001B[31mRoom is full. You can't enter.\u001B[0m");
             return false;
         }
         peopleInRoom.add(person);
-        this.setenterCounter(this.getenterCounter() + 1);
+        this.setEnterCounter(this.getenterCounter() + 1);
         if(this.getenterCounter() >= 10)
             this.setSticky(true);
-        Skeleton.log("return true", false);
         return true;
     }
 
@@ -374,7 +335,5 @@ public class Room implements ITickable, Serializable {
                 + "], itemInventory=[" + itemInventoryString + "], neighbours=[" + neighboursString + "]";
     }
 
-    public void tick() {
-
-    }
+    public void tick() {}
 }
