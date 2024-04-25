@@ -217,32 +217,28 @@ public class GameController {
                     }
                     case "addPerson" -> {
                         for (Room room : testRooms) {
-                            try {
-                                if (room.getId() == Integer.parseInt(parts.get(1))) {
-                                    for (Person person : testPeople) {
-                                        if (person.getName().equals(parts.get(2))) {
-                                            room.addPerson(person);
-                                            person.setCurrentRoom(room);
-                                            break;
-                                        }
+                            if (room.getId() == Integer.parseInt(parts.get(1))) {
+                                for (Person person : testPeople) {
+                                    if (person.getName().equals(parts.get(2))) {
+                                        room.addPerson(person);
+                                        person.setCurrentRoom(room);
+                                        break;
                                     }
                                 }
-                            } catch (ClassCastException ignored) {}
+                            }
                         }
                     }
                     case "addNeighbour" -> {
                         for (Room room1 : testRooms) {
-                            try {
-                                if (room1.getId() == Integer.parseInt(parts.get(1))) {
-                                    for (Room room2 : testRooms) {
-                                        if (room2.getId() == Integer.parseInt(parts.get(2))) {
-                                            room1.addNeighbour(room2);
-                                            room2.addNeighbour(room1);
-                                            break;
-                                        }
+                            if (room1.getId() == Integer.parseInt(parts.get(1))) {
+                                for (Room room2 : testRooms) {
+                                    if (room2.getId() == Integer.parseInt(parts.get(2))) {
+                                        room1.addNeighbour(room2);
+                                        room2.addNeighbour(room1);
+                                        break;
                                     }
                                 }
-                            } catch (ClassCastException ignored) {}
+                            }
                         }
                     }
                     case "addItem" -> {
@@ -271,30 +267,26 @@ public class GameController {
                     }
                     case "activate" -> {
                         for (Person person : testPeople) {
-                            try {
-                                if (person.getName().equals(parts.get(2))) {
-                                    for (Item item : testItems) {
-                                        if (item.getId() == Integer.parseInt(parts.get(1))) {
-                                            item.activate(person);
-                                            break;
-                                        }
+                            if (person.getName().equals(parts.get(2))) {
+                                for (Item item : testItems) {
+                                    if (item.getId() == Integer.parseInt(parts.get(1))) {
+                                        item.activate(person);
+                                        break;
                                     }
                                 }
-                            } catch (ClassCastException ignored) {}
+                            }
                         }
                     }
                     case "enter" -> {
                         for (Person person : testPeople) {
-                            try {
-                                if (person.getName().equals(parts.get(1))) {
-                                    for (Room room : testRooms) {
-                                        if (room.getId() == Integer.parseInt(parts.get(2))) {
-                                            person.enter(room);
-                                            break;
-                                        }
+                            if (person.getName().equals(parts.get(1))) {
+                                for (Room room : testRooms) {
+                                    if (room.getId() == Integer.parseInt(parts.get(2))) {
+                                        person.enter(room);
+                                        break;
                                     }
                                 }
-                            } catch (ClassCastException ignored) {}
+                            }
                         }
                     }
                     case "useItem" -> {
@@ -313,26 +305,22 @@ public class GameController {
                     }
                     case "setGassed" -> {
                         for (Room room : testRooms) {
-                            try {
-                                if (room.getId() == Integer.parseInt(parts.get(1))) {
-                                    room.setGassed(Boolean.parseBoolean(parts.get(2)));
-                                    break;
-                                }
-                            } catch (ClassCastException ignored) {}
+                            if (room.getId() == Integer.parseInt(parts.get(1))) {
+                                room.setGassed(Boolean.parseBoolean(parts.get(2)));
+                                break;
+                            }
                         }
                     }
                     case "pickup" -> {
                         for (Person person : testPeople) {
-                            try {
-                                if (person.getName().equals(parts.get(1))) {
-                                    for (Item item : testItems) {
-                                        if (item.getId() == Integer.parseInt(parts.get(2))) {
-                                            person.pickUp(item);
-                                            break;
-                                        }
+                            if (person.getName().equals(parts.get(1))) {
+                                for (Item item : testItems) {
+                                    if (item.getId() == Integer.parseInt(parts.get(2))) {
+                                        person.pickUp(item);
+                                        break;
                                     }
                                 }
-                            } catch (ClassCastException ignored) {}
+                            }
                         }
                     }
                     case "pairItems" -> {
@@ -357,32 +345,26 @@ public class GameController {
                     }
                     case "setActive" -> {
                         for (Item item : testItems) {
-                            try {
-                                if (item.getId() == Integer.parseInt(parts.get(1))) {
-                                    item.setActive(Boolean.parseBoolean(parts.get(2)));
-                                    break;
-                                }
-                            } catch (ClassCastException ignored) {}
+                            if (item.getId() == Integer.parseInt(parts.get(1))) {
+                                item.setActive(Boolean.parseBoolean(parts.get(2)));
+                                break;
+                            }
                         }
                     }
                     case "setSticky" -> {
                         for (Room room : testRooms) {
-                            try {
-                                if (room.getId() == Integer.parseInt(parts.get(1))) {
-                                    room.setSticky(Boolean.parseBoolean(parts.get(2)));
-                                    break;
-                                }
-                            } catch (ClassCastException ignored) {}
+                            if (room.getId() == Integer.parseInt(parts.get(1))) {
+                                room.setSticky(Boolean.parseBoolean(parts.get(2)));
+                                break;
+                            }
                         }
                     }
                     case "combineRooms" -> {
                         for (Room room : testRooms) {
-                            try {
-                                if (room.getId() == Integer.parseInt(parts.get(1))) {
-                                    room.combineRooms();
-                                    break;
-                                }
-                            } catch (ClassCastException ignored) {}
+                            if (room.getId() == Integer.parseInt(parts.get(1))) {
+                                room.combineRooms();
+                                break;
+                            }
                         }
                     }
                     case "split" -> {
