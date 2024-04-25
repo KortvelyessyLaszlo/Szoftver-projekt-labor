@@ -115,28 +115,28 @@ public class GameController implements Serializable {
     private void startTestMode(){
         System.out.println();
         System.out.println();
-        System.out.println("Valaszthato tesztesetek");
-        System.out.println("1. TVSZ Batskin hasznalata");
-        System.out.println("2. CannedCamembert hasznalata");
-        System.out.println("3. FFP2 Mask hasznalata");
-        System.out.println("4. Air Freshener hasznalata");
-        System.out.println("5. Holy Beer Glass felvetele");
-        System.out.println("6. Holy Beer Glass hasznalata");
-        System.out.println("7. Wet Wipe Cloth hasznalata");
-        System.out.println("8. Transistor parositasa");
-        System.out.println("9. Transistor hasznalata");
-        System.out.println("10. Teleportalas");
-        System.out.println("11. Fake FFP2 Mask hasznalata");
-        System.out.println("12. Sikertelen belepes egy szobaba");
-        System.out.println("13. Belepes egy gazos szobaba");
-        System.out.println("14. Sikertelen targy felvetel");
-        System.out.println("15. Targy eldobasa");
-        System.out.println("16. Tanarral valo talalkozas targy nelkul.");
-        System.out.println("17. SlideRule felvetele");
-        System.out.println("18. Talalkozas megbenult tanarral");
-        System.out.println("19. Szobak egyesulese");
-        System.out.println("20. Szobak szetvalasa");
-        System.out.println("21. Takarito szobaba lepese");
+        System.out.println("Available test cases:");
+        System.out.println("1. Using TVSZ Batskin");
+        System.out.println("2. Using CannedCamembert");
+        System.out.println("3. Using FFP2 Mask");
+        System.out.println("4. Using Air Freshener");
+        System.out.println("5. Picking up Holy Beer Glass");
+        System.out.println("6. Using Holy Beer Glass");
+        System.out.println("7. Using Wet Wipe Cloth");
+        System.out.println("8. Pairing Transistor");
+        System.out.println("9. Using Transistor");
+        System.out.println("10. Teleporting");
+        System.out.println("11. Using Fake FFP2 Mask");
+        System.out.println("12. Unsuccessful entry into a room");
+        System.out.println("13. Entering a gassy room");
+        System.out.println("14. Unsuccessful item pickup");
+        System.out.println("15. Dropping an item");
+        System.out.println("16. Meeting a teacher without an item");
+        System.out.println("17. Picking up SlideRule");
+        System.out.println("18. Meeting a stunned teacher");
+        System.out.println("19. Combining rooms");
+        System.out.println("20. Splitting rooms");
+        System.out.println("21. Janitor entering a room");
         System.out.println();
         System.out.println();
 
@@ -552,7 +552,7 @@ public class GameController implements Serializable {
      */
     private void processGameCommand(String command){
         List<String> parts = parse(command);
-        if(parts.isEmpty()){
+        if(parts.size() > 1 && !parts.get(1).matches("\\d+") || parts.size() > 2 || parts.isEmpty()){
             System.out.println("Invalid command");
             return;
         }
@@ -674,6 +674,7 @@ public class GameController implements Serializable {
                     }
                 }
             }
+            case "exit" -> System.exit(0);
             default -> System.out.println("Invalid command");
         }
     }
@@ -706,7 +707,6 @@ public class GameController implements Serializable {
             if(random.nextInt(10) > 0)
                 maze.addRoom(new Room(random.nextInt(5) + 1, maze.getNextRoomId()));
             else{
-                System.out.println("Cursed room added" + maze.getNextRoomId());
                 maze.addRoom(new CursedRoom(random.nextInt(5) + 1, maze.getNextRoomId()));
             }
         }
