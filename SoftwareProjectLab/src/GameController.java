@@ -153,10 +153,17 @@ public class GameController implements Serializable {
                 case "run" -> {
                     if (parts.size() != 2) {
                         System.out.println("Invalid command");
-                        return;
+                        break;
                     }
-                    int testNumber = Integer.parseInt(parts.get(1));
-                    runTest(testNumber);
+                    try {
+                        int testNumber = Integer.parseInt(parts.get(1));
+                        if(testNumber > 0 && testNumber < 22)
+                            runTest(testNumber);
+                        else
+                            System.out.println("Invalid command");
+                    }catch (NumberFormatException e){
+                        System.out.println(e.getMessage());
+                    }
                 }
                 case "help" -> {
                     System.out.println("Available commands: ");
