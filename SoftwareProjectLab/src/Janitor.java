@@ -41,7 +41,7 @@ public class Janitor extends Person {
                 person.enter(neighbours.get(0));
             }
         }
-        System.out.println("\u001B[31m" + this.getName() + " has cleared Room "+ room.getId() + "\u001B[0m");
+        System.out.println(this.getName() + " has cleared Room "+ room.getId());
     }
 
     /**

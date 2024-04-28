@@ -42,7 +42,7 @@ public class SlideRule extends Item{
     public void victory(Person person) {
         Student winner = (Student) person;
         winner.setWinner(true);
-        System.out.println("\u001B[31m" + person.getName() + " has won the game!\u001B[0m");
+        System.out.println(person.getName() + " has won the game!");
     }
 
     public String toString(){

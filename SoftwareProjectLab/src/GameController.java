@@ -81,7 +81,7 @@ public class GameController implements Serializable {
 
         if(players.isEmpty()) {
             isGameStarted = false;
-            System.out.println("\u001B[31mThe players lost!\u001B[0m");
+            System.out.println("The players lost!");
             processStart();
         }
     }
@@ -691,7 +691,7 @@ public class GameController implements Serializable {
      * A függvény kiírja a játékos nevét, hogy mérgezett-e, a játékos jelenlegi szobáját és a játékos tárgyait.
      */
     private void showPlayerStat(){
-        System.out.println("Player: \u001B[34m" + currentPlayer.getName() + "\u001B[0m isPoisoned= " + currentPlayer.isPoisoned());
+        System.out.println("Player: " + currentPlayer.getName() + " isPoisoned= " + currentPlayer.isPoisoned());
         System.out.println("Room: " + currentPlayer.getCurrentRoom());
         System.out.println("Items: ");
         for(Item item : currentPlayer.getItemInventory()){
@@ -790,7 +790,7 @@ public class GameController implements Serializable {
             out.writeObject(this);
             out.close();
             file.close();
-            System.out.println("\u001B[31mGame Saved\u001B[0m");
+            System.out.println("Game Saved");
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -80,7 +80,7 @@ public class Teacher extends Person {
     public void eliminate(Student student){
         student.dropItems();
         student.getCurrentRoom().removePerson(student);
-        System.out.println("\u001B[31m" + this.getName() + " has slayed " + student.getName() + "\u001B[0m");
+        System.out.println(this.getName() + " has slayed " + student.getName());
     }
 
     @Override
