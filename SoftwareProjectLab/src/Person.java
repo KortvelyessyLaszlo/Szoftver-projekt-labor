@@ -50,7 +50,7 @@ public abstract class Person implements ITickable, Serializable {
      */
     public void setPoisoned(boolean isPoisoned) {
         this.isPoisoned = isPoisoned;
-        this.poisonDuration = 10;
+        this.poisonDuration = 5;
     }
 
     /**
