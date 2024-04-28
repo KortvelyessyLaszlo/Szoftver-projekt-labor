@@ -148,7 +148,7 @@ public class GameController implements Serializable {
                 System.out.println("Invalid command");
                 return;
             }
-            String commandName = parts.getFirst();
+            String commandName = parts.get(0);
             switch (commandName) {
                 case "run" -> {
                     if (parts.size() != 2) {
@@ -205,7 +205,7 @@ public class GameController implements Serializable {
                     System.out.println("Invalid command");
                     return;
                 }
-                String commandName = parts.getFirst();
+                String commandName = parts.get(0);
                 switch (commandName) {
                     case "createMaze" -> testMaze = new Maze();
                     case "createRoom" -> {
@@ -563,7 +563,7 @@ public class GameController implements Serializable {
             System.out.println("Invalid command");
             return;
         }
-        String commandName = parts.getFirst();
+        String commandName = parts.get(0);
         switch (commandName) {
             case "start" -> {
                 if (parts.size() != 2 || isGameStarted) {
@@ -723,7 +723,7 @@ public class GameController implements Serializable {
             maze.getRooms().get(i).addNeighbour(maze.getRooms().get(i - 1));
             maze.getRooms().get(i).addNeighbour(maze.getRooms().get(i + 1));
         }
-        maze.getRooms().getLast().addNeighbour(maze.getRooms().get(maze.getRooms().size() - 2));
+        maze.getRooms().get(maze.getRooms().size() - 1).addNeighbour(maze.getRooms().get(maze.getRooms().size() - 2));
 
         for(int i = 0; i < maze.getRooms().size(); ++i) {
             int neighbourCount = random.nextInt(4);

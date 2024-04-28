@@ -38,7 +38,7 @@ public class Janitor extends Person {
             neighbours.removeIf(temproom -> temproom.getPeopleInRoom().size() == temproom.getCapacity());
             Collections.shuffle(neighbours);
             if (person != this && !neighbours.isEmpty()) {
-                person.enter(neighbours.getFirst());
+                person.enter(neighbours.get(0));
             }
         }
         System.out.println("\u001B[31m" + this.getName() + " has cleared Room "+ room.getId() + "\u001B[0m");
