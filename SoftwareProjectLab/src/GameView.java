@@ -3,6 +3,7 @@ import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
 
 public class GameView extends JFrame {
     private JButton save;
@@ -86,7 +87,7 @@ public class GameView extends JFrame {
         inventoryPanel.setBounds(25,400,450,200);
         inventoryPanel.setBackground(Color.LIGHT_GRAY);
         inventoryPanel.setBorder(new LineBorder(Color.BLACK, 3));
-        inventoryPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 10,10));
+        inventoryPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 10,10));
         JTextArea inventory = new JTextArea("Inventory");
         inventory.setFont(new Font("Arial", Font.BOLD, 18 ));
         inventory.setEditable(false);
@@ -114,6 +115,52 @@ public class GameView extends JFrame {
             inventoryPanel.add(newItem);
         }
         panel.add(inventoryPanel);
+
+
+
+        boolean techerInRoom = false;
+        boolean teacherIsSick = false;
+        boolean janitorInRoom = false;
+        for(Person person : player.getCurrentRoom().getPeopleInRoom()){
+            if(person.getName().contains("Teacher")){
+                Teacher teacher = (Teacher) person;
+                if(teacher.isPoisoned() || teacher.isStunned())
+                    teacherIsSick = true;
+                techerInRoom = true;
+            }
+            else if (person.getName().contains("Janitor"))
+                janitorInRoom = true;
+        }
+        ImageIcon playerIcon = new ImageIcon("resources/image/hallgato.png");
+        JLabel playerLabel = new JLabel(playerIcon);
+        playerLabel.setBounds(350,230, 97,180);
+        panel.add(playerLabel);
+
+        if(techerInRoom){
+            ImageIcon teacherIcon;
+            if(teacherIsSick)
+                teacherIcon = new ImageIcon("resources/image/betegtanar.png");
+            else
+                teacherIcon = new ImageIcon("resources/image/tanar.png");
+
+            JLabel teacherLabel = new JLabel(teacherIcon);
+            teacherLabel.setBounds(50,230, 168,180);
+            panel.add(teacherLabel);
+        }
+
+        if(janitorInRoom){
+            ImageIcon janitorIcon = new ImageIcon("resources/image/takarito.png");
+            JLabel janitorLabel = new JLabel(janitorIcon);
+            janitorLabel.setBounds(450,230, 131,180);
+            panel.add(janitorLabel);
+        }
+
+        if(player.getCurrentRoom().isGassed()){
+            ImageIcon mistIcon = new ImageIcon("resources/image/gaz.png");
+            JLabel mistLabel = new JLabel(mistIcon);
+            mistLabel.setBounds(0,150, 800,300);
+            panel.add(mistLabel);
+        }
 
         ImageIcon imageIcon = new ImageIcon("resources/image/terem.png");
         JLabel backgroundLabel = new JLabel(imageIcon);

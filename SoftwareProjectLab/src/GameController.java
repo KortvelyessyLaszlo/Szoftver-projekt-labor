@@ -152,7 +152,11 @@ public class GameController implements Serializable {
         switch (commandName) {
             case "start" -> {
                 isGameStarted = true;
-                playerCount = Integer.parseInt(parts.get(1));
+                try{
+                    playerCount = Integer.parseInt(parts.get(1));
+                } catch (Exception e){
+                    playerCount = 1;
+                }
                 initGame();
             }
             case "load" -> {
