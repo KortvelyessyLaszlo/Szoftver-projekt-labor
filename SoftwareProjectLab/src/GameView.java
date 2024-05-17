@@ -1,6 +1,8 @@
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class GameView extends JFrame {
     private JButton save;
@@ -26,6 +28,7 @@ public class GameView extends JFrame {
         panel.setLayout(null);
 
         save = new JButton("<html><span style=\"font-size:18px\">save</span></html>");
+        save.addActionListener(e -> gameController.processGameCommand("save"));
         save.setBounds(25, 20, 80, 50);
         save.setBackground(Color.gray);
         save.setBorder(new LineBorder(Color.BLACK, 3));
@@ -46,6 +49,7 @@ public class GameView extends JFrame {
         roomsPanel.setLayout(new BoxLayout(roomsPanel, BoxLayout.Y_AXIS));
         for (Room room : player.getCurrentRoom().getNeighbours()) {
             JButton newRoom = new JButton("Room "+room.getId());
+            newRoom.addActionListener(e -> gameController.processGameCommand("enter " + room.getId()));
             newRoom.setBackground(Color.gray);
             newRoom.setAlignmentX(Component.CENTER_ALIGNMENT);
             roomsPanel.add(newRoom);
@@ -60,14 +64,14 @@ public class GameView extends JFrame {
         itemsPanel.setLayout(new BoxLayout(itemsPanel, BoxLayout.Y_AXIS));
         for (Item item : player.getCurrentRoom().getItemInventory()) {
             JButton newItem = new JButton(item.getClass().toString().split(" ")[1]);
+            newItem.addActionListener(e -> gameController.processGameCommand("pickup " + item.getId()));
             newItem.setAlignmentX(Component.CENTER_ALIGNMENT);
             newItem.setBackground(Color.gray);
             itemsPanel.add(newItem);
         }
         JScrollPane itemsScrollPane = new JScrollPane(itemsPanel,ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         itemsScrollPane.setBounds(650,275,150,200);
-        itemsScrollPane.setBorder(new LineBorder(Color.BLACK, 3) {
-        });
+        itemsScrollPane.setBorder(new LineBorder(Color.BLACK, 3));
         panel.add(itemsScrollPane);
 
         JLabel roomsLabel = new JLabel("<html><span style=\"font-size:18px\">Rooms</span></html>");
@@ -90,21 +94,33 @@ public class GameView extends JFrame {
         inventoryPanel.add(inventory);
 
         pair = new JButton("<html><span style=\"font-size:18px\">pair</span></html>");
+        pair.addActionListener(e -> gameController.processGameCommand("pair"));
         pair.setBackground(Color.gray);
         inventoryPanel.add(pair);
 
         for (Item item : player.getItemInventory()) {
             JButton newItem = new JButton(item.toString());
+            newItem.addMouseListener(new java.awt.event.MouseAdapter() {
+                public void mouseClicked(java.awt.event.MouseEvent evt) {
+                    if(SwingUtilities.isLeftMouseButton(evt))
+                        gameController.processGameCommand("use " + item.getId());
+                    else if(SwingUtilities.isRightMouseButton(evt))
+                        gameController.processGameCommand("drop " + item.getId());
+
+                }
+            });
             newItem.setBorder(new LineBorder(Color.BLACK, 3));
             newItem.setBackground(Color.gray);
             inventoryPanel.add(newItem);
         }
         panel.add(inventoryPanel);
 
-        ImageIcon imageIcon = new ImageIcon("resources/image/terem.png"); // Replace with your image path
+        ImageIcon imageIcon = new ImageIcon("resources/image/terem.png");
         JLabel backgroundLabel = new JLabel(imageIcon);
         backgroundLabel.setBounds(0,0,800,600);
         panel.add(backgroundLabel);
 
+        this.revalidate();
+        this.repaint();
     }
 }

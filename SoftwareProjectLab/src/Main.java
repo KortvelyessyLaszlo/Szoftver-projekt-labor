@@ -7,8 +7,5 @@ public class Main {
      */
     public static void main(String[] args) {
         MainWindow mainWindow = new MainWindow();
-        //GameView gameView = new GameView();
-        //GameController gameController = new GameController();
-        //gameController.processStart();
     }
 }

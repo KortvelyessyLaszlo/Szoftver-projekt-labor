@@ -156,11 +156,6 @@ public class GameController implements Serializable {
                 initGame();
             }
             case "load" -> {
-                File f = new File("resources\\save.txt");
-                if (isGameStarted || parts.size() != 1 || !f.exists()) {
-                    System.out.println("Invalid command");
-                    return;
-                }
                 isGameStarted = true;
                 load();
             }
@@ -174,6 +169,7 @@ public class GameController implements Serializable {
                 for (Room room : rooms) {
                     if (room.getId() == roomId) {
                         currentPlayer.enter(room);
+                        break;
                     }
                 }
             }
@@ -183,6 +179,7 @@ public class GameController implements Serializable {
                 for (Item item : items) {
                     if (item.getId() == itemId) {
                         currentPlayer.pickUp(item);
+                        break;
                     }
                 }
             }
@@ -192,6 +189,7 @@ public class GameController implements Serializable {
                 for (Item item : items) {
                     if (item.getId() == itemId) {
                         currentPlayer.dropItem(item);
+                        break;
                     }
                 }
             }
@@ -204,6 +202,7 @@ public class GameController implements Serializable {
                 for (Item item : items) {
                     if (item.getId() == itemId) {
                         currentPlayer.useItem(item);
+                        break;
                     }
                 }
             }
