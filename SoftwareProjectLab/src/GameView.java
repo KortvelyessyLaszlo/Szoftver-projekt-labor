@@ -4,6 +4,8 @@ import javax.swing.border.LineBorder;
 import java.awt.*;
 
 public class GameView extends JFrame {
+
+    GameController gameController;
     private JButton save;
     private JButton pair;
     private JTextArea playerStats;
@@ -15,6 +17,10 @@ public class GameView extends JFrame {
         this.add(panel);
         placeComponents(panel);
         this.setVisible(true);
+    }
+
+    public void setGameController(GameController gameController) {
+        this.gameController = gameController;
     }
 
     private void placeComponents(JPanel panel) {
@@ -44,10 +50,6 @@ public class GameView extends JFrame {
         JScrollPane roomsScrollPane = new JScrollPane(roomsPanel);
         roomsScrollPane.setBounds(740,25,60,200);
         panel.add(roomsScrollPane);
-
-
-
-
 
         JLayeredPane layeredPane = new JLayeredPane();
         ImageIcon imageIcon = new ImageIcon("resources/image/terem.png"); // Replace with your image path

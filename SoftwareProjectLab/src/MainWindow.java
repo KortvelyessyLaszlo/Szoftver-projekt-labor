@@ -3,6 +3,7 @@ import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 
 public class MainWindow extends JFrame {
     private JButton start;
@@ -32,20 +33,32 @@ public class MainWindow extends JFrame {
         load.setBounds(80, 125, 140, 50);
         load.setBackground(Color.LIGHT_GRAY);
         load.setBorder(new LineBorder(Color.BLACK, 3));
+        File f = new File("resources\\save.txt");
+        if (!f.exists())
+            load.setEnabled(false);
         panel.add(load);
 
         start.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //Játék indítása player count számú játékossal
-                System.out.println("asdasdasdasdas");
+                GameView gameView = new GameView();
+                GameController gameController = new GameController(gameView);
+                gameView.setGameController(gameController);
+                setVisible(false);
+                gameView.setVisible(true);
+                gameController.processGameCommand("start "+ playerCount.getText());
             }
         });
 
         load.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //Játék betöltése
+                GameView gameView = new GameView();
+                GameController gameController = new GameController(gameView);
+                gameView.setGameController(gameController);
+                setVisible(false);
+                gameView.setVisible(true);
+                gameController.processGameCommand("load");
             }
         });
 
@@ -53,6 +66,7 @@ public class MainWindow extends JFrame {
         playerCount.setBounds(225, 25,50,50);
         playerCount.setBackground(Color.LIGHT_GRAY);
         playerCount.setBorder(new LineBorder(Color.BLACK, 3));
+        playerCount.setHorizontalAlignment(JTextField.CENTER);
         panel.add(playerCount);
     }
 }
