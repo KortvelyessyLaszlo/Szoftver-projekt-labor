@@ -125,6 +125,7 @@ public class GameController implements Serializable {
             else
                 currentPlayerIndex++;
         }
+        gameView.placeComponents();
     }
 
     /**

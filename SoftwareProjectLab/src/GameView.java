@@ -15,15 +15,15 @@ public class GameView extends JFrame {
     public GameView(){
         this.setSize(800, 600);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        JPanel panel = new JPanel();
-        this.add(panel);
-        placeComponents(panel);
+
         this.setVisible(true);
     }
 
-    private void placeComponents(JPanel panel) {
+    public void placeComponents() {
+        this.getContentPane().removeAll();
         Student player = gameController.getCurrentPlayer();
-
+        JPanel panel = new JPanel();
+        this.add(panel);
         panel.setLayout(null);
 
         save = new JButton("<html><span style=\"font-size:18px\">save</span></html>");
@@ -57,7 +57,7 @@ public class GameView extends JFrame {
         JPanel itemsPanel = new JPanel();
         itemsPanel.setLayout(new BoxLayout(itemsPanel, BoxLayout.Y_AXIS));
         for (Item item : player.getCurrentRoom().getItemInventory()) {
-            JButton newItem = new JButton(item.getClass().toString());
+            JButton newItem = new JButton(item.getClass().toString().split(" ")[1]);
             newItem.setBorder(new LineBorder(Color.BLACK, 3));
             newItem.setBackground(Color.gray);
             itemsPanel.add(newItem);
