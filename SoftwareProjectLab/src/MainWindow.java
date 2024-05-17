@@ -16,6 +16,7 @@ public class MainWindow extends JFrame {
         this.add(panel);
         placeComponents(panel);
         this.setVisible(true);
+        setResizable(false);
     }
 
     private void placeComponents(JPanel panel) {
@@ -45,7 +46,6 @@ public class MainWindow extends JFrame {
                 GameController gameController = new GameController(gameView);
                 gameView.setGameController(gameController);
                 setVisible(false);
-                gameView.setVisible(true);
                 gameController.processGameCommand("start "+ playerCount.getText());
             }
         });
@@ -57,7 +57,6 @@ public class MainWindow extends JFrame {
                 GameController gameController = new GameController(gameView);
                 gameView.setGameController(gameController);
                 setVisible(false);
-                gameView.setVisible(true);
                 gameController.processGameCommand("load");
             }
         });
