@@ -47,8 +47,5 @@ public class FFP2Mask extends TimedItem{
     }
 
 
-    @Override
-    public String toString(){
-        return super.toString() + ", isFake=" + isFake;
-    }
+
 }

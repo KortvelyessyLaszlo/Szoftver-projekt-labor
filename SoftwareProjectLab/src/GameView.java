@@ -83,7 +83,7 @@ public class GameView extends JFrame {
         panel.add(itemsLabel);
 
         JPanel inventoryPanel = new JPanel();
-        inventoryPanel.setBounds(25,400,200,200);
+        inventoryPanel.setBounds(25,400,450,200);
         inventoryPanel.setBackground(Color.LIGHT_GRAY);
         inventoryPanel.setBorder(new LineBorder(Color.BLACK, 3));
         inventoryPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 10,10));

@@ -134,7 +134,7 @@ public abstract class Item implements ITickable, Serializable {
 
     @Override
     public String toString(){
-        return this.getClass() + ", id=" + id + ", isActive=" + isActive + ", isDestroyed=" + isDestroyed;
+        return new String("<html>"+this.getClass().toString().split(" ")[1] + "<br>isActive=" + isActive + "<br>isDestroyed=" + isDestroyed+"</html>");
     }
 
     public void tick() {}

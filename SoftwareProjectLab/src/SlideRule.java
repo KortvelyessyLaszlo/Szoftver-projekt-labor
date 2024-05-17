@@ -45,7 +45,4 @@ public class SlideRule extends Item{
         System.out.println(person.getName() + " has won the game!");
     }
 
-    public String toString(){
-        return super.toString() + ", isFake=" + isFake;
-    }
 }

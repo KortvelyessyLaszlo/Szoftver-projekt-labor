@@ -99,9 +99,5 @@ public class Transistor extends Item{
             transistor.pair = this;
         }
     }
-    @Override
-    public String toString(){
-        if(pair == null)return super.toString();
-        return super.toString()  + ", pairId=" + pair.getId();
-    }
+
 }

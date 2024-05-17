@@ -47,6 +47,7 @@ public class MainWindow extends JFrame {
                 gameView.setGameController(gameController);
                 setVisible(false);
                 gameController.processGameCommand("start "+ playerCount.getText());
+                gameView.placeComponents();
             }
         });
 
@@ -58,6 +59,7 @@ public class MainWindow extends JFrame {
                 gameView.setGameController(gameController);
                 setVisible(false);
                 gameController.processGameCommand("load");
+                gameView.placeComponents();
             }
         });
 
