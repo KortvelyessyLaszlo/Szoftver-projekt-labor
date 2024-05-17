@@ -39,6 +39,7 @@ public class GameController implements Serializable {
      * A jelenlegi játékos
      */
     private Student currentPlayer;
+    public Student getCurrentPlayer(){return currentPlayer;}
 
     /**
      *

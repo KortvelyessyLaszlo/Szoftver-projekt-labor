@@ -6,7 +6,8 @@ public class Main {
      * @param args : Esetleges argumentumlista
      */
     public static void main(String[] args) {
-        GameView gameView = new GameView();
+        MainWindow mainWindow = new MainWindow();
+        //GameView gameView = new GameView();
         //GameController gameController = new GameController();
         //gameController.processStart();
     }
