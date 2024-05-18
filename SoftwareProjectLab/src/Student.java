@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.util.List;
 
 public class Student extends Person {
@@ -15,7 +16,7 @@ public class Student extends Person {
     public void setPoisoned(boolean value) {
         super.setPoisoned(value);
         if(value)
-            System.out.println("\u001B[31m" + this.getName() + " got poisoned \u001B[0m");
+            JOptionPane.showMessageDialog(null, this.getName() + " got poisoned");
     }
 
     /**
@@ -44,7 +45,8 @@ public class Student extends Person {
      * @param item : A használandó tárgy
      */
     public void useItem(Item item){
-        item.activate(this);
+        if(!isPoisoned())
+            item.activate(this);
     }
 
     /**
@@ -54,6 +56,8 @@ public class Student extends Person {
      * @param item : Az eldobandó tárgy
      */
     public void dropItem(Item item){
+        if(isPoisoned())
+            return;
         item.setActive(false);
         getCurrentRoom().addItem(item);
         this.removeItem(item);
@@ -90,16 +94,18 @@ public class Student extends Person {
      */
     @Override
     public void pickUp(Item item){
-        super.pickUp(item);
-
-        if(this.getCurrentRoom().isSticky()) {
-            System.out.println("\u001B[31m Pickup fail, the floor is sticky \u001B[0m");
-            return;
-        }
         if(this.getItemInventory().size() >= 5) {
-            System.out.println("\u001B[31m Pickup fail, inventory is full \u001B[0m");
+            JOptionPane.showMessageDialog(null, "Inventory is full");
             return;
         }
+        if(this.getCurrentRoom().isSticky()) {
+            JOptionPane.showMessageDialog(null, "Room is sticky, you can't pick up items");
+            return;
+        }
+        if(isPoisoned())
+            return;
+
+        super.pickUp(item);
 
         item.pickUp(this);
     }
@@ -125,6 +131,9 @@ public class Student extends Person {
         függvényt.
      */
     public void pairItems(){
+        if(isPoisoned())
+            return;
+
         List<Item> inventory = getItemInventory();
         for(int i = 0; i < inventory.size() - 1; i++){
             for(int j = i + 1; j < inventory.size(); j++)

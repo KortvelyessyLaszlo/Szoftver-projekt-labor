@@ -9,7 +9,6 @@ public class GameView extends JFrame {
     private JButton save;
     private JButton pair;
     private JTextArea playerStats;
-    private ImageIcon people;
     private GameController gameController;
     public void setGameController(GameController gameController){
         this.gameController = gameController;
@@ -22,7 +21,7 @@ public class GameView extends JFrame {
         this.setVisible(true);
     }
 
-    public void placeComponents() {
+    public void updateView() {
         this.getContentPane().removeAll();
         Student player = gameController.getCurrentPlayer();
         JPanel panel = new JPanel();
@@ -111,13 +110,11 @@ public class GameView extends JFrame {
 
                 }
             });
-            newItem.setBorder(new LineBorder(Color.BLACK, 3));
+            newItem.setBorder(new LineBorder(Color.BLACK, 2));
             newItem.setBackground(Color.gray);
             inventoryPanel.add(newItem);
         }
         panel.add(inventoryPanel);
-
-
 
         boolean techerInRoom = false;
         boolean teacherIsSick = false;

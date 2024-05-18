@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.io.Serializable;
 import java.util.*;
 
@@ -319,7 +320,7 @@ public class Room implements ITickable, Serializable {
     public boolean acceptNewPerson(Person person){
         if(peopleInRoom.size() >= capacity){
             if(person instanceof Student)
-                System.out.println("\u001B[31mRoom is full. You can't enter.\u001B[0m");
+                JOptionPane.showMessageDialog(null, "You can't enter the room, it's full!");
             return false;
         }
         peopleInRoom.add(person);

@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.util.Random;
 
 public class Teacher extends Person {
@@ -80,7 +81,7 @@ public class Teacher extends Person {
     public void eliminate(Student student){
         student.dropItems();
         student.getCurrentRoom().removePerson(student);
-        System.out.println(this.getName() + " has slayed " + student.getName());
+        JOptionPane.showMessageDialog(null, student.getName() + " has been eliminated by " + this.getName());
     }
 
     @Override
@@ -102,7 +103,6 @@ public class Teacher extends Person {
     @Override
     public void tick() {
         if(isStunned){
-            System.out.println("stun" + stunDuration);
             stunDuration--;
             if(stunDuration == 0)
                 isStunned = false;

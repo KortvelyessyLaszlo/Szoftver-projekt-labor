@@ -73,6 +73,17 @@ public class GameController implements Serializable {
      * Ha egy játékos meghal, akkor azt a játékosok listájából törli.
      */
     private void tickAll(){
+        for(Student player : players) {
+            if(player.isWinner()) {
+                isGameStarted = false;
+                JOptionPane.showMessageDialog(gameView, "The players won the game! " + player.getName() + " has found the SlideRule", "Game Over", JOptionPane.INFORMATION_MESSAGE);
+                gameView.setVisible(false);
+                MainWindow mainWindow = new MainWindow();
+                mainWindow.setVisible(true);
+                return;
+            }
+        }
+
         List<Student> playersAlive = new ArrayList<>();
 
         maze.tick();
@@ -119,12 +130,12 @@ public class GameController implements Serializable {
                 }
             }
         }
-        if (notPoisonedPlayers.isEmpty())
-            return;
-        currentPlayer = notPoisonedPlayers.get(currentPlayerIndex);
-        currentPlayerIndex++;
+        if (!notPoisonedPlayers.isEmpty()) {
+            currentPlayer = notPoisonedPlayers.get(currentPlayerIndex);
+            currentPlayerIndex++;
+        }
 
-        gameView.placeComponents();
+        gameView.updateView();
     }
 
     /**
@@ -134,16 +145,6 @@ public class GameController implements Serializable {
      * @param command : A játék parancsa
      */
     public void processGameCommand(String command){
-        for(Student player : players) {
-            if(player.isWinner()) {
-                isGameStarted = false;
-                JOptionPane.showMessageDialog(gameView, "The winner is: " + player.getName(), "Game Over", JOptionPane.INFORMATION_MESSAGE);
-                gameView.setVisible(false);
-                MainWindow mainWindow = new MainWindow();
-                mainWindow.setVisible(true);
-                return;
-            }
-        }
 
         List<String> parts = parse(command);
 
