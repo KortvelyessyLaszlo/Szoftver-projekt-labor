@@ -164,6 +164,7 @@ public class GameController implements Serializable {
             }
             case "save" -> {
                 save();
+                return;
             }
             case "enter" -> {
 
