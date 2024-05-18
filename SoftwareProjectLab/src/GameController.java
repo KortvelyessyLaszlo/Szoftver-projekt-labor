@@ -45,7 +45,7 @@ public class GameController implements Serializable {
      *
      */
     private int currentPlayerIndex = 0;
-
+    List<Student> notPoisonedPlayers = new ArrayList<>();
 
     /**
      * A GameController osztály konstruktora
@@ -106,25 +106,24 @@ public class GameController implements Serializable {
             gameView.setVisible(false);
             MainWindow mainWindow = new MainWindow();
             mainWindow.setVisible(true);
+            return;
         }
 
-        if(isGameStarted){
-            List<Student> notPoisonedPlayers = new ArrayList<>();
-            for(Student player : players){
-                if(!player.isPoisoned()){
+
+        if(isGameStarted && (notPoisonedPlayers.isEmpty() || currentPlayerIndex >= notPoisonedPlayers.size()-1)) {
+            notPoisonedPlayers = new ArrayList<>();
+            currentPlayerIndex = 0;
+            for (Student player : players) {
+                if (!player.isPoisoned()) {
                     notPoisonedPlayers.add(player);
                 }
             }
-
-            if(notPoisonedPlayers.isEmpty())
-                return;
-
-            currentPlayer = notPoisonedPlayers.get(currentPlayerIndex);
-            if(currentPlayerIndex >= notPoisonedPlayers.size() - 1)
-                currentPlayerIndex = 0;
-            else
-                currentPlayerIndex++;
         }
+        if (notPoisonedPlayers.isEmpty())
+            return;
+        currentPlayer = notPoisonedPlayers.get(currentPlayerIndex);
+        currentPlayerIndex++;
+
         gameView.placeComponents();
     }
 

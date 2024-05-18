@@ -64,7 +64,7 @@ public class Teacher extends Person {
             return;
 
         if(student.checkForStunItems()){
-            isStunned = true;
+            setStunned(true);
             return;
         }
         if(student.checkForDefensiveItems())
@@ -102,6 +102,7 @@ public class Teacher extends Person {
     @Override
     public void tick() {
         if(isStunned){
+            System.out.println("stun" + stunDuration);
             stunDuration--;
             if(stunDuration == 0)
                 isStunned = false;
