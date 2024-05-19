@@ -156,7 +156,8 @@ public abstract class Person implements ITickable, Serializable {
             return;
         }
 
-        for(Person person : currentRoom.getPeopleInRoom()){
+        List<Person> peopleInRoom = new ArrayList<>(currentRoom.getPeopleInRoom());
+        for(Person person : peopleInRoom){
             if(person != this)
                 this.meet(person);
         }

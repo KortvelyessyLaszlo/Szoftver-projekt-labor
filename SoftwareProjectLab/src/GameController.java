@@ -1,5 +1,4 @@
 import javax.swing.*;
-import java.io.File;
 import java.util.*;
 import java.io.*;
 
@@ -8,17 +7,13 @@ public class GameController implements Serializable {
     /**
      * A GameController osztályhoz tartozó GameView objektum
      */
-    private GameView gameView;
+    private final GameView gameView;
 
     /**
      * A játékosok számát tároló változó
      */
     private int playerCount;
 
-    /**
-     * A teszt mód beállításáért felelős változó
-     */
-    private boolean isTestMode;
 
     /**
      * A játék elindult-e
@@ -121,7 +116,7 @@ public class GameController implements Serializable {
         }
 
 
-        if(isGameStarted && (notPoisonedPlayers.isEmpty() || currentPlayerIndex >= notPoisonedPlayers.size()-1)) {
+        if(isGameStarted && (notPoisonedPlayers.isEmpty() || currentPlayerIndex > notPoisonedPlayers.size()-1)) {
             notPoisonedPlayers = new ArrayList<>();
             currentPlayerIndex = 0;
             for (Student player : players) {
@@ -330,7 +325,6 @@ public class GameController implements Serializable {
             ObjectInputStream in = new ObjectInputStream(fileIn);
             temp = (GameController) in.readObject();
             this.playerCount = temp.playerCount;
-            this.isTestMode = temp.isTestMode;
             this.isGameStarted = temp.isGameStarted;
             this.maze = temp.maze;
             this.players = temp.players;

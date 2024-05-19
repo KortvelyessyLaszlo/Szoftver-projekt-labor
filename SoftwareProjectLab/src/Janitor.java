@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
@@ -32,7 +33,7 @@ public class Janitor extends Person {
         currentRoom.setEnterCounter(0);
 
         List<Room> neighbours = currentRoom.getNeighbours();
-        List<Person> people = currentRoom.getPeopleInRoom();
+        List<Person> people = new ArrayList<>(currentRoom.getPeopleInRoom());
 
         for (Person person : people) {
             neighbours.removeIf(temproom -> temproom.getPeopleInRoom().size() == temproom.getCapacity());

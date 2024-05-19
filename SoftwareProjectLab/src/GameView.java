@@ -1,9 +1,6 @@
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.WindowEvent;
 
 public class GameView extends JFrame {
     private JButton save;
@@ -116,7 +113,7 @@ public class GameView extends JFrame {
         }
         panel.add(inventoryPanel);
 
-        boolean techerInRoom = false;
+        boolean teacherInRoom = false;
         boolean teacherIsSick = false;
         boolean janitorInRoom = false;
         for(Person person : player.getCurrentRoom().getPeopleInRoom()){
@@ -124,7 +121,7 @@ public class GameView extends JFrame {
                 Teacher teacher = (Teacher) person;
                 if(teacher.isPoisoned() || teacher.isStunned())
                     teacherIsSick = true;
-                techerInRoom = true;
+                teacherInRoom = true;
             }
             else if (person.getName().contains("Janitor"))
                 janitorInRoom = true;
@@ -134,7 +131,7 @@ public class GameView extends JFrame {
         playerLabel.setBounds(350,230, 97,180);
         panel.add(playerLabel);
 
-        if(techerInRoom){
+        if(teacherInRoom){
             ImageIcon teacherIcon;
             if(teacherIsSick)
                 teacherIcon = new ImageIcon("resources/image/betegtanar.png");
