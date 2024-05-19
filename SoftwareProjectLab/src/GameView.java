@@ -126,7 +126,13 @@ public class GameView extends JFrame {
             else if (person.getName().contains("Janitor"))
                 janitorInRoom = true;
         }
-        ImageIcon playerIcon = new ImageIcon("resources/image/hallgato.png");
+
+        ImageIcon playerIcon;
+        if(player.isPoisoned()) {
+            playerIcon = new ImageIcon("resources/image/betegdiak.png");
+        } else {
+            playerIcon = new ImageIcon("resources/image/hallgato.png");
+        }
         JLabel playerLabel = new JLabel(playerIcon);
         playerLabel.setBounds(350,230, 97,180);
         panel.add(playerLabel);
@@ -154,6 +160,13 @@ public class GameView extends JFrame {
             ImageIcon mistIcon = new ImageIcon("resources/image/gaz.png");
             JLabel mistLabel = new JLabel(mistIcon);
             mistLabel.setBounds(0,150, 800,300);
+            panel.add(mistLabel);
+        }
+
+        if(player.getCurrentRoom().isSticky()){
+            ImageIcon mistIcon = new ImageIcon("resources/image/ragacs.png");
+            JLabel mistLabel = new JLabel(mistIcon);
+            mistLabel.setBounds(150,330, 800,300);
             panel.add(mistLabel);
         }
 
