@@ -1,8 +1,6 @@
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.File;
 
 public class MainWindow extends JFrame {
@@ -40,26 +38,20 @@ public class MainWindow extends JFrame {
             load.setEnabled(false);
         panel.add(load);
 
-        start.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                GameView gameView = new GameView();
-                GameController gameController = new GameController(gameView);
-                gameView.setGameController(gameController);
-                setVisible(false);
-                gameController.processGameCommand("start "+ playerCount.getText());
-            }
+        start.addActionListener(e -> {
+            GameView gameView = new GameView();
+            GameController gameController = new GameController(gameView);
+            gameView.setGameController(gameController);
+            setVisible(false);
+            gameController.processGameCommand("start "+ playerCount.getText());
         });
 
-        load.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                GameView gameView = new GameView();
-                GameController gameController = new GameController(gameView);
-                gameView.setGameController(gameController);
-                setVisible(false);
-                gameController.processGameCommand("load");
-            }
+        load.addActionListener(e -> {
+            GameView gameView = new GameView();
+            GameController gameController = new GameController(gameView);
+            gameView.setGameController(gameController);
+            setVisible(false);
+            gameController.processGameCommand("load");
         });
 
         playerCount = new JTextField();

@@ -199,9 +199,7 @@ public class GameController implements Serializable {
                     }
                 }
             }
-            case "pair" -> {
-                currentPlayer.pairItems();
-            }
+            case "pair" -> currentPlayer.pairItems();
             case "use" -> {
                 int itemId = Integer.parseInt(parts.get(1));
                 List<Item> items = currentPlayer.getItemInventory();
