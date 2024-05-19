@@ -107,7 +107,7 @@ public class GameView extends JFrame {
 
                 }
             });
-            newItem.setBorder(new LineBorder(Color.BLACK, 2));
+            newItem.setBorder(new LineBorder(Color.BLACK, 1));
             newItem.setBackground(Color.gray);
             inventoryPanel.add(newItem);
         }

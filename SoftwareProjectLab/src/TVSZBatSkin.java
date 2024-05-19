@@ -56,4 +56,8 @@ public class TVSZBatSkin extends Item{
                 return false;
         }
 
+        @Override
+        public String toString(){
+                return "<html>" + this.getClass().toString().split(" ")[1] + "<br>isActive=" + isActive() +  "<br>isFake=" + isFake + "</html>";
+        }
 }

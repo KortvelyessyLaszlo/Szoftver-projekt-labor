@@ -46,6 +46,8 @@ public class FFP2Mask extends TimedItem{
         return (isActive() && !isDestroyed());
     }
 
-
-
+    @Override
+    public String toString(){
+        return "<html>" + this.getClass().toString().split(" ")[1] + "<br>isActive=" + isActive() +  "<br>isFake=" + isFake + "</html>";
+    }
 }

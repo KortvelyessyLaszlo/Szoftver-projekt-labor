@@ -44,4 +44,8 @@ public class SlideRule extends Item{
         winner.setWinner(true);
     }
 
+    @Override
+    public String toString(){
+        return "<html>" + this.getClass().toString().split(" ")[1] + "<br>isActive=" + isActive() +  "<br>isFake=" + isFake + "</html>";
+    }
 }

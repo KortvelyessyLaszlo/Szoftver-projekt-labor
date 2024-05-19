@@ -100,4 +100,9 @@ public class Transistor extends Item{
         }
     }
 
+    @Override
+    public String toString(){
+        boolean isNull = pair != null;
+        return "<html>" + this.getClass().toString().split(" ")[1] + "<br>isActive=" + isActive() +  "<br>isPaired=" + isNull + "</html>";
+    }
 }
