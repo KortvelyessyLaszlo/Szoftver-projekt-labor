@@ -37,9 +37,13 @@ public class GameController implements Serializable {
     public Student getCurrentPlayer(){return currentPlayer;}
 
     /**
-     *
+     * A jelenlegi játékos indexe
      */
     private int currentPlayerIndex = 0;
+
+    /**
+     * Azon játékosok listája, akik még nem lettek megmérgezve
+     */
     List<Student> notPoisonedPlayers = new ArrayList<>();
 
     /**
@@ -149,6 +153,8 @@ public class GameController implements Serializable {
                 isGameStarted = true;
                 try{
                     playerCount = Integer.parseInt(parts.get(1));
+                    if(playerCount <= 0)
+                        throw new Exception();
                 } catch (Exception e){
                     playerCount = 1;
                 }
@@ -193,9 +199,7 @@ public class GameController implements Serializable {
                     }
                 }
             }
-            case "pair" -> {
-                currentPlayer.pairItems();
-            }
+            case "pair" -> currentPlayer.pairItems();
             case "use" -> {
                 int itemId = Integer.parseInt(parts.get(1));
                 List<Item> items = currentPlayer.getItemInventory();
