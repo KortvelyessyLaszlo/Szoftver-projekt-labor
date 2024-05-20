@@ -41,10 +41,6 @@ public class GameController implements Serializable {
      */
     private int currentPlayerIndex = 0;
 
-    /**
-     * Azon játékosok listája, akik még nem lettek megmérgezve
-     */
-    List<Student> notPoisonedPlayers = new ArrayList<>();
 
     /**
      * A GameController osztály konstruktora
@@ -107,8 +103,16 @@ public class GameController implements Serializable {
                     playersAlive.add((Student) person);
             }
         }
-
-        players.removeIf(player -> !playersAlive.contains(player));
+        List<Student> deadPlayers = new ArrayList<>(players);
+        deadPlayers.removeIf(player -> playersAlive.contains(player));
+        for(Student student : deadPlayers){
+            for (int i = 0; i < players.size(); i++) {
+                if(players.get(i) == student && i < currentPlayerIndex){
+                    currentPlayerIndex--;
+                }
+            }
+            players.remove(student);
+        }
 
         if(players.isEmpty()) {
             isGameStarted = false;
@@ -120,19 +124,10 @@ public class GameController implements Serializable {
         }
 
 
-        if(isGameStarted && (notPoisonedPlayers.isEmpty() || currentPlayerIndex > notPoisonedPlayers.size()-1)) {
-            notPoisonedPlayers = new ArrayList<>();
+        if(currentPlayerIndex >= players.size())
             currentPlayerIndex = 0;
-            for (Student player : players) {
-                if (!player.isPoisoned()) {
-                    notPoisonedPlayers.add(player);
-                }
-            }
-        }
-        if (!notPoisonedPlayers.isEmpty()) {
-            currentPlayer = notPoisonedPlayers.get(currentPlayerIndex);
-            currentPlayerIndex++;
-        }
+        currentPlayer = players.get(currentPlayerIndex);
+        currentPlayerIndex++;
 
         gameView.updateView();
     }
