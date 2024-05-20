@@ -3,13 +3,38 @@ import javax.swing.border.LineBorder;
 import java.awt.*;
 
 public class GameView extends JFrame {
+
+    /**
+     * A mentés gomb
+     */
     private JButton save;
+
+    /**
+     * A párosítás gomb
+     */
     private JButton pair;
+
+    /**
+     * A játékos statisztikái
+     */
     private JTextArea playerStats;
+
+    /**
+     * A játékvezérlő
+     */
     private GameController gameController;
+
+    /**
+     * Beállítja a játékvezérlőt
+     */
     public void setGameController(GameController gameController){
         this.gameController = gameController;
     }
+
+    /**
+     * A GameView osztály konstruktora
+     * Beállítja az ablak méretét, a kilépési műveletet, az elhelyezkedést, az átméretezhetőséget és a láthatóságot
+     */
     public GameView(){
         this.setSize(800, 600);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -18,6 +43,11 @@ public class GameView extends JFrame {
         this.setVisible(true);
     }
 
+    /**
+     * Frissíti a nézetet
+     * Az ablak tartalmát eltávolítja, majd hozzáadja a játékos adatait, a szobákat, a tárgyakat, a gombokat és a képeket
+     * Az ablakot újra rajzolja
+     */
     public void updateView() {
         this.getContentPane().removeAll();
         Student player = gameController.getCurrentPlayer();

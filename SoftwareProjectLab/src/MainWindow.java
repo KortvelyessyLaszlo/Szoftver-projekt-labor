@@ -4,9 +4,27 @@ import java.awt.*;
 import java.io.File;
 
 public class MainWindow extends JFrame {
+
+    /**
+     * A játék indítása gomb
+     */
     private JButton start;
+
+    /**
+     * A játék betöltése gomb
+     */
     private JButton load;
+
+    /**
+     * A játékosok számának beviteli mezője
+     */
     private JTextField playerCount;
+
+    /**
+     * A MainWindow osztály konstruktora
+     * Beállítja az ablak méretét, a kilépési műveletet, az elhelyezkedést, az átméretezhetőséget és a láthatóságot
+     * Létrehoz egy panelt, és elhelyezi rajta a komponenseket
+     */
     public MainWindow(){
         this.setSize(300, 250);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -18,6 +36,11 @@ public class MainWindow extends JFrame {
         setResizable(false);
     }
 
+
+    /**
+     * A komponensek elhelyezéséért felelős függvény
+     * @param panel : A panel, amelyre a komponenseket elhelyezi
+     */
     private void placeComponents(JPanel panel) {
         panel.setLayout(null);
         panel.setBackground(Color.DARK_GRAY);

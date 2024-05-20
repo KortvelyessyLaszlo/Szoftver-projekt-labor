@@ -66,6 +66,7 @@ public class GameController implements Serializable {
      * A függvény végigmegy a játék objektumain és mindegyiknek meghívja a tick() függvényét.
      * A játékosok közül azokat, akik még élnek, egy listába gyűjti.
      * Ha egy játékos meghal, akkor azt a játékosok listájából törli.
+     * Ha a játékban nincs több játékos, akkor a függvény kiírja, hogy a játék véget ért.
      */
     private void tickAll(){
         for(Student player : players) {
