@@ -1,3 +1,0 @@
-class Student, Name=S, isPoisoned=false, itemInventory=[0,1,]
-class Transistor, id=0, isActive=false, isDestroyed=false, pairId=1
-class Transistor, id=1, isActive=false, isDestroyed=false, pairId=0

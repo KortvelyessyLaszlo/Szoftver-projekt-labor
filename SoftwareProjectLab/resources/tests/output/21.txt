@@ -1,4 +1,0 @@
-class Room, id=0, capacity=2, enterCounter=0, isGassed=false, isSticky=false, peopleInRoom=[J,], itemInventory=[], neighbours=[1,]
-class Room, id=1, capacity=2, enterCounter=1, isGassed=false, isSticky=false, peopleInRoom=[S,], itemInventory=[], neighbours=[0,]
-class Student, Name=S, isPoisoned=false, itemInventory=[]
-class Janitor, Name=J, isPoisoned=false, itemInventory=[]

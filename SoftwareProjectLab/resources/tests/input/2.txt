@@ -1,6 +1,0 @@
-createRoom 1
-createStudent S
-createItem CC true
-addPerson 0 S
-addItem S 0
-useItem S 0

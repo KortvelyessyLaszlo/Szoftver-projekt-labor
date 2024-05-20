@@ -1,3 +1,0 @@
-class Room, id=0, capacity=1, enterCounter=0, isGassed=false, isSticky=false, peopleInRoom=[S,], itemInventory=[0 TVSZBatSkin,], neighbours=[]
-class Student, Name=S, isPoisoned=false, itemInventory=[]
-class TVSZBatSkin, id=0, isActive=false, isDestroyed=false, charge=5, isFake=false

@@ -1,9 +1,0 @@
-createRoom 1
-createRoom 1
-createStudent S
-createItem FFP2 true
-setGassed 1 true
-addItem S 0
-addPerson 0 S
-addNeighbour 0 1
-enter S 1

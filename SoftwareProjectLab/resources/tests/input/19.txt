@@ -1,8 +1,0 @@
-createRoom 1
-createRoom 2
-createRoom 0
-addNeighbour 0 1
-addNeighbour 1 2
-setGassed 1 true
-setSticky 1 true
-combineRooms 0

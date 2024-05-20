@@ -1,6 +1,0 @@
-createStudent S
-createItem T true
-createItem T true
-addItem S 0
-addItem S 1
-pairItems S

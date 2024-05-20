@@ -1,9 +1,0 @@
-createRoom 1
-createRoom 1
-createStudent S
-createItem TVSZ true
-addNeighbour 0 1
-setGassed 1 true
-addPerson 0 S
-addItem S 0
-enter S 1

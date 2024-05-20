@@ -1,3 +1,0 @@
-class Room, id=0, capacity=1, enterCounter=0, isGassed=true, isSticky=false, peopleInRoom=[S,], itemInventory=[], neighbours=[]
-class Student, Name=S, isPoisoned=false, itemInventory=[]
-class CannedCamembert, id=0, isActive=false, isDestroyed=true

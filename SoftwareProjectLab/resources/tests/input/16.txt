@@ -1,8 +1,0 @@
-createRoom 2
-createRoom 2
-createTeacher T
-createStudent S
-addNeighbour 0 1
-addPerson 0 S
-addPerson 1 T
-enter S 1
