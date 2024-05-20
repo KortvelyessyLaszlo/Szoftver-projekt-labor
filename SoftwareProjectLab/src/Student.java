@@ -174,6 +174,6 @@ public class Student extends Person {
                 setPoisoned(false);
         }
 
-        this.getItemInventory().removeIf(item -> item instanceof TimedItem && item.isDestroyed());
+        this.getItemInventory().removeIf(Item::isDestroyed);
     }
 }
