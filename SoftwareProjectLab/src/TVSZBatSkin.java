@@ -51,13 +51,13 @@ public class TVSZBatSkin extends Item{
                     charge--;
                     if(charge == 0) setDestroyed(true);{
                             return true;
-                        }
+                    }
                 }
                 return false;
         }
 
         @Override
         public String toString(){
-                return "<html>" + this.getClass().toString().split(" ")[1] + "<br>isActive=" + isActive() +  "<br>isFake=" + isFake + "</html>";
+                return "<html>" + this.getClass().toString().split(" ")[1] + "<br>isActive=" + isActive() +  "<br>isFake=" + isFake +  "<br>charges=" + charge + "</html>";
         }
 }
